@@ -1,0 +1,30 @@
+#Directories to be ignored fully
+/books/
+/articles/
+/other/
+/output/
+/graphics/
+data/
+tmp/
+*_tmp/
+.ipynb_checkpoints/
+
+# Keep folders with this
+!.keep
+
+#tmp and similar files
+.nfs*
+*.pyc
+*.out
+*.swp
+*.swn
+tmp_*
+t_*
+tmp_*
+*_tmp
+*.swo
+*.lyx.emergency
+*.lyx#
+*~
+*.log
+*hidden*
