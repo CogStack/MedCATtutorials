@@ -1,0 +1,12 @@
+#!/bin/bash
+
+notebook_paths=`git diff --cached --name-only --diff-filter=d | grep  .ipynb`
+
+if [ ! -z "$notebook_paths" ]
+then
+    for path in $notebook_paths
+    do
+        cat <<< `jq 'reduce path(.cells[]|select(.cell_type == "code")) as $cell (.; setpath($cell + ["outputs"]; []) | setpath($cell + ["execution_count"]; null))' $path` > $path
+        git add $path
+    done
+fi

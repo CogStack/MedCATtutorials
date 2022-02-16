@@ -23,3 +23,10 @@ These tutorials expand upon specific aspects of the topics covered across the in
 | Part | Title                                                             | Google Colab                                                                                 |
 | ---- |-------------------------------------------------------------------|----------------------------------------------------------------------------------------------|
 | -    |Working with SNOMED CT and building a custom Concept Database (CDB)| [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/CogStack/MedCATtutorials/blob/main/notebooks/specialised/Preprocessing_SNOMED_CT.ipynb)|
+
+# Development
+
+Make sure `jq` is installed and install the pre-commit hook by running:
+```
+git config --local core.hooksPath git-config/hooks
+```

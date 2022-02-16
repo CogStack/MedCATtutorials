@@ -1,0 +1,27 @@
+name: build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  main:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.7"
+      - name: Install dependencies
+        run: |
+          pip install -U pip
+          pip install -r requirements.txt
+      - name: test
+        run: |
+          pytest --collect-only --nbmake ./notebooks
+          pytest --nbmake --nbmake-timeout=1800 ./notebooks/introductory
