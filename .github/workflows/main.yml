@@ -25,6 +25,7 @@ jobs:
         run: |
           pytest --collect-only --nbmake ./notebooks
           pytest --nbmake --nbmake-timeout=1800 ./notebooks/introductory/Part_2_*.ipynb
-          pytest --nbmake --nbmake-timeout=1800 ./notebooks/introductory/Part_3_*.ipynb
-          pytest --nbmake --nbmake-timeout=1800 ./notebooks/introductory/Part_4_*.ipynb
+          pytest --nbmake --nbmake-timeout=1800 ./notebooks/introductory/Part_3_1_*.ipynb
+          pytest --nbmake --nbmake-timeout=1800 ./notebooks/introductory/Part_4_1_*.ipynb
+          pytest --nbmake --nbmake-timeout=1800 ./notebooks/introductory/Part_4_3_*.ipynb
           pytest --nbmake --nbmake-timeout=1800 ./notebooks/introductory/Part_5_*.ipynb

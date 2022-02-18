@@ -6,7 +6,9 @@ if [ ! -z "$notebook_paths" ]
 then
     for path in $notebook_paths
     do
-        cat <<< `jq 'reduce path(.cells[]|select(.cell_type == "code")) as $cell (.; setpath($cell + ["outputs"]; []) | setpath($cell + ["execution_count"]; null))' $path` > $path
+        jupyter nbconvert --to html $path
+        jupyter nbconvert --clear-output --inplace $path
+        git add ${path/.ipynb/.html}
         git add $path
     done
 fi
