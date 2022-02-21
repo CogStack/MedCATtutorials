@@ -24,10 +24,9 @@ jobs:
       - name: Run introductory tutorials
         run: |
           pytest --collect-only --nbmake ./notebooks
-          pytest --nbmake --nbmake-timeout=1800 ./notebooks/introductory/Part_2_*.ipynb
-          pytest --nbmake --nbmake-timeout=1800 ./notebooks/introductory/Part_3_1_*.ipynb
-          pytest --nbmake --nbmake-timeout=1800 ./notebooks/introductory/Part_3_2_*.ipynb
-          pytest --nbmake --nbmake-timeout=1800 ./notebooks/introductory/Part_4_1_*.ipynb
-          pytest --nbmake --nbmake-timeout=1800 ./notebooks/introductory/Part_4_2_*.ipynb
-          pytest --nbmake --nbmake-timeout=1800 ./notebooks/introductory/Part_4_3_*.ipynb
-          pytest --nbmake --nbmake-timeout=1800 ./notebooks/introductory/Part_5_*.ipynb
+          pytest --nbmake --nbmake-timeout=600 ./notebooks/introductory/Part_3_1_*.ipynb
+          pytest --nbmake --nbmake-timeout=3600 ./notebooks/introductory/Part_3_2_*.ipynb
+          pytest --nbmake --nbmake-timeout=600 ./notebooks/introductory/Part_4_1_*.ipynb
+          pytest --nbmake --nbmake-timeout=3600 ./notebooks/introductory/Part_4_2_*.ipynb
+          pytest --nbmake --nbmake-timeout=600 ./notebooks/introductory/Part_4_3_*.ipynb
+          pytest --nbmake --nbmake-timeout=600 ./notebooks/introductory/Part_5_*.ipynb
