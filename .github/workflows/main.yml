@@ -16,7 +16,8 @@ jobs:
           introductory/Part_2_*.ipynb,
           introductory/Part_3_*.ipynb,
           introductory/Part_4_*.ipynb,
-          introductory/Part_5_*.ipynb
+          introductory/Part_5_*.ipynb,
+          specialised/*.ipynb
         ]
 
     steps:
