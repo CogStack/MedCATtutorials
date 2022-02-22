@@ -1,14 +1,22 @@
 #!/bin/bash
 
-notebook_paths=`git diff --cached --name-only --diff-filter=d | grep  .ipynb`
+set -eu
 
-if [ ! -z "$notebook_paths" ]
+if ! command -v jupyter &> /dev/null
 then
-    for path in $notebook_paths
-    do
-        jupyter nbconvert --to html $path
-        jupyter nbconvert --clear-output --inplace $path
-        git add ${path/.ipynb/.html}
-        git add $path
-    done
+    echo "Warning: Cannot find jupyter on your path so the HTML version won't be created/updated"
+    echo "Warning: Install jupyter from https://docs.jupyter.org/en/latest/install.html"
+else
+    notebook_paths=`git diff --cached --name-only --diff-filter=d | grep  .ipynb`
+
+    if [ ! -z "$notebook_paths" ]
+    then
+        for path in $notebook_paths
+        do
+            jupyter nbconvert --to html $path
+            jupyter nbconvert --clear-output --inplace $path
+            git add ${path/.ipynb/.html}
+            git add $path
+        done
+    fi
 fi

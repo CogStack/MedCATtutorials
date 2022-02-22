@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Part_3_1_Building_a_Concept_Database_and_Vocabulary</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Preprocessing_SNOMED_CT</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14579,7 +14579,10 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Let's-build-and-initialise-a-MedCAT-model!">Let's build and initialise a MedCAT model!<a class="anchor-link" href="#Let's-build-and-initialise-a-MedCAT-model!">&#182;</a></h1>
+<h1 id="SNOMED">SNOMED<a class="anchor-link" href="#SNOMED">&#182;</a></h1><p>SNOMED CT is a standarised clinical terminology consisting of &gt;350,000 unique concepts. It is owned, maintained and distributed by SNOMED International.</p>
+<p>Please visit and explore <a href="https://www.snomed.org/">https://www.snomed.org/</a> to find out further information about the various SNOMED CT products and services which they offer.</p>
+<hr>
+
 </div>
 </div>
 </div>
@@ -14590,7 +14593,75 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="First-we-need-to-install-MedCAT">First we need to install MedCAT<a class="anchor-link" href="#First-we-need-to-install-MedCAT">&#182;</a></h3>
+<h2 id="What-is-SNOMED-CT?">What is SNOMED CT?<a class="anchor-link" href="#What-is-SNOMED-CT?">&#182;</a></h2><p>SNOMED CT is a clinical terminology containing concepts with unique meanings and formal logic based definitions organised into hierarchies. For further information please see: <a href="https://confluence.ihtsdotools.org/display/DOCSTART/4.+SNOMED+CT+Basics">https://confluence.ihtsdotools.org/display/DOCSTART/4.+SNOMED+CT+Basics</a></p>
+<h2 id="SNOMED-CT-Design">SNOMED CT Design<a class="anchor-link" href="#SNOMED-CT-Design">&#182;</a></h2><p>SNOMED CT content is represented into 3 main types of components:</p>
+<ul>
+<li>Concepts representing clinical meanings that are organised into hierarchies.</li>
+<li>Descriptions which link appropriate human readable terms to concepts</li>
+<li>Relationships which link each concept to other related concepts</li>
+</ul>
+<p>It also contains mappings to classification systems such as:</p>
+<ul>
+<li>ICD (International classifications of diseases)</li>
+<li>OPCS (Office of Population Censuses and Surveys) (SNOMED UK extension only)</li>
+</ul>
+<hr>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><a name="access_to_snomed_ct"></a></p>
+<h2 id="Access-to-SNOMED-CT-release-files">Access to SNOMED CT release files<a class="anchor-link" href="#Access-to-SNOMED-CT-release-files">&#182;</a></h2><p>You may download SNOMED CT at the Member country’s designated website. The use of SNOMED CT in Member countries is free. Follow this <a href="https://www.snomed.org/our-stakeholders/members">link</a> to find out if your country is a member state and explore the website to find directions to where to your national SNOMED CT distribution is held.</p>
+<p>E.g.</p>
+<ul>
+<li><p>UK -&gt; <a href="https://isd.digital.nhs.uk/trud3/user/guest/group/0/home">NHS TRUD</a></p>
+</li>
+<li><p>US -&gt; <a href="https://www.nlm.nih.gov/healthit/snomedct/international.html">NIH National Library of Medicine</a> Alternative clinical terminologies such as UMLS can be found here.</p>
+</li>
+</ul>
+<p>The following Steps are to services provided by SNOMED International for organizations and individuals to request use and access to the International Release of SNOMED CT for use in non-Member countries</p>
+<p><strong>To access SNOMED CT files from non-member contries:</strong></p>
+<ol>
+<li><p>Please visit the SNOMED <a href="https://mlds.ihtsdotools.org/#/landing">Member Licensing and Distribution Service.</a> and read their terms and conditions for use.</p>
+</li>
+<li><p>Login or Register for an account and wait to be granted access.</p>
+</li>
+<li><p>Once you have been granted access. Logged in and visit the tab <a href="https://mlds.ihtsdotools.org/#/viewReleases">"Release Packages"</a> and retrieve the release of SNOMED CT that you would like to have. Alternatively, for the international SNOMED release simply visit the <a href="https://mlds.ihtsdotools.org/#/viewReleases/viewRelease/167">International releases</a>.</p>
+</li>
+</ol>
+<hr>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Part-1:-Preprocessing-SNOMED-CT-for-MedCAT">Part 1: Preprocessing SNOMED CT for MedCAT<a class="anchor-link" href="#Part-1:-Preprocessing-SNOMED-CT-for-MedCAT">&#182;</a></h1><p>Once you have downloaded a SNOMED release of interest. Store the zipped folder containing your respective SNOMED release in the current colab working directory.</p>
+<p>The folder name should look like: <code>SnomedCT_InternationalRF2_PRODUCTION_20210131T120000Z.zip</code></p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Install-and-import-required-packages">Install and import required packages<a class="anchor-link" href="#Install-and-import-required-packages">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -14599,13 +14670,11 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Install MedCAT</span>
-<span class="o">!</span> pip install <span class="nv">medcat</span><span class="o">==</span><span class="m">1</span>.2.7
-<span class="c1"># Get the scispacy model</span>
-<span class="o">!</span> python -m spacy download en_core_web_md
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Install medcat</span>
+<span class="o">!</span>pip install --upgrade medcat
 </pre></div>
 
      </div>
@@ -14627,261 +14696,957 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Collecting medcat==1.2.7
-  Downloading medcat-1.2.7-py3-none-any.whl (141 kB)
-     |████████████████████████████████| 141 kB 17.3 MB/s 
-Collecting psutil&lt;6.0.0,&gt;=5.8.0
-  Downloading psutil-5.9.0-cp37-cp37m-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (280 kB)
-     |████████████████████████████████| 280 kB 47.5 MB/s 
-Requirement already satisfied: ipywidgets~=7.6.5 in /usr/local/lib/python3.7/dist-packages (from medcat==1.2.7) (7.6.5)
-Collecting gensim~=4.1.2
-  Downloading gensim-4.1.2-cp37-cp37m-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (24.1 MB)
-     |████████████████████████████████| 24.1 MB 3.4 MB/s 
-Collecting spacy&lt;3.1.4,&gt;=3.1.0
-  Downloading spacy-3.1.3-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (5.9 MB)
-     |████████████████████████████████| 5.9 MB 45.9 MB/s 
-Collecting elasticsearch&gt;=7.10
-  Downloading elasticsearch-8.0.0-py3-none-any.whl (369 kB)
-     |████████████████████████████████| 369 kB 48.3 MB/s 
-Requirement already satisfied: multiprocess in /usr/local/lib/python3.7/dist-packages (from medcat==1.2.7) (0.70.12.2)
-Collecting numpy&lt;1.22.9,&gt;=1.21.4
-  Downloading numpy-1.21.5-cp37-cp37m-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (15.7 MB)
-     |████████████████████████████████| 15.7 MB 41.3 MB/s 
-Requirement already satisfied: sklearn~=0.0 in /usr/local/lib/python3.7/dist-packages (from medcat==1.2.7) (0.0)
-Requirement already satisfied: dill~=0.3.4 in /usr/local/lib/python3.7/dist-packages (from medcat==1.2.7) (0.3.4)
-Collecting py2neo==2021.2.3
-  Downloading py2neo-2021.2.3-py2.py3-none-any.whl (177 kB)
-     |████████████████████████████████| 177 kB 47.5 MB/s 
-Collecting xxhash==2.0.2
-  Downloading xxhash-2.0.2-cp37-cp37m-manylinux2010_x86_64.whl (243 kB)
-     |████████████████████████████████| 243 kB 42.2 MB/s 
-Collecting transformers~=4.11.3
-  Downloading transformers-4.11.3-py3-none-any.whl (2.9 MB)
-     |████████████████████████████████| 2.9 MB 9.4 MB/s 
-Requirement already satisfied: tqdm&gt;=4.27 in /usr/local/lib/python3.7/dist-packages (from medcat==1.2.7) (4.62.3)
-Collecting datasets~=1.14.0
-  Downloading datasets-1.14.0-py3-none-any.whl (290 kB)
-     |████████████████████████████████| 290 kB 47.3 MB/s 
-Collecting scipy&lt;=1.7.1,&gt;=1.5.4
-  Downloading scipy-1.7.1-cp37-cp37m-manylinux_2_5_x86_64.manylinux1_x86_64.whl (28.5 MB)
-     |████████████████████████████████| 28.5 MB 1.6 MB/s 
-Collecting torch&lt;1.10,&gt;=1.0
-  Downloading torch-1.9.1-cp37-cp37m-manylinux1_x86_64.whl (831.4 MB)
-     |████████████████████████████████| 831.4 MB 6.3 kB/s 
-Collecting pandas&lt;=1.3.4,&gt;=1.1.5
-  Downloading pandas-1.3.4-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (11.3 MB)
-     |████████████████████████████████| 11.3 MB 47.5 MB/s 
-Collecting aiofiles~=0.8.0
-  Downloading aiofiles-0.8.0-py3-none-any.whl (13 kB)
-Collecting jsonpickle~=2.0.0
-  Downloading jsonpickle-2.0.0-py2.py3-none-any.whl (37 kB)
-Requirement already satisfied: packaging in /usr/local/lib/python3.7/dist-packages (from py2neo==2021.2.3-&gt;medcat==1.2.7) (21.3)
-Requirement already satisfied: urllib3 in /usr/local/lib/python3.7/dist-packages (from py2neo==2021.2.3-&gt;medcat==1.2.7) (1.24.3)
-Requirement already satisfied: certifi in /usr/local/lib/python3.7/dist-packages (from py2neo==2021.2.3-&gt;medcat==1.2.7) (2021.10.8)
-Collecting monotonic
-  Downloading monotonic-1.6-py2.py3-none-any.whl (8.2 kB)
-Requirement already satisfied: six&gt;=1.15.0 in /usr/local/lib/python3.7/dist-packages (from py2neo==2021.2.3-&gt;medcat==1.2.7) (1.15.0)
-Collecting pansi&gt;=2020.7.3
-  Downloading pansi-2020.7.3-py2.py3-none-any.whl (10 kB)
-Collecting interchange~=2021.0.4
-  Downloading interchange-2021.0.4-py2.py3-none-any.whl (28 kB)
-Requirement already satisfied: pygments&gt;=2.0.0 in /usr/local/lib/python3.7/dist-packages (from py2neo==2021.2.3-&gt;medcat==1.2.7) (2.6.1)
-Requirement already satisfied: pyarrow!=4.0.0,&gt;=1.0.0 in /usr/local/lib/python3.7/dist-packages (from datasets~=1.14.0-&gt;medcat==1.2.7) (6.0.1)
-Requirement already satisfied: requests&gt;=2.19.0 in /usr/local/lib/python3.7/dist-packages (from datasets~=1.14.0-&gt;medcat==1.2.7) (2.23.0)
-Collecting huggingface-hub&lt;0.1.0,&gt;=0.0.19
-  Downloading huggingface_hub-0.0.19-py3-none-any.whl (56 kB)
-     |████████████████████████████████| 56 kB 4.1 MB/s 
-Requirement already satisfied: importlib-metadata in /usr/local/lib/python3.7/dist-packages (from datasets~=1.14.0-&gt;medcat==1.2.7) (4.10.1)
-Collecting fsspec[http]&gt;=2021.05.0
-  Downloading fsspec-2022.1.0-py3-none-any.whl (133 kB)
-     |████████████████████████████████| 133 kB 61.8 MB/s 
-Collecting aiohttp
-  Downloading aiohttp-3.8.1-cp37-cp37m-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl (1.1 MB)
-     |████████████████████████████████| 1.1 MB 55.9 MB/s 
-Collecting elastic-transport&lt;9,&gt;=8
-  Downloading elastic_transport-8.0.1-py3-none-any.whl (57 kB)
-     |████████████████████████████████| 57 kB 4.2 MB/s 
-Collecting urllib3
-  Downloading urllib3-1.26.8-py2.py3-none-any.whl (138 kB)
-     |████████████████████████████████| 138 kB 57.5 MB/s 
-Requirement already satisfied: smart-open&gt;=1.8.1 in /usr/local/lib/python3.7/dist-packages (from gensim~=4.1.2-&gt;medcat==1.2.7) (5.2.1)
-Requirement already satisfied: pyyaml in /usr/local/lib/python3.7/dist-packages (from huggingface-hub&lt;0.1.0,&gt;=0.0.19-&gt;datasets~=1.14.0-&gt;medcat==1.2.7) (3.13)
-Requirement already satisfied: typing-extensions in /usr/local/lib/python3.7/dist-packages (from huggingface-hub&lt;0.1.0,&gt;=0.0.19-&gt;datasets~=1.14.0-&gt;medcat==1.2.7) (3.10.0.2)
-Requirement already satisfied: filelock in /usr/local/lib/python3.7/dist-packages (from huggingface-hub&lt;0.1.0,&gt;=0.0.19-&gt;datasets~=1.14.0-&gt;medcat==1.2.7) (3.4.2)
-Requirement already satisfied: pytz in /usr/local/lib/python3.7/dist-packages (from interchange~=2021.0.4-&gt;py2neo==2021.2.3-&gt;medcat==1.2.7) (2018.9)
-Requirement already satisfied: ipython-genutils~=0.2.0 in /usr/local/lib/python3.7/dist-packages (from ipywidgets~=7.6.5-&gt;medcat==1.2.7) (0.2.0)
-Requirement already satisfied: widgetsnbextension~=3.5.0 in /usr/local/lib/python3.7/dist-packages (from ipywidgets~=7.6.5-&gt;medcat==1.2.7) (3.5.2)
-Requirement already satisfied: nbformat&gt;=4.2.0 in /usr/local/lib/python3.7/dist-packages (from ipywidgets~=7.6.5-&gt;medcat==1.2.7) (5.1.3)
-Requirement already satisfied: ipykernel&gt;=4.5.1 in /usr/local/lib/python3.7/dist-packages (from ipywidgets~=7.6.5-&gt;medcat==1.2.7) (4.10.1)
-Requirement already satisfied: jupyterlab-widgets&gt;=1.0.0 in /usr/local/lib/python3.7/dist-packages (from ipywidgets~=7.6.5-&gt;medcat==1.2.7) (1.0.2)
-Requirement already satisfied: ipython&gt;=4.0.0 in /usr/local/lib/python3.7/dist-packages (from ipywidgets~=7.6.5-&gt;medcat==1.2.7) (5.5.0)
-Requirement already satisfied: traitlets&gt;=4.3.1 in /usr/local/lib/python3.7/dist-packages (from ipywidgets~=7.6.5-&gt;medcat==1.2.7) (5.1.1)
-Requirement already satisfied: jupyter-client in /usr/local/lib/python3.7/dist-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets~=7.6.5-&gt;medcat==1.2.7) (5.3.5)
-Requirement already satisfied: tornado&gt;=4.0 in /usr/local/lib/python3.7/dist-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets~=7.6.5-&gt;medcat==1.2.7) (5.1.1)
-Requirement already satisfied: setuptools&gt;=18.5 in /usr/local/lib/python3.7/dist-packages (from ipython&gt;=4.0.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.2.7) (57.4.0)
-Requirement already satisfied: decorator in /usr/local/lib/python3.7/dist-packages (from ipython&gt;=4.0.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.2.7) (4.4.2)
-Requirement already satisfied: pexpect in /usr/local/lib/python3.7/dist-packages (from ipython&gt;=4.0.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.2.7) (4.8.0)
-Requirement already satisfied: pickleshare in /usr/local/lib/python3.7/dist-packages (from ipython&gt;=4.0.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.2.7) (0.7.5)
-Requirement already satisfied: simplegeneric&gt;0.8 in /usr/local/lib/python3.7/dist-packages (from ipython&gt;=4.0.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.2.7) (0.8.1)
-Requirement already satisfied: prompt-toolkit&lt;2.0.0,&gt;=1.0.4 in /usr/local/lib/python3.7/dist-packages (from ipython&gt;=4.0.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.2.7) (1.0.18)
-Requirement already satisfied: jupyter-core in /usr/local/lib/python3.7/dist-packages (from nbformat&gt;=4.2.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.2.7) (4.9.1)
-Requirement already satisfied: jsonschema!=2.5.0,&gt;=2.4 in /usr/local/lib/python3.7/dist-packages (from nbformat&gt;=4.2.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.2.7) (4.3.3)
-Requirement already satisfied: attrs&gt;=17.4.0 in /usr/local/lib/python3.7/dist-packages (from jsonschema!=2.5.0,&gt;=2.4-&gt;nbformat&gt;=4.2.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.2.7) (21.4.0)
-Requirement already satisfied: importlib-resources&gt;=1.4.0 in /usr/local/lib/python3.7/dist-packages (from jsonschema!=2.5.0,&gt;=2.4-&gt;nbformat&gt;=4.2.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.2.7) (5.4.0)
-Requirement already satisfied: pyrsistent!=0.17.0,!=0.17.1,!=0.17.2,&gt;=0.14.0 in /usr/local/lib/python3.7/dist-packages (from jsonschema!=2.5.0,&gt;=2.4-&gt;nbformat&gt;=4.2.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.2.7) (0.18.1)
-Requirement already satisfied: zipp&gt;=3.1.0 in /usr/local/lib/python3.7/dist-packages (from importlib-resources&gt;=1.4.0-&gt;jsonschema!=2.5.0,&gt;=2.4-&gt;nbformat&gt;=4.2.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.2.7) (3.7.0)
-Requirement already satisfied: pyparsing!=3.0.5,&gt;=2.0.2 in /usr/local/lib/python3.7/dist-packages (from packaging-&gt;py2neo==2021.2.3-&gt;medcat==1.2.7) (3.0.7)
-Requirement already satisfied: python-dateutil&gt;=2.7.3 in /usr/local/lib/python3.7/dist-packages (from pandas&lt;=1.3.4,&gt;=1.1.5-&gt;medcat==1.2.7) (2.8.2)
-Requirement already satisfied: wcwidth in /usr/local/lib/python3.7/dist-packages (from prompt-toolkit&lt;2.0.0,&gt;=1.0.4-&gt;ipython&gt;=4.0.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.2.7) (0.2.5)
-Requirement already satisfied: chardet&lt;4,&gt;=3.0.2 in /usr/local/lib/python3.7/dist-packages (from requests&gt;=2.19.0-&gt;datasets~=1.14.0-&gt;medcat==1.2.7) (3.0.4)
-Collecting requests&gt;=2.19.0
-  Downloading requests-2.27.1-py2.py3-none-any.whl (63 kB)
-     |████████████████████████████████| 63 kB 1.6 MB/s 
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.7/dist-packages (from requests&gt;=2.19.0-&gt;datasets~=1.14.0-&gt;medcat==1.2.7) (2.10)
-Requirement already satisfied: charset-normalizer~=2.0.0 in /usr/local/lib/python3.7/dist-packages (from requests&gt;=2.19.0-&gt;datasets~=1.14.0-&gt;medcat==1.2.7) (2.0.11)
-Requirement already satisfied: scikit-learn in /usr/local/lib/python3.7/dist-packages (from sklearn~=0.0-&gt;medcat==1.2.7) (1.0.2)
-Collecting pathy&gt;=0.3.5
-  Downloading pathy-0.6.1-py3-none-any.whl (42 kB)
-     |████████████████████████████████| 42 kB 1.4 MB/s 
-Collecting typer&lt;0.5.0,&gt;=0.3.0
-  Downloading typer-0.4.0-py3-none-any.whl (27 kB)
-Collecting thinc&lt;8.1.0,&gt;=8.0.9
-  Downloading thinc-8.0.13-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (628 kB)
-     |████████████████████████████████| 628 kB 71.1 MB/s 
-Requirement already satisfied: jinja2 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.4,&gt;=3.1.0-&gt;medcat==1.2.7) (2.11.3)
-Collecting spacy-legacy&lt;3.1.0,&gt;=3.0.8
-  Downloading spacy_legacy-3.0.8-py2.py3-none-any.whl (14 kB)
-Requirement already satisfied: cymem&lt;2.1.0,&gt;=2.0.2 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.4,&gt;=3.1.0-&gt;medcat==1.2.7) (2.0.6)
-Requirement already satisfied: murmurhash&lt;1.1.0,&gt;=0.28.0 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.4,&gt;=3.1.0-&gt;medcat==1.2.7) (1.0.6)
-Requirement already satisfied: preshed&lt;3.1.0,&gt;=3.0.2 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.4,&gt;=3.1.0-&gt;medcat==1.2.7) (3.0.6)
-Collecting catalogue&lt;2.1.0,&gt;=2.0.6
-  Downloading catalogue-2.0.6-py3-none-any.whl (17 kB)
-Requirement already satisfied: blis&lt;0.8.0,&gt;=0.4.0 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.4,&gt;=3.1.0-&gt;medcat==1.2.7) (0.4.1)
-Requirement already satisfied: wasabi&lt;1.1.0,&gt;=0.8.1 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.4,&gt;=3.1.0-&gt;medcat==1.2.7) (0.9.0)
-Collecting srsly&lt;3.0.0,&gt;=2.4.1
-  Downloading srsly-2.4.2-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (451 kB)
-     |████████████████████████████████| 451 kB 57.7 MB/s 
-Collecting pydantic!=1.8,!=1.8.1,&lt;1.9.0,&gt;=1.7.4
-  Downloading pydantic-1.8.2-cp37-cp37m-manylinux2014_x86_64.whl (10.1 MB)
-     |████████████████████████████████| 10.1 MB 48.0 MB/s 
-Requirement already satisfied: regex!=2019.12.17 in /usr/local/lib/python3.7/dist-packages (from transformers~=4.11.3-&gt;medcat==1.2.7) (2019.12.20)
-Collecting pyyaml
-  Downloading PyYAML-6.0-cp37-cp37m-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl (596 kB)
-     |████████████████████████████████| 596 kB 32.7 MB/s 
-Collecting tokenizers&lt;0.11,&gt;=0.10.1
-  Downloading tokenizers-0.10.3-cp37-cp37m-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl (3.3 MB)
-     |████████████████████████████████| 3.3 MB 37.2 MB/s 
-Collecting sacremoses
-  Downloading sacremoses-0.0.47-py2.py3-none-any.whl (895 kB)
-     |████████████████████████████████| 895 kB 49.6 MB/s 
-Requirement already satisfied: click&lt;9.0.0,&gt;=7.1.1 in /usr/local/lib/python3.7/dist-packages (from typer&lt;0.5.0,&gt;=0.3.0-&gt;spacy&lt;3.1.4,&gt;=3.1.0-&gt;medcat==1.2.7) (7.1.2)
-Requirement already satisfied: notebook&gt;=4.4.1 in /usr/local/lib/python3.7/dist-packages (from widgetsnbextension~=3.5.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.2.7) (5.3.1)
-Requirement already satisfied: nbconvert in /usr/local/lib/python3.7/dist-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.2.7) (5.6.1)
-Requirement already satisfied: terminado&gt;=0.8.1 in /usr/local/lib/python3.7/dist-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.2.7) (0.13.1)
-Requirement already satisfied: Send2Trash in /usr/local/lib/python3.7/dist-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.2.7) (1.8.0)
-Requirement already satisfied: pyzmq&gt;=13 in /usr/local/lib/python3.7/dist-packages (from jupyter-client-&gt;ipykernel&gt;=4.5.1-&gt;ipywidgets~=7.6.5-&gt;medcat==1.2.7) (22.3.0)
-Requirement already satisfied: ptyprocess in /usr/local/lib/python3.7/dist-packages (from terminado&gt;=0.8.1-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.2.7) (0.7.0)
-Collecting yarl&lt;2.0,&gt;=1.0
-  Downloading yarl-1.7.2-cp37-cp37m-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl (271 kB)
-     |████████████████████████████████| 271 kB 48.5 MB/s 
-Collecting async-timeout&lt;5.0,&gt;=4.0.0a3
-  Downloading async_timeout-4.0.2-py3-none-any.whl (5.8 kB)
-Collecting asynctest==0.13.0
-  Downloading asynctest-0.13.0-py3-none-any.whl (26 kB)
-Collecting frozenlist&gt;=1.1.1
-  Downloading frozenlist-1.3.0-cp37-cp37m-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (144 kB)
-     |████████████████████████████████| 144 kB 54.7 MB/s 
-Collecting aiosignal&gt;=1.1.2
-  Downloading aiosignal-1.2.0-py3-none-any.whl (8.2 kB)
-Collecting multidict&lt;7.0,&gt;=4.5
-  Downloading multidict-6.0.2-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (94 kB)
-     |████████████████████████████████| 94 kB 2.7 MB/s 
-Requirement already satisfied: MarkupSafe&gt;=0.23 in /usr/local/lib/python3.7/dist-packages (from jinja2-&gt;spacy&lt;3.1.4,&gt;=3.1.0-&gt;medcat==1.2.7) (2.0.1)
-Requirement already satisfied: entrypoints&gt;=0.2.2 in /usr/local/lib/python3.7/dist-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.2.7) (0.4)
-Requirement already satisfied: pandocfilters&gt;=1.4.1 in /usr/local/lib/python3.7/dist-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.2.7) (1.5.0)
-Requirement already satisfied: mistune&lt;2,&gt;=0.8.1 in /usr/local/lib/python3.7/dist-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.2.7) (0.8.4)
-Requirement already satisfied: testpath in /usr/local/lib/python3.7/dist-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.2.7) (0.5.0)
-Requirement already satisfied: defusedxml in /usr/local/lib/python3.7/dist-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.2.7) (0.7.1)
-Requirement already satisfied: bleach in /usr/local/lib/python3.7/dist-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.2.7) (4.1.0)
-Requirement already satisfied: webencodings in /usr/local/lib/python3.7/dist-packages (from bleach-&gt;nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.2.7) (0.5.1)
-Requirement already satisfied: joblib in /usr/local/lib/python3.7/dist-packages (from sacremoses-&gt;transformers~=4.11.3-&gt;medcat==1.2.7) (1.1.0)
-Requirement already satisfied: threadpoolctl&gt;=2.0.0 in /usr/local/lib/python3.7/dist-packages (from scikit-learn-&gt;sklearn~=0.0-&gt;medcat==1.2.7) (3.1.0)
-Installing collected packages: multidict, frozenlist, yarl, urllib3, numpy, catalogue, asynctest, async-timeout, aiosignal, typer, srsly, scipy, requests, pyyaml, pydantic, fsspec, aiohttp, xxhash, tokenizers, thinc, spacy-legacy, sacremoses, pathy, pansi, pandas, monotonic, interchange, huggingface-hub, elastic-transport, transformers, torch, spacy, py2neo, psutil, jsonpickle, gensim, elasticsearch, datasets, aiofiles, medcat
-  Attempting uninstall: urllib3
-    Found existing installation: urllib3 1.24.3
-    Uninstalling urllib3-1.24.3:
-      Successfully uninstalled urllib3-1.24.3
-  Attempting uninstall: numpy
-    Found existing installation: numpy 1.19.5
-    Uninstalling numpy-1.19.5:
-      Successfully uninstalled numpy-1.19.5
-  Attempting uninstall: catalogue
-    Found existing installation: catalogue 1.0.0
-    Uninstalling catalogue-1.0.0:
-      Successfully uninstalled catalogue-1.0.0
-  Attempting uninstall: srsly
-    Found existing installation: srsly 1.0.5
-    Uninstalling srsly-1.0.5:
-      Successfully uninstalled srsly-1.0.5
-  Attempting uninstall: scipy
-    Found existing installation: scipy 1.4.1
-    Uninstalling scipy-1.4.1:
-      Successfully uninstalled scipy-1.4.1
-  Attempting uninstall: requests
-    Found existing installation: requests 2.23.0
-    Uninstalling requests-2.23.0:
-      Successfully uninstalled requests-2.23.0
-  Attempting uninstall: pyyaml
-    Found existing installation: PyYAML 3.13
-    Uninstalling PyYAML-3.13:
-      Successfully uninstalled PyYAML-3.13
-  Attempting uninstall: thinc
-    Found existing installation: thinc 7.4.0
-    Uninstalling thinc-7.4.0:
-      Successfully uninstalled thinc-7.4.0
-  Attempting uninstall: pandas
-    Found existing installation: pandas 1.3.5
-    Uninstalling pandas-1.3.5:
-      Successfully uninstalled pandas-1.3.5
-  Attempting uninstall: torch
-    Found existing installation: torch 1.10.0+cu111
-    Uninstalling torch-1.10.0+cu111:
-      Successfully uninstalled torch-1.10.0+cu111
-  Attempting uninstall: spacy
-    Found existing installation: spacy 2.2.4
-    Uninstalling spacy-2.2.4:
-      Successfully uninstalled spacy-2.2.4
-  Attempting uninstall: psutil
-    Found existing installation: psutil 5.4.8
-    Uninstalling psutil-5.4.8:
-      Successfully uninstalled psutil-5.4.8
-  Attempting uninstall: gensim
-    Found existing installation: gensim 3.6.0
-    Uninstalling gensim-3.6.0:
-      Successfully uninstalled gensim-3.6.0
-<span class="ansi-red-fg">ERROR: pip&#39;s dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
-yellowbrick 1.3.post1 requires numpy&lt;1.20,&gt;=1.16.0, but you have numpy 1.21.5 which is incompatible.
-torchvision 0.11.1+cu111 requires torch==1.10.0, but you have torch 1.9.1 which is incompatible.
-torchtext 0.11.0 requires torch==1.10.0, but you have torch 1.9.1 which is incompatible.
-torchaudio 0.10.0+cu111 requires torch==1.10.0, but you have torch 1.9.1 which is incompatible.
-google-colab 1.0.0 requires requests~=2.23.0, but you have requests 2.27.1 which is incompatible.
-datascience 0.10.6 requires folium==0.2.1, but you have folium 0.8.3 which is incompatible.
-albumentations 0.1.12 requires imgaug&lt;0.2.7,&gt;=0.2.5, but you have imgaug 0.2.9 which is incompatible.</span>
-Successfully installed aiofiles-0.8.0 aiohttp-3.8.1 aiosignal-1.2.0 async-timeout-4.0.2 asynctest-0.13.0 catalogue-2.0.6 datasets-1.14.0 elastic-transport-8.0.1 elasticsearch-8.0.0 frozenlist-1.3.0 fsspec-2022.1.0 gensim-4.1.2 huggingface-hub-0.0.19 interchange-2021.0.4 jsonpickle-2.0.0 medcat-1.2.7 monotonic-1.6 multidict-6.0.2 numpy-1.21.5 pandas-1.3.4 pansi-2020.7.3 pathy-0.6.1 psutil-5.9.0 py2neo-2021.2.3 pydantic-1.8.2 pyyaml-6.0 requests-2.27.1 sacremoses-0.0.47 scipy-1.7.1 spacy-3.1.3 spacy-legacy-3.0.8 srsly-2.4.2 thinc-8.0.13 tokenizers-0.10.3 torch-1.9.1 transformers-4.11.3 typer-0.4.0 urllib3-1.26.8 xxhash-2.0.2 yarl-1.7.2
+<pre>Requirement already satisfied: medcat in /usr/local/lib/python3.7/dist-packages (1.1.1)
+Requirement already satisfied: spacy&lt;3.1.0,&gt;=3.0.1 in /usr/local/lib/python3.7/dist-packages (from medcat) (3.0.7)
+Requirement already satisfied: gensim~=3.8 in /usr/local/lib/python3.7/dist-packages (from medcat) (3.8.3)
+Requirement already satisfied: pandas~=1.0 in /usr/local/lib/python3.7/dist-packages (from medcat) (1.1.5)
+Requirement already satisfied: numpy&lt;1.21.0,&gt;=1.19.0 in /usr/local/lib/python3.7/dist-packages (from medcat) (1.19.5)
+Requirement already satisfied: transformers~=4.5.1 in /usr/local/lib/python3.7/dist-packages (from medcat) (4.5.1)
+Requirement already satisfied: tqdm&lt;4.50.0,&gt;=4.27 in /usr/local/lib/python3.7/dist-packages (from medcat) (4.49.0)
+Requirement already satisfied: elasticsearch~=7.10 in /usr/local/lib/python3.7/dist-packages (from medcat) (7.14.0)
+Requirement already satisfied: scipy~=1.5 in /usr/local/lib/python3.7/dist-packages (from medcat) (1.7.1)
+Requirement already satisfied: torch~=1.8.1 in /usr/local/lib/python3.7/dist-packages (from medcat) (1.8.1)
+Requirement already satisfied: jsonpickle~=2.0.0 in /usr/local/lib/python3.7/dist-packages (from medcat) (2.0.0)
+Requirement already satisfied: datasets~=1.6.0 in /usr/local/lib/python3.7/dist-packages (from medcat) (1.6.2)
+Requirement already satisfied: sklearn~=0.0 in /usr/local/lib/python3.7/dist-packages (from medcat) (0.0)
+Requirement already satisfied: dill~=0.3.3 in /usr/local/lib/python3.7/dist-packages (from medcat) (0.3.4)
+Requirement already satisfied: pyarrow&gt;=1.0.0&lt;4.0.0 in /usr/local/lib/python3.7/dist-packages (from datasets~=1.6.0-&gt;medcat) (3.0.0)
+Requirement already satisfied: xxhash in /usr/local/lib/python3.7/dist-packages (from datasets~=1.6.0-&gt;medcat) (2.0.2)
+Requirement already satisfied: requests&gt;=2.19.0 in /usr/local/lib/python3.7/dist-packages (from datasets~=1.6.0-&gt;medcat) (2.23.0)
+Requirement already satisfied: huggingface-hub&lt;0.1.0 in /usr/local/lib/python3.7/dist-packages (from datasets~=1.6.0-&gt;medcat) (0.0.15)
+Requirement already satisfied: multiprocess in /usr/local/lib/python3.7/dist-packages (from datasets~=1.6.0-&gt;medcat) (0.70.12.2)
+Requirement already satisfied: fsspec in /usr/local/lib/python3.7/dist-packages (from datasets~=1.6.0-&gt;medcat) (2021.7.0)
+Requirement already satisfied: packaging in /usr/local/lib/python3.7/dist-packages (from datasets~=1.6.0-&gt;medcat) (21.0)
+Requirement already satisfied: importlib-metadata in /usr/local/lib/python3.7/dist-packages (from datasets~=1.6.0-&gt;medcat) (4.6.4)
+Requirement already satisfied: certifi in /usr/local/lib/python3.7/dist-packages (from elasticsearch~=7.10-&gt;medcat) (2021.5.30)
+Requirement already satisfied: urllib3&lt;2,&gt;=1.21.1 in /usr/local/lib/python3.7/dist-packages (from elasticsearch~=7.10-&gt;medcat) (1.24.3)
+Requirement already satisfied: six&gt;=1.5.0 in /usr/local/lib/python3.7/dist-packages (from gensim~=3.8-&gt;medcat) (1.15.0)
+Requirement already satisfied: smart-open&gt;=1.8.1 in /usr/local/lib/python3.7/dist-packages (from gensim~=3.8-&gt;medcat) (5.1.0)
+Requirement already satisfied: filelock in /usr/local/lib/python3.7/dist-packages (from huggingface-hub&lt;0.1.0-&gt;datasets~=1.6.0-&gt;medcat) (3.0.12)
+Requirement already satisfied: typing-extensions in /usr/local/lib/python3.7/dist-packages (from huggingface-hub&lt;0.1.0-&gt;datasets~=1.6.0-&gt;medcat) (3.7.4.3)
+Requirement already satisfied: pyparsing&gt;=2.0.2 in /usr/local/lib/python3.7/dist-packages (from packaging-&gt;datasets~=1.6.0-&gt;medcat) (2.4.7)
+Requirement already satisfied: pytz&gt;=2017.2 in /usr/local/lib/python3.7/dist-packages (from pandas~=1.0-&gt;medcat) (2018.9)
+Requirement already satisfied: python-dateutil&gt;=2.7.3 in /usr/local/lib/python3.7/dist-packages (from pandas~=1.0-&gt;medcat) (2.8.2)
+Requirement already satisfied: chardet&lt;4,&gt;=3.0.2 in /usr/local/lib/python3.7/dist-packages (from requests&gt;=2.19.0-&gt;datasets~=1.6.0-&gt;medcat) (3.0.4)
+Requirement already satisfied: idna&lt;3,&gt;=2.5 in /usr/local/lib/python3.7/dist-packages (from requests&gt;=2.19.0-&gt;datasets~=1.6.0-&gt;medcat) (2.10)
+Requirement already satisfied: scikit-learn in /usr/local/lib/python3.7/dist-packages (from sklearn~=0.0-&gt;medcat) (0.22.2.post1)
+Requirement already satisfied: spacy-legacy&lt;3.1.0,&gt;=3.0.5 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.1-&gt;medcat) (3.0.8)
+Requirement already satisfied: wasabi&lt;1.1.0,&gt;=0.8.1 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.1-&gt;medcat) (0.8.2)
+Requirement already satisfied: blis&lt;0.8.0,&gt;=0.4.0 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.1-&gt;medcat) (0.4.1)
+Requirement already satisfied: thinc&lt;8.1.0,&gt;=8.0.3 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.1-&gt;medcat) (8.0.8)
+Requirement already satisfied: preshed&lt;3.1.0,&gt;=3.0.2 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.1-&gt;medcat) (3.0.5)
+Requirement already satisfied: cymem&lt;2.1.0,&gt;=2.0.2 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.1-&gt;medcat) (2.0.5)
+Requirement already satisfied: catalogue&lt;2.1.0,&gt;=2.0.4 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.1-&gt;medcat) (2.0.6)
+Requirement already satisfied: typer&lt;0.4.0,&gt;=0.3.0 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.1-&gt;medcat) (0.3.2)
+Requirement already satisfied: pydantic!=1.8,!=1.8.1,&lt;1.9.0,&gt;=1.7.4 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.1-&gt;medcat) (1.8.2)
+Requirement already satisfied: jinja2 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.1-&gt;medcat) (2.11.3)
+Requirement already satisfied: setuptools in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.1-&gt;medcat) (57.4.0)
+Requirement already satisfied: pathy&gt;=0.3.5 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.1-&gt;medcat) (0.6.0)
+Requirement already satisfied: srsly&lt;3.0.0,&gt;=2.4.1 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.1-&gt;medcat) (2.4.1)
+Requirement already satisfied: murmurhash&lt;1.1.0,&gt;=0.28.0 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.1-&gt;medcat) (1.0.5)
+Requirement already satisfied: zipp&gt;=0.5 in /usr/local/lib/python3.7/dist-packages (from catalogue&lt;2.1.0,&gt;=2.0.4-&gt;spacy&lt;3.1.0,&gt;=3.0.1-&gt;medcat) (3.5.0)
+Requirement already satisfied: tokenizers&lt;0.11,&gt;=0.10.1 in /usr/local/lib/python3.7/dist-packages (from transformers~=4.5.1-&gt;medcat) (0.10.3)
+Requirement already satisfied: sacremoses in /usr/local/lib/python3.7/dist-packages (from transformers~=4.5.1-&gt;medcat) (0.0.45)
+Requirement already satisfied: regex!=2019.12.17 in /usr/local/lib/python3.7/dist-packages (from transformers~=4.5.1-&gt;medcat) (2019.12.20)
+Requirement already satisfied: click&lt;7.2.0,&gt;=7.1.1 in /usr/local/lib/python3.7/dist-packages (from typer&lt;0.4.0,&gt;=0.3.0-&gt;spacy&lt;3.1.0,&gt;=3.0.1-&gt;medcat) (7.1.2)
+Requirement already satisfied: MarkupSafe&gt;=0.23 in /usr/local/lib/python3.7/dist-packages (from jinja2-&gt;spacy&lt;3.1.0,&gt;=3.0.1-&gt;medcat) (2.0.1)
+Requirement already satisfied: joblib in /usr/local/lib/python3.7/dist-packages (from sacremoses-&gt;transformers~=4.5.1-&gt;medcat) (1.0.1)
 </pre>
 </div>
 </div>
 
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">medcat.utils.preprocess_snomed</span> <span class="kn">import</span> <span class="n">Snomed</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Load-the-data">Load the data<a class="anchor-link" href="#Load-the-data">&#182;</a></h3><p>Please see the section: <a href="#access_to_snomed_ct">Access to SNOMED CT release files</a> for how to retrieve the zipped SNOMED CT release.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Assign a path to the zipped SNOMED CT release download. (skip this step if the folder is not zipped)</span>
+<span class="n">snomed_path</span> <span class="o">=</span> <span class="s2">&quot;SnomedCT_InternationalRF2_PRODUCTION_20210131T120000Z.zip&quot;</span>  <span class="c1"># Enter your zipped Snomed folder here</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>unzip snomed_path
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Preprocess-the-release-for-MedCAT">Preprocess the release for MedCAT<a class="anchor-link" href="#Preprocess-the-release-for-MedCAT">&#182;</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Initialise</span>
+<span class="n">snomed_filename</span> <span class="o">=</span> <span class="s2">&quot;SnomedCT_InternationalRF2_PRODUCTION_20210131T120000Z&quot;</span>  <span class="c1"># The unzippedSNOMED CT folder</span>
+<span class="n">snomed</span> <span class="o">=</span> <span class="n">Snomed</span><span class="p">(</span><span class="n">snomed_filename</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### Skip this step if your version of snomed is not the UK extension released &gt;2021.</span>
+<span class="c1">### Note: this step will only work with MedCAT v1.2.7+</span>
+
+<span class="c1"># snomed.uk_ext = True</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="Create-a-SNOMED-DataFrame">Create a SNOMED DataFrame<a class="anchor-link" href="#Create-a-SNOMED-DataFrame">&#182;</a></h4><p>We first preprocess SNOMED to fit the following format:</p>
+<table>
+<thead><tr>
+<th>cui</th>
+<th>name</th>
+<th>ontologies</th>
+<th style="text-align:center">name_status</th>
+<th style="text-align:center">description_type_ids</th>
+<th>type_ids</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>101009</td>
+<td>Quilonia ethiopica (organism)</td>
+<td>SNOMED</td>
+<td style="text-align:center">P</td>
+<td style="text-align:center">organism</td>
+<td>81102976</td>
+</tr>
+</tbody>
+</table>
+<p>.
+.
+.</p>
+<p><code>cui</code> - The concept unique identifier, this is simply the <code>SCTID</code>.</p>
+<p><code>name</code> - This include the name of the concept. The status of the name is given in <code>name_status</code></p>
+<p><code>ontologies</code> - Always SNOMED. Alternatively you can change it to your specific edition.</p>
+<p><code>name_status</code> - The Fully specified name or FSN is denoted with a <code>P</code> - Primary Name. Each concept must be assigned only one Primary Name. These should be unique across all SCTID/cui to avoid confusion. A synonym or other description type is represented as a <code>A</code> - Alternative Name. This can be enriched with all possible names and abbreviations for a concept of interest.</p>
+<p><code>description_type_ids</code> - These are processed to be the Semantic Tags of the concept.</p>
+<p><code>type_ids</code> - This is simply a 10 digit Hash of the Semantic Tags</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create SNOMED DataFrame </span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">snomed</span><span class="o">.</span><span class="n">to_concept_df</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
 
 
 
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cui</th>
+      <th>name</th>
+      <th>name_status</th>
+      <th>ontologies</th>
+      <th>description_type_ids</th>
+      <th>type_ids</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>101009</td>
+      <td>Quilonia ethiopica (organism)</td>
+      <td>P</td>
+      <td>SNOMED-CT</td>
+      <td>organism</td>
+      <td>81102976</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>102002</td>
+      <td>Hemoglobin Okaloosa (substance)</td>
+      <td>P</td>
+      <td>SNOMED-CT</td>
+      <td>substance</td>
+      <td>91187746</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>103007</td>
+      <td>Squirrel fibroma virus (organism)</td>
+      <td>P</td>
+      <td>SNOMED-CT</td>
+      <td>organism</td>
+      <td>81102976</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>104001</td>
+      <td>Excision of lesion of patella (procedure)</td>
+      <td>P</td>
+      <td>SNOMED-CT</td>
+      <td>procedure</td>
+      <td>28321150</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>106004</td>
+      <td>Structure of posterior carpal region (body str...</td>
+      <td>P</td>
+      <td>SNOMED-CT</td>
+      <td>body structure</td>
+      <td>37552161</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
 
 </div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># inspect</span>
+<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;cui&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;101009&#39;</span><span class="p">]</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cui</th>
+      <th>name</th>
+      <th>name_status</th>
+      <th>ontologies</th>
+      <th>description_type_ids</th>
+      <th>type_ids</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>101009</td>
+      <td>Quilonia ethiopica (organism)</td>
+      <td>P</td>
+      <td>SNOMED-CT</td>
+      <td>organism</td>
+      <td>81102976</td>
+    </tr>
+    <tr>
+      <th>354448</th>
+      <td>101009</td>
+      <td>Quilonia ethiopica</td>
+      <td>A</td>
+      <td>SNOMED-CT</td>
+      <td>organism</td>
+      <td>81102976</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Optional - Create a SCTID to FSN dictionary</span>
+<span class="n">primary_names_only</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;name_status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;P&#39;</span><span class="p">]</span>
+<span class="n">sctid2name</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">primary_names_only</span><span class="p">[</span><span class="s1">&#39;cui&#39;</span><span class="p">],</span> <span class="n">primary_names_only</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]))</span>
+<span class="k">del</span> <span class="n">primary_names_only</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sctid2name</span><span class="p">[</span><span class="s1">&#39;101009&#39;</span><span class="p">]</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>&#39;Quilonia ethiopica (organism)&#39;</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="SNOMED-Relationships">SNOMED Relationships<a class="anchor-link" href="#SNOMED-Relationships">&#182;</a></h4>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">all_snomed_relationships</span> <span class="o">=</span> <span class="n">snomed</span><span class="o">.</span><span class="n">list_all_relationships</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># List of the SCTID of all snomed relationships</span>
+<span class="n">all_snomed_relationships</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Using the SCTID to name to inspect what the FSN (fully specified names) are:</span>
+<span class="k">for</span> <span class="n">sctid</span> <span class="ow">in</span> <span class="n">all_snomed_relationships</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">sctid2name</span><span class="p">[</span><span class="n">sctid</span><span class="p">])</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># save a specific relationship to json</span>
+<span class="c1"># In the example we save the &quot;IS a (attribute)&quot; hierarchical relationship.</span>
+<span class="n">snomed</span><span class="o">.</span><span class="n">relationship2json</span><span class="p">(</span><span class="s2">&quot;116680003&quot;</span><span class="p">,</span> <span class="s2">&quot;ISA_relationship.json&quot;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="Mappings-to-inbuilt-external-terminologies">Mappings to inbuilt external terminologies<a class="anchor-link" href="#Mappings-to-inbuilt-external-terminologies">&#182;</a></h4><p>Create a dictionary map to add to the medcat concept database additional information</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h5 id="ICD-10">ICD-10<a class="anchor-link" href="#ICD-10">&#182;</a></h5><p>For SNOMED to ICD-10 mapping read more on:
+Map Blocks, Map Groups and Map Priorities, for correct official mapping methodology.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ICD-10</span>
+<span class="n">icd_df</span> <span class="o">=</span> <span class="n">snomed</span><span class="o">.</span><span class="n">map_snomed2icd10</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">icd_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>effectiveTime</th>
+      <th>active</th>
+      <th>moduleId</th>
+      <th>refsetId</th>
+      <th>referencedComponentId</th>
+      <th>mapGroup</th>
+      <th>mapPriority</th>
+      <th>mapRule</th>
+      <th>mapAdvice</th>
+      <th>mapTarget</th>
+      <th>correlationId</th>
+      <th>mapCategoryId</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>49b07dca-0559-59d9-8c85-3198c941a813</td>
+      <td>20130731</td>
+      <td>1</td>
+      <td>449080006</td>
+      <td>447562003</td>
+      <td>10000006</td>
+      <td>1</td>
+      <td>1</td>
+      <td>TRUE</td>
+      <td>ALWAYS R07.4</td>
+      <td>R07.4</td>
+      <td>447561005</td>
+      <td>447637006</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2c141272-bbc0-5c34-aa48-72f2dc370ead</td>
+      <td>20150131</td>
+      <td>1</td>
+      <td>449080006</td>
+      <td>447562003</td>
+      <td>10001005</td>
+      <td>1</td>
+      <td>1</td>
+      <td>TRUE</td>
+      <td>ALWAYS A41.9</td>
+      <td>A41.9</td>
+      <td>447561005</td>
+      <td>447637006</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>47cf847c-c85c-5979-8129-98475d4ab274</td>
+      <td>20190731</td>
+      <td>1</td>
+      <td>449080006</td>
+      <td>447562003</td>
+      <td>10007009</td>
+      <td>1</td>
+      <td>1</td>
+      <td>TRUE</td>
+      <td>ALWAYS Q87.1 | POSSIBLE REQUIREMENT FOR ADDITI...</td>
+      <td>Q87.1</td>
+      <td>447561005</td>
+      <td>447637006</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4cd08e27-0417-5c5d-8873-6a72d130e918</td>
+      <td>20140731</td>
+      <td>1</td>
+      <td>449080006</td>
+      <td>447562003</td>
+      <td>1001000119102</td>
+      <td>1</td>
+      <td>1</td>
+      <td>TRUE</td>
+      <td>ALWAYS I26.9 | MAPPED FOLLOWING WHO GUIDANCE</td>
+      <td>I26.9</td>
+      <td>447561005</td>
+      <td>447637006</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ca792560-1589-5f24-9126-b040e8ea2b2d</td>
+      <td>20180731</td>
+      <td>1</td>
+      <td>449080006</td>
+      <td>447562003</td>
+      <td>10017004</td>
+      <td>1</td>
+      <td>1</td>
+      <td>TRUE</td>
+      <td>ALWAYS K03.0</td>
+      <td>K03.0</td>
+      <td>447561005</td>
+      <td>447637006</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sctid2icd10</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">g</span><span class="p">[</span><span class="s2">&quot;mapTarget&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">g</span> <span class="ow">in</span> <span class="n">icd_df</span><span class="p">[[</span><span class="s1">&#39;referencedComponentId&#39;</span><span class="p">,</span>
+                                                              <span class="s1">&#39;mapTarget&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;referencedComponentId&quot;</span><span class="p">)}</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># To view the SNOMED to ICD-10 Map structure</span>
+<span class="n">sctid2icd10</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>[&#39;G40.9&#39;, &#39;G93.8&#39;]</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h5 id="OPCS">OPCS<a class="anchor-link" href="#OPCS">&#182;</a></h5><p>Office of Population Censuses and Surveys</p>
+<p><strong>Note:</strong> only the SNOMED UK extension edition contains this information
+Skip if your version is not a UK extension</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">opcs_df</span> <span class="o">=</span> <span class="n">snomed</span><span class="o">.</span><span class="n">map_snomed2opcs4</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">opcs_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Save-for-MedCAT">Save for MedCAT<a class="anchor-link" href="#Save-for-MedCAT">&#182;</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Save to CSV for medcat CDB creation</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;preprocessed_snomed.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<hr>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Part-2:-Create-a-MedCAT-CDB-using-SNOMED-CT-release-files">Part 2: Create a MedCAT CDB using SNOMED CT release files<a class="anchor-link" href="#Part-2:-Create-a-MedCAT-CDB-using-SNOMED-CT-release-files">&#182;</a></h1><p>These steps are also convered in the tutorial: <a href="https://colab.research.google.com/drive/1s1QXJ2E76sZLm5P0Lremw8-kWWXxX_w2#scrollTo=KByaUPYNk7gk">Part 3.1 Building a Concept Database and Vocabulary</a></p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Get the scispacy model.</span>
+<span class="o">!</span>pip install https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.4.0/en_core_sci_md-0.4.0.tar.gz
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
 
 <div class="jp-OutputArea-child">
 
@@ -14890,42 +15655,45 @@ Successfully installed aiofiles-0.8.0 aiohttp-3.8.1 aiosignal-1.2.0 async-timeou
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Collecting en-core-web-md==3.1.0
-  Downloading https://github.com/explosion/spacy-models/releases/download/en_core_web_md-3.1.0/en_core_web_md-3.1.0-py3-none-any.whl (45.4 MB)
-     |████████████████████████████████| 45.4 MB 80 kB/s 
-Requirement already satisfied: spacy&lt;3.2.0,&gt;=3.1.0 in /usr/local/lib/python3.7/dist-packages (from en-core-web-md==3.1.0) (3.1.3)
-Requirement already satisfied: tqdm&lt;5.0.0,&gt;=4.38.0 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (4.62.3)
-Requirement already satisfied: numpy&gt;=1.15.0 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (1.21.5)
-Requirement already satisfied: pathy&gt;=0.3.5 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (0.6.1)
-Requirement already satisfied: typing-extensions&lt;4.0.0.0,&gt;=3.7.4 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (3.10.0.2)
-Requirement already satisfied: catalogue&lt;2.1.0,&gt;=2.0.6 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (2.0.6)
-Requirement already satisfied: wasabi&lt;1.1.0,&gt;=0.8.1 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (0.9.0)
-Requirement already satisfied: jinja2 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (2.11.3)
-Requirement already satisfied: setuptools in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (57.4.0)
-Requirement already satisfied: requests&lt;3.0.0,&gt;=2.13.0 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (2.27.1)
-Requirement already satisfied: srsly&lt;3.0.0,&gt;=2.4.1 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (2.4.2)
-Requirement already satisfied: pydantic!=1.8,!=1.8.1,&lt;1.9.0,&gt;=1.7.4 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (1.8.2)
-Requirement already satisfied: preshed&lt;3.1.0,&gt;=3.0.2 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (3.0.6)
-Requirement already satisfied: packaging&gt;=20.0 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (21.3)
-Requirement already satisfied: typer&lt;0.5.0,&gt;=0.3.0 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (0.4.0)
-Requirement already satisfied: blis&lt;0.8.0,&gt;=0.4.0 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (0.4.1)
-Requirement already satisfied: cymem&lt;2.1.0,&gt;=2.0.2 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (2.0.6)
-Requirement already satisfied: spacy-legacy&lt;3.1.0,&gt;=3.0.8 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (3.0.8)
-Requirement already satisfied: murmurhash&lt;1.1.0,&gt;=0.28.0 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (1.0.6)
-Requirement already satisfied: thinc&lt;8.1.0,&gt;=8.0.9 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (8.0.13)
-Requirement already satisfied: zipp&gt;=0.5 in /usr/local/lib/python3.7/dist-packages (from catalogue&lt;2.1.0,&gt;=2.0.6-&gt;spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (3.7.0)
-Requirement already satisfied: pyparsing!=3.0.5,&gt;=2.0.2 in /usr/local/lib/python3.7/dist-packages (from packaging&gt;=20.0-&gt;spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (3.0.7)
-Requirement already satisfied: smart-open&lt;6.0.0,&gt;=5.0.0 in /usr/local/lib/python3.7/dist-packages (from pathy&gt;=0.3.5-&gt;spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (5.2.1)
-Requirement already satisfied: charset-normalizer~=2.0.0 in /usr/local/lib/python3.7/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (2.0.11)
-Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.7/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (1.26.8)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.7/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (2021.10.8)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.7/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (2.10)
-Requirement already satisfied: click&lt;9.0.0,&gt;=7.1.1 in /usr/local/lib/python3.7/dist-packages (from typer&lt;0.5.0,&gt;=0.3.0-&gt;spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (7.1.2)
-Requirement already satisfied: MarkupSafe&gt;=0.23 in /usr/local/lib/python3.7/dist-packages (from jinja2-&gt;spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (2.0.1)
-Installing collected packages: en-core-web-md
-Successfully installed en-core-web-md-3.1.0
-<span class="ansi-green-fg">✔ Download and installation successful</span>
-You can now load the package via spacy.load(&#39;en_core_web_md&#39;)
+<pre>Collecting https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.4.0/en_core_sci_md-0.4.0.tar.gz
+  Downloading https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.4.0/en_core_sci_md-0.4.0.tar.gz (125.2 MB)
+     |████████████████████████████████| 125.2 MB 33 kB/s 
+Requirement already satisfied: spacy&lt;3.1.0,&gt;=3.0.1 in /usr/local/lib/python3.7/dist-packages (from en-core-sci-md==0.4.0) (3.0.7)
+Requirement already satisfied: pydantic!=1.8,!=1.8.1,&lt;1.9.0,&gt;=1.7.4 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.1-&gt;en-core-sci-md==0.4.0) (1.8.2)
+Requirement already satisfied: thinc&lt;8.1.0,&gt;=8.0.3 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.1-&gt;en-core-sci-md==0.4.0) (8.0.8)
+Requirement already satisfied: srsly&lt;3.0.0,&gt;=2.4.1 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.1-&gt;en-core-sci-md==0.4.0) (2.4.1)
+Requirement already satisfied: setuptools in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.1-&gt;en-core-sci-md==0.4.0) (57.4.0)
+Requirement already satisfied: cymem&lt;2.1.0,&gt;=2.0.2 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.1-&gt;en-core-sci-md==0.4.0) (2.0.5)
+Requirement already satisfied: requests&lt;3.0.0,&gt;=2.13.0 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.1-&gt;en-core-sci-md==0.4.0) (2.23.0)
+Requirement already satisfied: murmurhash&lt;1.1.0,&gt;=0.28.0 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.1-&gt;en-core-sci-md==0.4.0) (1.0.5)
+Requirement already satisfied: packaging&gt;=20.0 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.1-&gt;en-core-sci-md==0.4.0) (21.0)
+Requirement already satisfied: typer&lt;0.4.0,&gt;=0.3.0 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.1-&gt;en-core-sci-md==0.4.0) (0.3.2)
+Requirement already satisfied: blis&lt;0.8.0,&gt;=0.4.0 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.1-&gt;en-core-sci-md==0.4.0) (0.4.1)
+Requirement already satisfied: pathy&gt;=0.3.5 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.1-&gt;en-core-sci-md==0.4.0) (0.6.0)
+Requirement already satisfied: preshed&lt;3.1.0,&gt;=3.0.2 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.1-&gt;en-core-sci-md==0.4.0) (3.0.5)
+Requirement already satisfied: wasabi&lt;1.1.0,&gt;=0.8.1 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.1-&gt;en-core-sci-md==0.4.0) (0.8.2)
+Requirement already satisfied: spacy-legacy&lt;3.1.0,&gt;=3.0.5 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.1-&gt;en-core-sci-md==0.4.0) (3.0.8)
+Requirement already satisfied: typing-extensions&lt;4.0.0.0,&gt;=3.7.4 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.1-&gt;en-core-sci-md==0.4.0) (3.7.4.3)
+Requirement already satisfied: tqdm&lt;5.0.0,&gt;=4.38.0 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.1-&gt;en-core-sci-md==0.4.0) (4.49.0)
+Requirement already satisfied: numpy&gt;=1.15.0 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.1-&gt;en-core-sci-md==0.4.0) (1.19.5)
+Requirement already satisfied: jinja2 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.1-&gt;en-core-sci-md==0.4.0) (2.11.3)
+Requirement already satisfied: catalogue&lt;2.1.0,&gt;=2.0.4 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.1-&gt;en-core-sci-md==0.4.0) (2.0.6)
+Requirement already satisfied: zipp&gt;=0.5 in /usr/local/lib/python3.7/dist-packages (from catalogue&lt;2.1.0,&gt;=2.0.4-&gt;spacy&lt;3.1.0,&gt;=3.0.1-&gt;en-core-sci-md==0.4.0) (3.5.0)
+Requirement already satisfied: pyparsing&gt;=2.0.2 in /usr/local/lib/python3.7/dist-packages (from packaging&gt;=20.0-&gt;spacy&lt;3.1.0,&gt;=3.0.1-&gt;en-core-sci-md==0.4.0) (2.4.7)
+Requirement already satisfied: smart-open&lt;6.0.0,&gt;=5.0.0 in /usr/local/lib/python3.7/dist-packages (from pathy&gt;=0.3.5-&gt;spacy&lt;3.1.0,&gt;=3.0.1-&gt;en-core-sci-md==0.4.0) (5.1.0)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.7/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.1.0,&gt;=3.0.1-&gt;en-core-sci-md==0.4.0) (2021.5.30)
+Requirement already satisfied: idna&lt;3,&gt;=2.5 in /usr/local/lib/python3.7/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.1.0,&gt;=3.0.1-&gt;en-core-sci-md==0.4.0) (2.10)
+Requirement already satisfied: chardet&lt;4,&gt;=3.0.2 in /usr/local/lib/python3.7/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.1.0,&gt;=3.0.1-&gt;en-core-sci-md==0.4.0) (3.0.4)
+Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in /usr/local/lib/python3.7/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.1.0,&gt;=3.0.1-&gt;en-core-sci-md==0.4.0) (1.24.3)
+Requirement already satisfied: click&lt;7.2.0,&gt;=7.1.1 in /usr/local/lib/python3.7/dist-packages (from typer&lt;0.4.0,&gt;=0.3.0-&gt;spacy&lt;3.1.0,&gt;=3.0.1-&gt;en-core-sci-md==0.4.0) (7.1.2)
+Requirement already satisfied: MarkupSafe&gt;=0.23 in /usr/local/lib/python3.7/dist-packages (from jinja2-&gt;spacy&lt;3.1.0,&gt;=3.0.1-&gt;en-core-sci-md==0.4.0) (2.0.1)
+Building wheels for collected packages: en-core-sci-md
+  Building wheel for en-core-sci-md (setup.py) ... done
+  Created wheel for en-core-sci-md: filename=en_core_sci_md-0.4.0-py3-none-any.whl size=125733930 sha256=2b5ae33ca2617bc5d309dcdaf1cbb3308698d655892465353e2655eb07536370
+  Stored in directory: /root/.cache/pip/wheels/43/54/a8/27fc51c81ba9feda7ba7f9031eb81e33429840cd79d141c88c
+Successfully built en-core-sci-md
+Installing collected packages: en-core-sci-md
+Successfully installed en-core-sci-md-0.4.0
 </pre>
 </div>
 </div>
@@ -14951,112 +15719,18 @@ You can now load the package via spacy.load(&#39;en_core_web_md&#39;)
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="kn">from</span> <span class="nn">medcat.vocab</span> <span class="kn">import</span> <span class="n">Vocab</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Import required packages</span>
 <span class="kn">from</span> <span class="nn">medcat.cdb</span> <span class="kn">import</span> <span class="n">CDB</span>
 <span class="kn">from</span> <span class="nn">medcat.config</span> <span class="kn">import</span> <span class="n">Config</span>
 <span class="kn">from</span> <span class="nn">medcat.cdb_maker</span> <span class="kn">import</span> <span class="n">CDBMaker</span>
-<span class="kn">from</span> <span class="nn">medcat.cat</span> <span class="kn">import</span> <span class="n">CAT</span>
 </pre></div>
 
      </div>
 </div>
 </div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">DATA_DIR</span> <span class="o">=</span> <span class="s2">&quot;./data/&quot;</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Load files if in google colab, otherwise skip this step</span>
-<span class="o">!</span>wget https://raw.githubusercontent.com/CogStack/MedCATtutorials/main/notebooks/introductory/data/cdb_simple.csv -P ./data/
-<span class="o">!</span>wget https://raw.githubusercontent.com/CogStack/MedCATtutorials/main/notebooks/introductory/data/cdb_advanced.csv -P ./data/
-<span class="o">!</span>wget https://raw.githubusercontent.com/CogStack/MedCATtutorials/main/notebooks/introductory/data/vocab_data.txt -P ./data/
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>--2022-02-15 14:55:02--  https://raw.githubusercontent.com/CogStack/MedCATtutorials/main/notebooks/introductory/data/cdb_simple.csv
-Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.110.133, 185.199.111.133, 185.199.109.133, ...
-Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.110.133|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 50 [text/plain]
-Saving to: ‘./data/cdb_simple.csv’
-
-cdb_simple.csv      100%[===================&gt;]      50  --.-KB/s    in 0s      
-
-2022-02-15 14:55:02 (2.10 MB/s) - ‘./data/cdb_simple.csv’ saved [50/50]
-
---2022-02-15 14:55:02--  https://raw.githubusercontent.com/CogStack/MedCATtutorials/main/notebooks/introductory/data/cdb_advanced.csv
-Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.108.133, 185.199.109.133, 185.199.111.133, ...
-Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 150 [text/plain]
-Saving to: ‘./data/cdb_advanced.csv’
-
-cdb_advanced.csv    100%[===================&gt;]     150  --.-KB/s    in 0s      
-
-2022-02-15 14:55:02 (6.40 MB/s) - ‘./data/cdb_advanced.csv’ saved [150/150]
-
---2022-02-15 14:55:02--  https://raw.githubusercontent.com/CogStack/MedCATtutorials/main/notebooks/introductory/data/vocab_data.txt
-Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.108.133, 185.199.109.133, 185.199.110.133, ...
-Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 72 [text/plain]
-Saving to: ‘./data/vocab_data.txt’
-
-vocab_data.txt      100%[===================&gt;]      72  --.-KB/s    in 0s      
-
-2022-02-15 14:55:03 (3.30 MB/s) - ‘./data/vocab_data.txt’ saved [72/72]
-
-</pre>
-</div>
-</div>
-
-</div>
-
 </div>
 
 </div>
@@ -15066,42 +15740,7 @@ vocab_data.txt      100%[===================&gt;]      72  --.-KB/s    in 0s
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="MedCAT-Components">MedCAT Components<a class="anchor-link" href="#MedCAT-Components">&#182;</a></h1><p>The medcat model requires 3 model components to run.</p>
-<ol>
-<li>Vocab</li>
-<li>CDB</li>
-<li>Config (cdb configuration)</li>
-</ol>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Building-a-Vocabulary">Building a Vocabulary<a class="anchor-link" href="#Building-a-Vocabulary">&#182;</a></h2><p>The first of the two required models when running MedCAT is a Vocabulary model (Vocab). The model is used for two things: (1) Spell checking; and (2) Word Embedding.</p>
-<p>The Vocab is very simple and you can easily build it from a file that is structured as below:</p>
-
-<pre><code>&lt;token&gt;\t&lt;word_count&gt;\t&lt;vector_embedding_separated_by_spaces&gt;</code></pre>
-<p><code>token</code> - Usually a word or subword if you are using Byte Pair Encoding or something similar.</p>
-<p><code>word_count</code> - The count for this word in your dataset or in any large dataset (wikipedia also works nicely).</p>
-<p><code>vector_embedding_separated_by_spaces</code> - precalculated vector embedding, can be from Word2Vec or BERT.</p>
-<hr>
-<p>An example with 3-dimension embedding would be:</p>
-
-<pre><code>house   34444    0.3232 0.123213 1.231231
-dog 14444   0.76762 0.76767 1.45454
-.
-.
-.</code></pre>
-<p>The file is basically a TSV, but should not have any heading.</p>
-<hr>
-<p><strong>NOTE</strong>: If spelling is important for your use-case, take care that there are no misspelt words in the Vocab.</p>
-
+<h4 id="Create-concept-database-(cdb)">Create concept database (cdb)<a class="anchor-link" href="#Create-concept-database-(cdb)">&#182;</a></h4>
 </div>
 </div>
 </div>
@@ -15110,605 +15749,12 @@ dog 14444   0.76762 0.76767 1.45454
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Let&#39;s have a look at an example, I&#39;ve created a small vocabulary with only 2 words (the ones from above)</span>
-<span class="c1"># Let&#39;s try to create a vocabulary from this two words.</span>
-
-<span class="n">vocab</span> <span class="o">=</span> <span class="n">Vocab</span><span class="p">()</span>
-<span class="n">vocab</span><span class="o">.</span><span class="n">add_words</span><span class="p">(</span><span class="n">DATA_DIR</span> <span class="o">+</span><span class="s1">&#39;vocab_data.txt&#39;</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><strong>And that is everything, with this we have built our vocab and no futher training is necessary.</strong></p>
-<hr>
-<p>A couple of useful functions of the vocab are presented below</p>
-
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># To see the words in the vocab</span>
-<span class="n">vocab</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>dict_keys([&#39;house&#39;, &#39;dog&#39;])</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">vocab</span><span class="o">.</span><span class="n">vocab</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>{&#39;dog&#39;: {&#39;cnt&#39;: 14444, &#39;ind&#39;: 1, &#39;vec&#39;: array([0.76762, 0.76767, 1.45454])},
- &#39;house&#39;: {&#39;cnt&#39;: 34444,
-  &#39;ind&#39;: 0,
-  &#39;vec&#39;: array([0.3232  , 0.123213, 1.231231])}}</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># If you want to add words manually (one by one) use:</span>
-<span class="n">vocab</span><span class="o">.</span><span class="n">add_word</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="n">cnt</span><span class="o">=</span><span class="mi">31</span><span class="p">,</span> <span class="n">vec</span><span class="o">=</span><span class="p">[</span><span class="mf">1.42</span><span class="p">,</span> <span class="mf">1.44</span><span class="p">,</span> <span class="mf">1.55</span><span class="p">],</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">vocab</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>dict_keys([&#39;house&#39;, &#39;dog&#39;, &#39;test&#39;])</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># To get a vector of word use:</span>
-<span class="n">vocab</span><span class="o">.</span><span class="n">vec</span><span class="p">(</span><span class="s2">&quot;house&quot;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>array([0.3232  , 0.123213, 1.231231])</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Or to get the count</span>
-<span class="n">vocab</span><span class="p">[</span><span class="s1">&#39;house&#39;</span><span class="p">]</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>34444</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># To check if a word is in the vocab:</span>
-<span class="s2">&quot;house&quot;</span> <span class="ow">in</span> <span class="n">vocab</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[11]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>True</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Before-we-save-the-vocab-model,-we-need-to-create-the-unigram-table-for-negative-sampling">Before we save the vocab model, we need to create the unigram table for negative sampling<a class="anchor-link" href="#Before-we-save-the-vocab-model,-we-need-to-create-the-unigram-table-for-negative-sampling">&#182;</a></h3>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># This is necessary after each change of the vocabulary (when we add new words)</span>
-<span class="n">vocab</span><span class="o">.</span><span class="n">make_unigram_table</span><span class="p">()</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Save-the-Vocab-model">Save the Vocab model<a class="anchor-link" href="#Save-the-Vocab-model">&#182;</a></h3>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">vocab</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s2">&quot;vocab.dat&quot;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Load-the-Vocab-model">Load the Vocab model<a class="anchor-link" href="#Load-the-Vocab-model">&#182;</a></h3>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">vocab</span> <span class="o">=</span> <span class="n">Vocab</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s2">&quot;vocab.dat&quot;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Building-the-Concept-Database-(CDB)">Building the Concept Database (CDB)<a class="anchor-link" href="#Building-the-Concept-Database-(CDB)">&#182;</a></h2><p>The second model we are going to need when using MedCAT is the Concept Database (CDB). This database holds a list of all concepts that we would like to detect and link to. For a lot of medical use-cases we would use giant databases like the UMLS or SNOMED CT. However, MedCAT can be used with any database no matter how big/small it is.</p>
-<p>To prepare the CDB we start off with a CSV with the following structure:</p>
-
-<pre><code>cui,name
-1,kidney failure
-7,CoVid 2
-7,coronavirus</code></pre>
-<p>This is the most basic version of the CSV file, it has only:</p>
-<p><code>cui</code> - The concept unique identifier, this is simply an <code>ID</code> in your database.</p>
-<p><code>name</code> - String/Name of that concept. It is important to write all possible names and abbreviations for a concept of interest.</p>
-<p>If you have a concept that can be recognised through multiple different names (like the one above with cui=7), you can simply add multiple rows with the same concept ID and MedCAT will merge that during the build phase.</p>
-<h2 id="The-Full-CSV-Specification">The Full CSV Specification<a class="anchor-link" href="#The-Full-CSV-Specification">&#182;</a></h2>
-<pre><code>cui,name,ontologies,name_status,type_ids,description
-1,Kidney Failure,SNOMED,P,T047,kidneys stop working
-.
-.
-.</code></pre>
-<p>The rest of the fields are optional, each can be included or left out in your CSV:</p>
-<p><code>ontologies</code> - Source ontology, e.g. HPO, SNOMED, HPC,...</p>
-<p><code>name_status</code> - Term type e.g. P - Primary Name. Primary names are important and I would always recommend to add this fields when creating your CDB. This will help distinguish between synonyms.</p>
-<p><code>type_ids</code> - Type Ids are the broad category in which a concept may fall under. This is used to rapidly filter for concepts which fall under a specific category. In UMLS this could be the Semantic type identifier - e.g. T047 (taken from UMLS). A list of all semantic types can be found <a href="https://metamap.nlm.nih.gov/Docs/SemanticTypes_2018AB.txt">here</a>.
-In SNOMED one could use the Semantic tags. E.g (Disease). A list of all Snomed semantic tags can be found <a href="https://confluence.ihtsdotools.org/display/DOCGLOSS/semantic+tag">here</a>.</p>
-<p><code>description</code> - Description of this concept</p>
-<p><strong><em>Note</em></strong>: If one concept has multiple names, you can also separate the different names by a "|" - pipe - symbol</p>
-
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cdb_simple</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s1">&#39;cdb_simple.csv&#39;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cdb_simple</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[16]:</div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-
-  <div id="df-c6597ccf-360d-462e-84ea-9db5e86bd2bb">
-    <div class="colab-df-container">
-      <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>cui</th>
-      <th>name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>kidney failure</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>7</td>
-      <td>CoVid 2</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>7</td>
-      <td>coronavirus</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-c6597ccf-360d-462e-84ea-9db5e86bd2bb')"
-              title="Convert this dataframe to an interactive table."
-              style="display:none;">
-        
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-       width="24px">
-    <path d="M0 0h24v24H0V0z" fill="none"/>
-    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
-  </svg>
-      </button>
-      
-  <style>
-    .colab-df-container {
-      display:flex;
-      flex-wrap:wrap;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-      <script>
-        const buttonEl =
-          document.querySelector('#df-c6597ccf-360d-462e-84ea-9db5e86bd2bb button.colab-df-convert');
-        buttonEl.style.display =
-          google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-        async function convertToInteractive(key) {
-          const element = document.querySelector('#df-c6597ccf-360d-462e-84ea-9db5e86bd2bb');
-          const dataTable =
-            await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                     [key], {});
-          if (!dataTable) return;
-
-          const docLinkHtml = 'Like what you see? Visit the ' +
-            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-            + ' to learn more about interactive tables.';
-          element.innerHTML = '';
-          dataTable['output_type'] = 'display_data';
-          await google.colab.output.renderOutput(dataTable, element);
-          const docLink = document.createElement('div');
-          docLink.innerHTML = docLinkHtml;
-          element.appendChild(docLink);
-        }
-      </script>
-    </div>
-  </div>
-  
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Let's try building our own concept databse from a simple CSV</p>
-
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># First initialise the default configuration</span>
 <span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">()</span>
-<span class="n">config</span><span class="o">.</span><span class="n">general</span><span class="p">[</span><span class="s1">&#39;spacy_model&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;en_core_web_md&#39;</span>
+<span class="n">config</span><span class="o">.</span><span class="n">general</span><span class="p">[</span><span class="s1">&#39;spacy_model&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;en_core_sci_md&#39;</span>
 <span class="n">maker</span> <span class="o">=</span> <span class="n">CDBMaker</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
 </pre></div>
 
@@ -15722,11 +15768,11 @@ In SNOMED one could use the Semantic tags. E.g (Disease). A list of all Snomed s
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create an array containing CSV files that will be used to build our CDB</span>
-<span class="n">csv_path</span> <span class="o">=</span> <span class="p">[</span> <span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s1">&#39;cdb_advanced.csv&#39;</span><span class="p">,</span> <span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s1">&#39;cdb_simple.csv&#39;</span><span class="p">,]</span>
+<span class="n">csv_path</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;preprocessed_snomed.csv&#39;</span><span class="p">]</span>
 
 <span class="c1"># Create your CDB</span>
 <span class="n">cdb</span> <span class="o">=</span> <span class="n">maker</span><span class="o">.</span><span class="n">prepare_csvs</span><span class="p">(</span><span class="n">csv_path</span><span class="p">,</span> <span class="n">full_build</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -15751,13 +15797,107 @@ In SNOMED one could use the Semantic tags. E.g (Disease). A list of all Snomed s
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>Started importing concepts from: ./data/cdb_advanced.csv
-Current progress: 0% at 0.000s per 0 rows
-Current progress: 50% at 0.024s per 0 rows
-Started importing concepts from: ./data/cdb_simple.csv
-Current progress: 0% at 0.000s per 0 rows
-Current progress: 33% at 0.009s per 0 rows
-Current progress: 67% at 0.008s per 0 rows
+<pre>Started importing concepts from: preprocessed_snomed.csv
+Current progress: 0% at 0.000s per 9231 rows
+Current progress: 1% at 55.210s per 9231 rows
+Current progress: 2% at 53.859s per 9231 rows
+Current progress: 3% at 53.306s per 9231 rows
+Current progress: 4% at 52.994s per 9231 rows
+Current progress: 5% at 53.183s per 9231 rows
+Current progress: 6% at 52.772s per 9231 rows
+Current progress: 7% at 53.400s per 9231 rows
+Current progress: 8% at 53.544s per 9231 rows
+Current progress: 9% at 53.441s per 9231 rows
+Current progress: 10% at 53.373s per 9231 rows
+Current progress: 11% at 53.139s per 9231 rows
+Current progress: 12% at 53.432s per 9231 rows
+Current progress: 13% at 54.119s per 9231 rows
+Current progress: 14% at 57.038s per 9231 rows
+Current progress: 15% at 52.765s per 9231 rows
+Current progress: 16% at 53.870s per 9231 rows
+Current progress: 17% at 52.843s per 9231 rows
+Current progress: 18% at 52.480s per 9231 rows
+Current progress: 19% at 53.725s per 9231 rows
+Current progress: 20% at 51.605s per 9231 rows
+Current progress: 21% at 51.518s per 9231 rows
+Current progress: 22% at 52.093s per 9231 rows
+Current progress: 23% at 55.296s per 9231 rows
+Current progress: 24% at 57.431s per 9231 rows
+Current progress: 25% at 54.461s per 9231 rows
+Current progress: 26% at 54.331s per 9231 rows
+Current progress: 27% at 53.020s per 9231 rows
+Current progress: 28% at 53.901s per 9231 rows
+Current progress: 29% at 53.801s per 9231 rows
+Current progress: 30% at 54.598s per 9231 rows
+Current progress: 31% at 55.406s per 9231 rows
+Current progress: 32% at 54.040s per 9231 rows
+Current progress: 33% at 55.327s per 9231 rows
+Current progress: 34% at 53.733s per 9231 rows
+Current progress: 35% at 56.794s per 9231 rows
+Current progress: 36% at 57.681s per 9231 rows
+Current progress: 37% at 57.643s per 9231 rows
+Current progress: 38% at 55.093s per 9231 rows
+Current progress: 39% at 37.171s per 9231 rows
+Current progress: 40% at 25.026s per 9231 rows
+Current progress: 41% at 26.463s per 9231 rows
+Current progress: 42% at 25.014s per 9231 rows
+Current progress: 43% at 25.232s per 9231 rows
+Current progress: 44% at 25.494s per 9231 rows
+Current progress: 45% at 24.800s per 9231 rows
+Current progress: 46% at 25.182s per 9231 rows
+Current progress: 47% at 25.173s per 9231 rows
+Current progress: 48% at 25.426s per 9231 rows
+Current progress: 49% at 25.611s per 9231 rows
+Current progress: 50% at 25.003s per 9231 rows
+Current progress: 51% at 25.017s per 9231 rows
+Current progress: 52% at 25.014s per 9231 rows
+Current progress: 53% at 25.083s per 9231 rows
+Current progress: 54% at 24.947s per 9231 rows
+Current progress: 55% at 25.621s per 9231 rows
+Current progress: 56% at 25.706s per 9231 rows
+Current progress: 57% at 25.613s per 9231 rows
+Current progress: 58% at 25.828s per 9231 rows
+Current progress: 59% at 25.326s per 9231 rows
+Current progress: 60% at 24.827s per 9231 rows
+Current progress: 61% at 26.253s per 9231 rows
+Current progress: 62% at 26.208s per 9231 rows
+Current progress: 63% at 27.473s per 9231 rows
+Current progress: 64% at 25.096s per 9231 rows
+Current progress: 65% at 25.642s per 9231 rows
+Current progress: 66% at 25.526s per 9231 rows
+Current progress: 67% at 25.227s per 9231 rows
+Current progress: 68% at 25.584s per 9231 rows
+Current progress: 69% at 24.345s per 9231 rows
+Current progress: 70% at 25.192s per 9231 rows
+Current progress: 71% at 25.546s per 9231 rows
+Current progress: 72% at 25.602s per 9231 rows
+Current progress: 73% at 24.551s per 9231 rows
+Current progress: 74% at 24.943s per 9231 rows
+Current progress: 75% at 24.805s per 9231 rows
+Current progress: 76% at 25.794s per 9231 rows
+Current progress: 77% at 25.876s per 9231 rows
+Current progress: 78% at 26.088s per 9231 rows
+Current progress: 79% at 25.277s per 9231 rows
+Current progress: 80% at 26.565s per 9231 rows
+Current progress: 81% at 25.703s per 9231 rows
+Current progress: 82% at 25.643s per 9231 rows
+Current progress: 83% at 24.959s per 9231 rows
+Current progress: 84% at 24.800s per 9231 rows
+Current progress: 85% at 25.392s per 9231 rows
+Current progress: 86% at 26.113s per 9231 rows
+Current progress: 87% at 26.089s per 9231 rows
+Current progress: 88% at 25.346s per 9231 rows
+Current progress: 89% at 25.667s per 9231 rows
+Current progress: 90% at 25.072s per 9231 rows
+Current progress: 91% at 26.609s per 9231 rows
+Current progress: 92% at 26.163s per 9231 rows
+Current progress: 93% at 25.331s per 9231 rows
+Current progress: 94% at 26.538s per 9231 rows
+Current progress: 95% at 26.680s per 9231 rows
+Current progress: 96% at 27.022s per 9231 rows
+Current progress: 97% at 26.182s per 9231 rows
+Current progress: 98% at 26.465s per 9231 rows
+Current progress: 99% at 26.286s per 9231 rows
 </pre>
 </div>
 </div>
@@ -15773,10 +15913,7 @@ Current progress: 67% at 0.008s per 0 rows
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><strong>That is all, nothing else is necessary to build the CDB</strong></p>
-<hr>
-<p>Some useful functions of the cdb are below</p>
-
+<h3 id="Inspect-your-cdb">Inspect your cdb<a class="anchor-link" href="#Inspect-your-cdb">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -15785,11 +15922,10 @@ Current progress: 67% at 0.008s per 0 rows
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># To display all names and cui in the db</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">cdb</span><span class="o">.</span><span class="n">name2cuis</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">cdb</span><span class="o">.</span><span class="n">name2cuis</span><span class="p">[</span><span class="s1">&#39;epilepsy&#39;</span><span class="p">])</span>
 </pre></div>
 
      </div>
@@ -15811,7 +15947,7 @@ Current progress: 67% at 0.008s per 0 rows
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>{&#39;kidney~failure&#39;: [&#39;1&#39;], &#39;failure~of~kidneys&#39;: [&#39;1&#39;], &#39;failure~of~kidney&#39;: [&#39;1&#39;], &#39;kf&#39;: [&#39;1&#39;], &#39;k~.~failure&#39;: [&#39;1&#39;], &#39;covid~2&#39;: [&#39;7&#39;], &#39;coronavirus&#39;: [&#39;7&#39;]}
+<pre>[&#39;84757009&#39;]
 </pre>
 </div>
 </div>
@@ -15825,11 +15961,10 @@ Current progress: 67% at 0.008s per 0 rows
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[20]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># To display all unique cuis and corresponding names in the db </span>
-<span class="nb">print</span><span class="p">(</span><span class="n">cdb</span><span class="o">.</span><span class="n">cui2names</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">cdb</span><span class="o">.</span><span class="n">cui2preferred_name</span><span class="p">[</span><span class="s1">&#39;84757009&#39;</span><span class="p">])</span>
 </pre></div>
 
      </div>
@@ -15851,7 +15986,7 @@ Current progress: 67% at 0.008s per 0 rows
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>{&#39;1&#39;: {&#39;failure~of~kidney&#39;, &#39;failure~of~kidneys&#39;, &#39;kidney~failure&#39;, &#39;kf&#39;, &#39;k~.~failure&#39;}, &#39;7&#39;: {&#39;covid~2&#39;, &#39;coronavirus&#39;}}
+<pre>Epilepsy
 </pre>
 </div>
 </div>
@@ -15865,11 +16000,10 @@ Current progress: 67% at 0.008s per 0 rows
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[21]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># To display cui to preferred name</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">cdb</span><span class="o">.</span><span class="n">cui2preferred_name</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">cdb</span><span class="o">.</span><span class="n">cui2names</span><span class="p">[</span><span class="s1">&#39;84757009&#39;</span><span class="p">])</span>
 </pre></div>
 
      </div>
@@ -15891,47 +16025,7 @@ Current progress: 67% at 0.008s per 0 rows
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>{&#39;1&#39;: &#39;Kidney Failure&#39;}
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[22]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># We have a link from cui to type ids</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">cdb</span><span class="o">.</span><span class="n">cui2type_ids</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>{&#39;1&#39;: {&#39;T047&#39;}, &#39;7&#39;: set()}
+<pre>{&#39;ep~epilepsy&#39;, &#39;epileptic~disorder&#39;, &#39;epileptic&#39;, &#39;epilepsy~disorder&#39;, &#39;epilepsy&#39;}
 </pre>
 </div>
 </div>
@@ -15947,7 +16041,9 @@ Current progress: 67% at 0.008s per 0 rows
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Save-the-Concept-Database-model">Save the Concept Database model<a class="anchor-link" href="#Save-the-Concept-Database-model">&#182;</a></h3>
+<h4 id="Enrich-with-extra-information-and-mapping">Enrich with extra information and mapping<a class="anchor-link" href="#Enrich-with-extra-information-and-mapping">&#182;</a></h4><p>Mapping was created in <a href="https://colab.research.google.com/drive/1yesqjMQwQH20Kl9w7siRGVaSWU0uI84W#scrollTo=Mappings_to_inbuilt_external_terminologies">Mappings to inbuilt external terminologies</a>.
+Here we use <a href="https://colab.research.google.com/drive/1yesqjMQwQH20Kl9w7siRGVaSWU0uI84W#scrollTo=ICD_10">ICD-10</a> as an example.</p>
+
 </div>
 </div>
 </div>
@@ -15956,10 +16052,10 @@ Current progress: 67% at 0.008s per 0 rows
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[23]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cdb</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s2">&quot;cdb.dat&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cdb</span><span class="o">.</span><span class="n">addl_info</span><span class="p">[</span><span class="s1">&#39;cui2icd10&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sctid2icd10</span>
 </pre></div>
 
      </div>
@@ -15974,35 +16070,7 @@ Current progress: 67% at 0.008s per 0 rows
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Load-the-Concept-Database-model">Load the Concept Database model<a class="anchor-link" href="#Load-the-Concept-Database-model">&#182;</a></h3>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[24]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cdb</span> <span class="o">=</span> <span class="n">CDB</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s2">&quot;cdb.dat&quot;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Setting-the-CDB-configuration">Setting the CDB configuration<a class="anchor-link" href="#Setting-the-CDB-configuration">&#182;</a></h2><p>The CDB config sets the model parameters.
-This allows you to tailor the model to your own specific use case. Although the default configuration will suit the majority of use cases.</p>
+<h3 id="Save-your-new-SNOMED-cdb">Save your new SNOMED cdb<a class="anchor-link" href="#Save-your-new-SNOMED-cdb">&#182;</a></h3><p><strong>tip:</strong> good practise to include the snomed release edition file name</p>
 
 </div>
 </div>
@@ -16012,11 +16080,10 @@ This allows you to tailor the model to your own specific use case. Although the 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[25]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># For further information on the cdb configuration options and explore what the default options are.</span>
-<span class="o">??</span>cdb.config
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cdb</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;SNOMED_cdb.dat&quot;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -16024,189 +16091,6 @@ This allows you to tailor the model to your own specific use case. Although the 
 </div>
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[26]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set a couple of parameters, they are usually set via environments, but</span>
-<span class="c1">#here we will do it explicitly. You can read more about each option in the </span>
-<span class="c1">#medcat repository: https://github.com/CogStack/MedCAT</span>
-
-<span class="n">cdb</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">ner</span><span class="p">[</span><span class="s1">&#39;min_name_len&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">cdb</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">ner</span><span class="p">[</span><span class="s1">&#39;upper_case_limit_len&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">cdb</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">general</span><span class="p">[</span><span class="s1">&#39;spell_check&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">cdb</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">linking</span><span class="p">[</span><span class="s1">&#39;train_count_threshold&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">cdb</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">linking</span><span class="p">[</span><span class="s1">&#39;similarity_threshold&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.3</span>
-<span class="n">cdb</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">linking</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">cdb</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">linking</span><span class="p">[</span><span class="s1">&#39;disamb_length_limit&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">cdb</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">general</span><span class="p">[</span><span class="s1">&#39;full_unlink&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Note: Don't forget to save the cdb with the new configurations if you want to reuse them!</p>
-
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Create-a-MedCAT-model-pack">Create a MedCAT model pack<a class="anchor-link" href="#Create-a-MedCAT-model-pack">&#182;</a></h1><p>A MedCAT model pack is an easy way to store all the various components of a MedCAT model in one place.</p>
-<p>This includes the CDB, CDB configurations, Vocab, and even various MetaCAT models! We will learn more about the latter in the following tutorials.</p>
-
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[27]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Initialise the model</span>
-<span class="n">cat</span> <span class="o">=</span> <span class="n">CAT</span><span class="p">(</span><span class="n">cdb</span><span class="o">=</span><span class="n">cdb</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">cdb</span><span class="o">.</span><span class="n">config</span><span class="p">,</span> <span class="n">vocab</span><span class="o">=</span><span class="n">vocab</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[28]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create and save a model pack</span>
-<span class="n">cat</span><span class="o">.</span><span class="n">create_model_pack</span><span class="p">(</span><span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s2">&quot;my_first_medcat_modelpack&quot;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>Please consider populating the version information [description, performance, location, ontology] in cat.config.version
-/usr/local/lib/python3.7/dist-packages/numpy/lib/function_base.py:380: RuntimeWarning: Mean of empty slice.
-  avg = a.mean(axis)
-/usr/local/lib/python3.7/dist-packages/numpy/core/_methods.py:170: RuntimeWarning: invalid value encountered in double_scalars
-  
-Please consider updating [description, performance, location, ontology] in cat.config.version
-This will save all models into a zip file, can take some time and require quite a bit of disk space.
-{
-  &#34;Model ID&#34;: &#34;1c110382a5935e53&#34;,
-  &#34;Last Modifed On&#34;: &#34;15 February 2022&#34;,
-  &#34;History (from least to most recent)&#34;: [],
-  &#34;Description&#34;: &#34;No description&#34;,
-  &#34;Source Ontology&#34;: null,
-  &#34;Location&#34;: null,
-  &#34;MetaCAT models&#34;: {},
-  &#34;Basic CDB Stats&#34;: {
-    &#34;Number of concepts&#34;: 2,
-    &#34;Number of names&#34;: 7,
-    &#34;Number of concepts that received training&#34;: 0,
-    &#34;Number of seen training examples in total&#34;: 0,
-    &#34;Average training examples per concept&#34;: NaN
-  },
-  &#34;Performance&#34;: {
-    &#34;ner&#34;: {},
-    &#34;meta&#34;: {}
-  },
-  &#34;Important Parameters (Partial view, all available in cat.config)&#34;: {
-    &#34;config.ner[&#39;min_name_len&#39;]&#34;: {
-      &#34;value&#34;: 2,
-      &#34;description&#34;: &#34;Minimum detection length (found terms/mentions shorter than this will not be detected).&#34;
-    },
-    &#34;config.ner[&#39;upper_case_limit_len&#39;]&#34;: {
-      &#34;value&#34;: 3,
-      &#34;description&#34;: &#34;All detected terms shorter than this value have to be uppercase, otherwise they will be ignored.&#34;
-    },
-    &#34;config.linking[&#39;similarity_threshold&#39;]&#34;: {
-      &#34;value&#34;: 0.3,
-      &#34;description&#34;: &#34;If the confidence of the model is lower than this a detection will be ignore.&#34;
-    },
-    &#34;config.general[&#39;spell_check&#39;]&#34;: {
-      &#34;value&#34;: true,
-      &#34;description&#34;: &#34;Is spell checking enabled.&#34;
-    },
-    &#34;config.general[&#39;spell_check_len_limit&#39;]&#34;: {
-      &#34;value&#34;: 7,
-      &#34;description&#34;: &#34;Words shorter than this will not be spell checked.&#34;
-    }
-  }
-}
-</pre>
-</div>
-</div>
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[28]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>&#39;medcat_model_pack_1c110382a5935e53&#39;</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="End">End<a class="anchor-link" href="#End">&#182;</a></h1><p>This is everything you need to create your own MedCAT models. In the following tutorials you will learn how to uses modelpacks to train models and use them to annotate documents.</p>
-
-</div>
-</div>
-</div>
 </div>
 </body>
 
