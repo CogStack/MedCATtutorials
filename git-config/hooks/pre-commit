@@ -4,12 +4,14 @@ set -eu
 
 if ! command -v jupyter &> /dev/null
 then
-    echo "Warning: Cannot find 'jupyter' on your path so the HTML version won't be created/updated automatically"
-    echo "Warning: Install 'jupyter' from https://docs.jupyter.org/en/latest/install.html to fix this"
+    echo "Error: Cannot find 'jupyter' on your path so the HTML version won't be created/updated automatically"
+    echo "Error: Install 'jupyter' from https://docs.jupyter.org/en/latest/install.html to fix this"
+    exit 1
 elif ! command -v jq &> /dev/null
 then
-    echo "Warning: Cannot find 'jq' on your path so the HTML version won't be created/updated automatically"
-    echo "Warning: Install 'jq' from https://stedolan.github.io/jq/download/ to fix this"
+    echo "Error: Cannot find 'jq' on your path so the HTML version won't be created/updated automatically"
+    echo "Error: Install 'jq' from https://stedolan.github.io/jq/download/ to fix this"
+    exit 1
 else
     notebook_paths=`git diff --cached --name-only --diff-filter=d | grep  .ipynb; echo ""`
 
