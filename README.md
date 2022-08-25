@@ -35,3 +35,8 @@ git config --local core.hooksPath git-config/hooks
 ```
 
 To inspect change during code review, visit [Colab](https://colab.research.google.com/github/CogStack/MedCATtutorials/blob) and select the target branch and tutorial. After it is opened, click `File | Revision history` and select start and end revisions you are interested in.
+
+
+## Known Issues:
+* For ContextualVersionConflict on Google Colab, you need to restart the runtime and run the cell again.
+* The pre-commit hook requires nbconvert<6 and jinja2<=3.0.
