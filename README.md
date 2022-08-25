@@ -29,8 +29,9 @@ These tutorials expand upon specific aspects of the topics covered across the in
 
 ## Development/Editing
 
-Make sure [jupyter](https://docs.jupyter.org/en/latest/install.html) and [jq](https://stedolan.github.io/jq/download/) are installed and available on your path. Modifying the companion HTML version directly is discouraged and instead install the following pre-commit hook which will generate them during committing your change on .ipynb files:
+Make sure [jupyter](https://docs.jupyter.org/en/latest/install.html) and [jq](https://stedolan.github.io/jq/download/) are installed and available on your path. Modifying the companion HTML version directly is discouraged and instead install the following pre-commit hook which will generate them during committing your change on `.ipynb` files:
 ```
 git config --local core.hooksPath git-config/hooks
 ```
-To inspect change during code review, visit [Colab](https://colab.research.google.com/github/CogStack/MedCATtutorials/blob) and select the target branch and tutorial. After it is opened, click `File | Revision history` and select   start and end revisions you are interested in.
+
+To inspect change during code review, visit [Colab](https://colab.research.google.com/github/CogStack/MedCATtutorials/blob) and select the target branch and tutorial. After it is opened, click `File | Revision history` and select start and end revisions you are interested in.
