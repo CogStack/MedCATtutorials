@@ -13087,10 +13087,10 @@ div#notebook {
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Install medcat</span>
 <span class="o">!</span> pip install <span class="nv">medcat</span><span class="o">==</span><span class="m">1</span>.3.0
 <span class="k">try</span><span class="p">:</span>
- <span class="kn">from</span> <span class="nn">medcat.cat</span> <span class="kn">import</span> <span class="n">CAT</span>
+    <span class="kn">from</span> <span class="nn">medcat.cat</span> <span class="kn">import</span> <span class="n">CAT</span>
 <span class="k">except</span><span class="p">:</span>
- <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;WARNING: Runtime will restart automatically and please run other cells thereafter.&quot;</span><span class="p">)</span>
- <span class="n">exit</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;WARNING: Runtime will restart automatically and please run other cells thereafter.&quot;</span><span class="p">)</span>
+    <span class="n">exit</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -13575,7 +13575,7 @@ INFO:medcat:{
 <span class="n">type_ids_filter</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;T047&#39;</span><span class="p">,</span> <span class="s1">&#39;T048&#39;</span><span class="p">]</span>
 <span class="n">cui_filters</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">type_ids</span> <span class="ow">in</span> <span class="n">type_ids_filter</span><span class="p">:</span>
- <span class="n">cui_filters</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">cat</span><span class="o">.</span><span class="n">cdb</span><span class="o">.</span><span class="n">addl_info</span><span class="p">[</span><span class="s1">&#39;type_id2cuis&#39;</span><span class="p">][</span><span class="n">type_ids</span><span class="p">])</span>
+    <span class="n">cui_filters</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">cat</span><span class="o">.</span><span class="n">cdb</span><span class="o">.</span><span class="n">addl_info</span><span class="p">[</span><span class="s1">&#39;type_id2cuis&#39;</span><span class="p">][</span><span class="n">type_ids</span><span class="p">])</span>
 <span class="n">cat</span><span class="o">.</span><span class="n">cdb</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">linking</span><span class="p">[</span><span class="s1">&#39;filters&#39;</span><span class="p">][</span><span class="s1">&#39;cuis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cui_filters</span>
 </pre></div>
 
@@ -13885,8 +13885,8 @@ HTTP request sent, awaiting response... 404 Not Found
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># format the df to match: required input data for multiprocessing = [(doc_id, doc_text), (doc_id, doc_text), ...]</span>
 <span class="k">def</span> <span class="nf">data_iterator</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
- <span class="k">for</span> <span class="nb">id</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;text&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
- <span class="k">yield</span> <span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]))</span>
+    <span class="k">for</span> <span class="nb">id</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;text&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="k">yield</span> <span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]))</span>
 </pre></div>
 
     </div>
@@ -13903,9 +13903,9 @@ HTTP request sent, awaiting response... 404 Not Found
 <span class="n">batch_size_chars</span> <span class="o">=</span> <span class="mi">500000</span> <span class="c1"># Batch size (BS) in number of characters</span>
 
 <span class="c1"># Run model</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">multiprocessing</span><span class="p">(</span><span class="n">data_iterator</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="c1"># Formatted data</span>
- <span class="n">batch_size_chars</span> <span class="o">=</span> <span class="n">batch_size_chars</span><span class="p">,</span>
- <span class="n">nproc</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span> <span class="c1"># Number of processors</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">multiprocessing</span><span class="p">(</span><span class="n">data_iterator</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>  <span class="c1"># Formatted data</span>
+                              <span class="n">batch_size_chars</span> <span class="o">=</span> <span class="n">batch_size_chars</span><span class="p">,</span>
+                              <span class="n">nproc</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span> <span class="c1"># Number of processors</span>
 </pre></div>
 
     </div>
@@ -13961,13 +13961,13 @@ INFO:medcat:Annotated until now: 1072 docs; Current BS: 16 docs; Elapsed time: 8
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Select only cui&#39;s with the Status Meta-annotation &quot;Affirmed&quot; and thier corresponding documents</span>
 <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
- <span class="k">for</span> <span class="n">annotation</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="n">doc</span><span class="p">][</span><span class="s1">&#39;entities&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
- <span class="k">if</span> <span class="n">annotation</span><span class="p">[</span><span class="s1">&#39;cui&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">cui_location</span><span class="p">:</span>
- <span class="k">if</span> <span class="n">annotation</span><span class="p">[</span><span class="s1">&#39;meta_anns&#39;</span><span class="p">][</span><span class="s1">&#39;Status&#39;</span><span class="p">][</span><span class="s1">&#39;value&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Affirmed&#39;</span><span class="p">:</span>
- <span class="n">cui_location</span><span class="p">[</span><span class="n">annotation</span><span class="p">[</span><span class="s1">&#39;cui&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
- <span class="k">else</span><span class="p">:</span>
- <span class="k">if</span> <span class="n">annotation</span><span class="p">[</span><span class="s1">&#39;meta_anns&#39;</span><span class="p">][</span><span class="s1">&#39;Status&#39;</span><span class="p">][</span><span class="s1">&#39;value&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Affirmed&#39;</span><span class="p">:</span>
- <span class="n">cui_location</span><span class="p">[</span><span class="n">annotation</span><span class="p">[</span><span class="s1">&#39;cui&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="n">doc</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">annotation</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="n">doc</span><span class="p">][</span><span class="s1">&#39;entities&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
+        <span class="k">if</span> <span class="n">annotation</span><span class="p">[</span><span class="s1">&#39;cui&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">cui_location</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">annotation</span><span class="p">[</span><span class="s1">&#39;meta_anns&#39;</span><span class="p">][</span><span class="s1">&#39;Status&#39;</span><span class="p">][</span><span class="s1">&#39;value&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Affirmed&#39;</span><span class="p">:</span>
+                <span class="n">cui_location</span><span class="p">[</span><span class="n">annotation</span><span class="p">[</span><span class="s1">&#39;cui&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">annotation</span><span class="p">[</span><span class="s1">&#39;meta_anns&#39;</span><span class="p">][</span><span class="s1">&#39;Status&#39;</span><span class="p">][</span><span class="s1">&#39;value&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Affirmed&#39;</span><span class="p">:</span>
+                <span class="n">cui_location</span><span class="p">[</span><span class="n">annotation</span><span class="p">[</span><span class="s1">&#39;cui&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="n">doc</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -13983,7 +13983,7 @@ INFO:medcat:Annotated until now: 1072 docs; Current BS: 16 docs; Elapsed time: 8
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># For the type_ids and their corresponding documents</span>
 <span class="c1"># Remember that a cui may map to more than one type_ids (one to many mapping)</span>
 <span class="k">for</span> <span class="n">cui</span> <span class="ow">in</span> <span class="n">cui_location</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
- <span class="n">type_ids_location</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">cat</span><span class="o">.</span><span class="n">cdb</span><span class="o">.</span><span class="n">cui2type_ids</span><span class="p">[</span><span class="n">cui</span><span class="p">])[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">cui_location</span><span class="p">[</span><span class="n">cui</span><span class="p">]</span>
+    <span class="n">type_ids_location</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">cat</span><span class="o">.</span><span class="n">cdb</span><span class="o">.</span><span class="n">cui2type_ids</span><span class="p">[</span><span class="n">cui</span><span class="p">])[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">cui_location</span><span class="p">[</span><span class="n">cui</span><span class="p">]</span>
 </pre></div>
 
     </div>
