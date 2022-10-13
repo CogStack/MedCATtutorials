@@ -13082,12 +13082,31 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="TODO---this-should-be-moved-to-MedCATtutorials-if/when-the-release-with-the-logging-changes-is-released">TODO - this should be moved to MedCATtutorials if/when the release with the logging changes is released<a class="anchor-link" href="#TODO---this-should-be-moved-to-MedCATtutorials-if/when-the-release-with-the-logging-changes-is-released">&#182;</a></h3><h1 id="MedCAT-tutorial---logging-with-MedCAT">MedCAT tutorial - logging with MedCAT<a class="anchor-link" href="#MedCAT-tutorial---logging-with-MedCAT">&#182;</a></h1><p>How MedCAT handles logging has changed somewhat as of recently.
+<h1 id="MedCAT-tutorial---logging-with-MedCAT">MedCAT tutorial - logging with MedCAT<a class="anchor-link" href="#MedCAT-tutorial---logging-with-MedCAT">&#182;</a></h1><p>How MedCAT handles logging has changed somewhat as of recently.
 The idea is that MedCAT as a library attempts to interfere as little as possible with its users choice of what, how and where to log information.</p>
 <p>The current startegy is 'opt in'. Which means that by default, all logging is disabled by MedCAT. However, we've added a shorthand for adding some handlers for console as well as <em>medcat.log</em> logging. And on top of that, it is pretty simple for the user to change the logging behaviour of different parts of the project separately. We will go over that in small examples below.</p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Install medcat</span>
+<span class="o">!</span> pip install <span class="nv">medcat</span><span class="o">==</span><span class="m">1</span>.4.0
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">medcat.cat</span> <span class="kn">import</span> <span class="n">CAT</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;WARNING: Runtime will restart automatically and please run other cells thereafter.&quot;</span><span class="p">)</span>
+    <span class="n">exit</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
