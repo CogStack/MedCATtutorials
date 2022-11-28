@@ -1,4 +1,4 @@
-medcat==1.3.0
+medcat==1.5.0
 seaborn~=0.11.2
 pytest-xdist~=2.5.0
 nbmake<1.4
