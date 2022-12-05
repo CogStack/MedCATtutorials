@@ -13456,7 +13456,8 @@ WARNING: Runtime will restart automatically and please run other cells thereafte
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">DATA_DIR</span> <span class="o">=</span> <span class="s2">&quot;./data/&quot;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">DATA_DIR</span> <span class="o">=</span> <span class="s2">&quot;./data_p4.2/&quot;</span>
+<span class="o">!</span> <span class="nv">DATA_DIR</span><span class="o">=</span><span class="s2">&quot;./data_p4.2/&quot;</span>
 <span class="n">vocab_path</span> <span class="o">=</span> <span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s2">&quot;vocab.dat&quot;</span>
 <span class="n">cdb_path</span> <span class="o">=</span> <span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s2">&quot;cdb-medmen-v1_2.dat&quot;</span>
 </pre></div>
@@ -13472,13 +13473,13 @@ WARNING: Runtime will restart automatically and please run other cells thereafte
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Download the models and required data</span>
-<span class="o">!</span>wget https://raw.githubusercontent.com/CogStack/MedCATtutorials/main/notebooks/introductory/data/MedCAT_Export.json -P ./data/
+<span class="o">!</span>wget -N https://raw.githubusercontent.com/CogStack/MedCATtutorials/main/notebooks/introductory/data/MedCAT_Export.json -P <span class="nv">$DATA_DIR</span>
 <span class="c1"># You can also use the models created in Part 4.1 of the Tutorial</span>
-<span class="o">!</span>wget https://medcat.rosalind.kcl.ac.uk/media/mc_status.zip -P ./data/
+<span class="o">!</span>wget -N https://medcat.rosalind.kcl.ac.uk/media/mc_status.zip -P <span class="nv">$DATA_DIR</span>
 
 <span class="c1"># Get MedCAT models components (Alternatively you can use a previously created MedCAT model packs)</span>
-<span class="o">!</span>wget https://medcat.rosalind.kcl.ac.uk/media/vocab.dat -P ./data/
-<span class="o">!</span>wget https://medcat.rosalind.kcl.ac.uk/media/cdb-medmen-v1_2.dat -P ./data/
+<span class="o">!</span>wget -N https://medcat.rosalind.kcl.ac.uk/media/vocab.dat -P <span class="nv">$DATA_DIR</span>
+<span class="o">!</span>wget -N https://medcat.rosalind.kcl.ac.uk/media/cdb-medmen-v1_2.dat -P <span class="nv">$DATA_DIR</span>
 </pre></div>
 
     </div>
@@ -17826,7 +17827,7 @@ Renal Insufficiency - C1565489 - 7
 <div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>unzip data/mc_status.zip
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>unzip <span class="nv">$DATA_DIR</span>/mc_status.zip
 </pre></div>
 
     </div>
