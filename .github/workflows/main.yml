@@ -17,6 +17,7 @@ jobs:
           introductory/Part_3_*.ipynb,
           introductory/Part_4_*.ipynb,
           introductory/Part_5_*.ipynb,
+          introductory/Part_1_*.ipynb,
           # specialised/*.ipynb         # To make it run, the SnomedCT file needs to be mocked
         ]
 
