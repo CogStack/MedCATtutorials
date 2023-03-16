@@ -13301,12 +13301,9 @@ You then want to select the <em>Download</em> action and pick the project(s) you
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span> <span class="nv">DATA_DIR</span><span class="o">=</span><span class="s2">&quot;./data_regr&quot;</span>
 <span class="n">DATA_DIR</span> <span class="o">=</span> <span class="s2">&quot;./data_regr&quot;</span>
-<span class="o">!</span> <span class="nv">MCT_EXPORT_URL</span><span class="o">=</span><span class="s2">&quot;https://gist.githubusercontent.com/mart-r/b22f737856039f0ceec6ffa7bc49f348/raw/d66019379228a77bb35d6bd30a45e0c618ef0c34/Keggle_MCT_export.json&quot;</span>
-<span class="n">MCT_EXPORT_URL</span> <span class="o">=</span> <span class="s2">&quot;https://gist.githubusercontent.com/mart-r/b22f737856039f0ceec6ffa7bc49f348/raw/d66019379228a77bb35d6bd30a45e0c618ef0c34/Keggle_MCT_export.json&quot;</span>
+<span class="c1"># the file is now included within the repo</span>
 <span class="o">!</span> <span class="nv">MCT_EXPORT_FILE</span><span class="o">=</span><span class="nv">$DATA_DIR</span><span class="s2">&quot;/Keggle_MCT_export.json&quot;</span>
 <span class="n">MCT_EXPORT_FILE</span> <span class="o">=</span> <span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s2">&quot;/Keggle_MCT_export.json&quot;</span>
-<span class="c1"># get the MCT export json</span>
-<span class="o">!</span> wget -N <span class="nv">$MCT_EXPORT_URL</span> -P <span class="nv">$DATA_DIR</span>
 </pre></div>
 
     </div>
@@ -13440,15 +13437,11 @@ All the CUIs in the example were simply split into a number of different categor
 <div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span> <span class="nv">CATEGORIES_YML</span><span class="o">=</span><span class="nv">$DATA_DIR</span><span class="s2">&quot;/categories.yml&quot;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># the file is now included in the repo</span>
+<span class="o">!</span> <span class="nv">CATEGORIES_YML</span><span class="o">=</span><span class="nv">$DATA_DIR</span><span class="s2">&quot;/categories.yml&quot;</span>
 <span class="n">CATEGORIES_YML</span> <span class="o">=</span>  <span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s2">&quot;/categories.yml&quot;</span>
 <span class="o">!</span> <span class="nv">OUTPUT_SPLIT</span><span class="o">=</span><span class="nv">$DATA_DIR</span><span class="s2">&quot;/split-&quot;</span>
 <span class="n">OUTPUT_SPLIT</span> <span class="o">=</span> <span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s2">&quot;/split-&quot;</span>
-<span class="o">!</span> <span class="nv">RAW_CATEGORIES_URL</span><span class="o">=</span><span class="s2">&quot;https://gist.githubusercontent.com/mart-r/cbcb231a17ce55a0b5cfbec419b168f5/raw/1f9a058abbe15ffbe3a8c1277d6166ab5f1983b5/categories.yml&quot;</span>
-<span class="n">RAW_CATEGORIES_URL</span> <span class="o">=</span> <span class="s2">&quot;https://gist.githubusercontent.com/mart-r/cbcb231a17ce55a0b5cfbec419b168f5/raw/1f9a058abbe15ffbe3a8c1277d6166ab5f1983b5/categories.yml&quot;</span>
-
-<span class="c1"># Downlaod categories file</span>
-<span class="o">!</span> wget -N <span class="nv">$RAW_CATEGORIES_URL</span> -P <span class="nv">$DATA_DIR</span>
 
 <span class="c1"># Separate into categories</span>
 <span class="o">!</span> python -m medcat.utils.regression.category_separator <span class="nv">$CATEGORIES_YML</span> <span class="nv">$OUTPUT_YAML</span> <span class="nv">$OUTPUT_SPLIT</span>- --strategy FIRST
