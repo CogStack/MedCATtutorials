@@ -13098,7 +13098,7 @@ This is where the regression test suite built into MedCAT (fully supported start
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The general workflow of the built in regression tooling as as follows</p>
+<p>The general workflow of the built in regression tooling as follows</p>
 <ol>
 <li>Generate a <em>gold standard</em> regression suite (i.e from MedCATtrainer export)</li>
 <li>[Optional] Create relevant categories of CUIs/TUIs/names of concepts</li>
@@ -13428,7 +13428,7 @@ Saving writing data to data_regr/Keggle_regr_suite_output.yml
 <h1 id="[Optional]-Creating-category-files">[Optional] Creating category files<a class="anchor-link" href="#[Optional]-Creating-category-files">&#182;</a></h1><p>We now need to create a category file.
 Each category will correspond to a separate regression test set.
 So we might want to, for example, separate different domains.</p>
-<p>In this case, we will use a somewhat aribtrary categories file.
+<p>In this case, we will use a somewhat arbitrary categories file.
 All the CUIs in the example were simply split into a number of different categories based on the CUIs and TUIs available.</p>
 
 </div>
@@ -13493,6 +13493,8 @@ Last-modified header missing -- time-stamps turned off.
 <h1 id="Run-regression-tests-on-one-(or-many)-model(s)">Run regression tests on one (or many) model(s)<a class="anchor-link" href="#Run-regression-tests-on-one-(or-many)-model(s)">&#182;</a></h1><p>We are now ready to the regression tests on a model.
 All we need is a SNOMED based MedCAT model.
 You can download the 1.4 model from <a href="https://uts.nlm.nih.gov/uts/login?service=https:%2F%2Fmedcat.rosalind.kcl.ac.uk%2Fauth-callback">here</a>.</p>
+<p>PS:
+<strong>Make sure to insert the model pack path below in the code if you have your own model</strong></p>
 
 </div>
 </div>
@@ -13502,11 +13504,12 @@ You can download the 1.4 model from <a href="https://uts.nlm.nih.gov/uts/login?s
 <div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ENTER MODEL PATH</span>
-<span class="o">!</span> <span class="nv">MODEL_PACK_PATH</span><span class="o">=</span><span class="nv">$DATA_DIR</span><span class="s2">&quot;/medcat_model.zip&quot;</span>
-<span class="n">MODEL_PACK_PATH</span> <span class="o">=</span> <span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s2">&quot;/medcat_model.zip&quot;</span>
-<span class="o">!</span> <span class="nv">MODEL_PACK_PATH</span><span class="o">=</span><span class="s2">&quot;../../../working_with_cogstack/data/medcat_models/modelpack/20221004_trained_model_supervised_latest_acd0dfc2f0df45de.zip&quot;</span>
-<span class="n">MODEL_PACK_PATH</span> <span class="o">=</span> <span class="s2">&quot;../../../working_with_cogstack/data/medcat_models/modelpack/20221004_trained_model_supervised_latest_acd0dfc2f0df45de.zip&quot;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># we will use the MedMentions model for an example here</span>
+<span class="o">!</span> wget -N https://medcat.rosalind.kcl.ac.uk/media/medmen_wstatus_2021_oct.zip -P <span class="nv">$DATA_DIR</span>
+
+<span class="c1"># ENTER MODEL PATH for custom model</span>
+<span class="o">!</span> <span class="nv">MODEL_PACK_PATH</span><span class="o">=</span><span class="nv">$DATA_DIR</span><span class="s2">&quot;/medmen_wstatus_2021_oct.zip&quot;</span>
+<span class="n">MODEL_PACK_PATH</span> <span class="o">=</span> <span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s2">&quot;/medmen_wstatus_2021_oct.zip&quot;</span>
 </pre></div>
 
     </div>
