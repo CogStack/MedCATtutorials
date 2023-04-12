@@ -26,6 +26,7 @@ These tutorials expand upon specific aspects of the topics covered across the in
 | Part | Title                                                             | Google Colab                                                                                 |
 | ---- |-------------------------------------------------------------------|----------------------------------------------------------------------------------------------|
 | -    |[Working with SNOMED CT and building a custom Concept Database (CDB)](https://htmlpreview.github.io/?https://github.com/CogStack/MedCATtutorials/blob/main/notebooks/specialised/Preprocessing_SNOMED_CT.html)| [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/CogStack/MedCATtutorials/blob/main/notebooks/specialised/Preprocessing_SNOMED_CT.ipynb)|
+| -    |[Comparing models using regression test tooling](https://htmlpreview.github.io/?https://github.com/CogStack/MedCATtutorials/blob/main/notebooks/specialised/Comparing_Models_with_RegressionSuite.html)| [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/CogStack/MedCATtutorials/blob/main/notebooks/specialised/Comparing_Models_with_RegressionSuite.ipynb)|
 
 
 ## Development/Editing
