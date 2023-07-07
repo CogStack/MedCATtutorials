@@ -13088,7 +13088,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Install medcat</span>
@@ -13114,152 +13114,140 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Collecting medcat==1.7.1
-  Downloading medcat-1.7.1-py3-none-any.whl (182 kB)
-     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">182.4/182.4 kB</span> <span class="ansi-red-fg">2.5 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>a <span class="ansi-cyan-fg">0:00:01</span>
-Requirement already satisfied: psutil&gt;=5.8.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.7.1) (5.9.2)
-Requirement already satisfied: click&gt;=8.0.4 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.7.1) (8.0.4)
-Requirement already satisfied: aiofiles&gt;=0.8.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.7.1) (0.8.0)
-Requirement already satisfied: spacy&gt;=3.1.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.7.1) (3.5.0)
-Requirement already satisfied: tqdm&gt;=4.27 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.7.1) (4.64.1)
-Requirement already satisfied: multiprocess~=0.70.12 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.7.1) (0.70.12)
-Requirement already satisfied: pandas&gt;=1.4.2 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.7.1) (1.4.2)
-Requirement already satisfied: transformers&lt;4.22.0,&gt;=4.19.2 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.7.1) (4.19.4)
-Requirement already satisfied: ipywidgets&gt;=7.6.5 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.7.1) (7.6.6)
-Requirement already satisfied: blis&lt;0.8.0,&gt;=0.7.8 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.7.1) (0.7.9)
-Requirement already satisfied: dill&gt;=0.3.4 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.7.1) (0.3.4)
-Requirement already satisfied: scikit-learn&gt;=1.1.3 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.7.1) (1.2.1)
-Requirement already satisfied: jsonpickle&gt;=2.0.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.7.1) (2.0.0)
-Requirement already satisfied: datasets&gt;=2.2.2 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.7.1) (2.2.2)
-Requirement already satisfied: aiohttp==3.8.3 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.7.1) (3.8.3)
-Requirement already satisfied: torch&gt;=1.13.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.7.1) (1.13.1)
-Requirement already satisfied: xxhash&gt;=3.0.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.7.1) (3.0.0)
-Requirement already satisfied: pydantic&lt;2.0,&gt;=1.10.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.7.1) (1.10.5)
-Requirement already satisfied: numpy&gt;=1.22.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.7.1) (1.23.3)
-Requirement already satisfied: py2neo~=2021.2.3 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.7.1) (2021.2.3)
-Requirement already satisfied: gensim&gt;=4.3.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.7.1) (4.3.0)
-Requirement already satisfied: scipy~=1.9.2 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.7.1) (1.9.3)
-Requirement already satisfied: async-timeout&lt;5.0,&gt;=4.0.0a3 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from aiohttp==3.8.3-&gt;medcat==1.7.1) (4.0.2)
-Requirement already satisfied: attrs&gt;=17.3.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from aiohttp==3.8.3-&gt;medcat==1.7.1) (22.1.0)
-Requirement already satisfied: aiosignal&gt;=1.1.2 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from aiohttp==3.8.3-&gt;medcat==1.7.1) (1.2.0)
-Requirement already satisfied: multidict&lt;7.0,&gt;=4.5 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from aiohttp==3.8.3-&gt;medcat==1.7.1) (6.0.2)
-Requirement already satisfied: charset-normalizer&lt;3.0,&gt;=2.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from aiohttp==3.8.3-&gt;medcat==1.7.1) (2.1.1)
-Requirement already satisfied: frozenlist&gt;=1.1.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from aiohttp==3.8.3-&gt;medcat==1.7.1) (1.3.1)
-Requirement already satisfied: yarl&lt;2.0,&gt;=1.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from aiohttp==3.8.3-&gt;medcat==1.7.1) (1.8.1)
-Requirement already satisfied: huggingface-hub&lt;1.0.0,&gt;=0.1.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from datasets&gt;=2.2.2-&gt;medcat==1.7.1) (0.9.1)
-Requirement already satisfied: packaging in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from datasets&gt;=2.2.2-&gt;medcat==1.7.1) (21.3)
-Requirement already satisfied: fsspec[http]&gt;=2021.05.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from datasets&gt;=2.2.2-&gt;medcat==1.7.1) (2022.8.2)
-Requirement already satisfied: pyarrow&gt;=6.0.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from datasets&gt;=2.2.2-&gt;medcat==1.7.1) (9.0.0)
-Requirement already satisfied: responses&lt;0.19 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from datasets&gt;=2.2.2-&gt;medcat==1.7.1) (0.18.0)
-Requirement already satisfied: requests&gt;=2.19.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from datasets&gt;=2.2.2-&gt;medcat==1.7.1) (2.28.1)
-Requirement already satisfied: smart_open&gt;=1.8.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from gensim&gt;=4.3.0-&gt;medcat==1.7.1) (5.2.1)
-Requirement already satisfied: FuzzyTM&gt;=0.4.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from gensim&gt;=4.3.0-&gt;medcat==1.7.1) (2.0.5)
-Requirement already satisfied: ipykernel&gt;=4.5.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (6.15.3)
-Requirement already satisfied: nbformat&gt;=4.2.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (5.5.0)
-Requirement already satisfied: ipython&gt;=4.0.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (8.5.0)
-Requirement already satisfied: traitlets&gt;=4.3.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (5.4.0)
-Requirement already satisfied: ipython-genutils~=0.2.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (0.2.0)
-Requirement already satisfied: widgetsnbextension~=3.5.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (3.5.2)
-Requirement already satisfied: jupyterlab-widgets&lt;3,&gt;=1.0.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (1.1.1)
-Requirement already satisfied: python-dateutil&gt;=2.8.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from pandas&gt;=1.4.2-&gt;medcat==1.7.1) (2.8.2)
-Requirement already satisfied: pytz&gt;=2020.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from pandas&gt;=1.4.2-&gt;medcat==1.7.1) (2022.2.1)
-Requirement already satisfied: certifi in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from py2neo~=2021.2.3-&gt;medcat==1.7.1) (2022.9.14)
-Requirement already satisfied: pansi&gt;=2020.7.3 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from py2neo~=2021.2.3-&gt;medcat==1.7.1) (2020.7.3)
-Requirement already satisfied: monotonic in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from py2neo~=2021.2.3-&gt;medcat==1.7.1) (1.6)
-Requirement already satisfied: six&gt;=1.15.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from py2neo~=2021.2.3-&gt;medcat==1.7.1) (1.16.0)
-Requirement already satisfied: pygments&gt;=2.0.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from py2neo~=2021.2.3-&gt;medcat==1.7.1) (2.13.0)
-Requirement already satisfied: urllib3 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from py2neo~=2021.2.3-&gt;medcat==1.7.1) (1.26.12)
-Requirement already satisfied: interchange~=2021.0.4 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from py2neo~=2021.2.3-&gt;medcat==1.7.1) (2021.0.4)
-Requirement already satisfied: typing-extensions&gt;=4.2.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from pydantic&lt;2.0,&gt;=1.10.0-&gt;medcat==1.7.1) (4.3.0)
-Requirement already satisfied: threadpoolctl&gt;=2.0.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from scikit-learn&gt;=1.1.3-&gt;medcat==1.7.1) (3.1.0)
-Requirement already satisfied: joblib&gt;=1.1.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from scikit-learn&gt;=1.1.3-&gt;medcat==1.7.1) (1.2.0)
-Requirement already satisfied: cymem&lt;2.1.0,&gt;=2.0.2 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.7.1) (2.0.6)
-Requirement already satisfied: srsly&lt;3.0.0,&gt;=2.4.3 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.7.1) (2.4.4)
-Requirement already satisfied: langcodes&lt;4.0.0,&gt;=3.2.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.7.1) (3.3.0)
-Requirement already satisfied: wasabi&lt;1.2.0,&gt;=0.9.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.7.1) (0.10.1)
-Requirement already satisfied: thinc&lt;8.2.0,&gt;=8.1.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.7.1) (8.1.8)
-Requirement already satisfied: preshed&lt;3.1.0,&gt;=3.0.2 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.7.1) (3.0.7)
-Requirement already satisfied: spacy-loggers&lt;2.0.0,&gt;=1.0.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.7.1) (1.0.4)
-Requirement already satisfied: pathy&gt;=0.10.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.7.1) (0.10.1)
-Requirement already satisfied: murmurhash&lt;1.1.0,&gt;=0.28.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.7.1) (1.0.8)
-Requirement already satisfied: typer&lt;0.8.0,&gt;=0.3.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.7.1) (0.4.2)
-Requirement already satisfied: catalogue&lt;2.1.0,&gt;=2.0.6 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.7.1) (2.0.8)
-Requirement already satisfied: spacy-legacy&lt;3.1.0,&gt;=3.0.11 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.7.1) (3.0.12)
-Requirement already satisfied: setuptools in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.7.1) (58.0.4)
-Requirement already satisfied: jinja2 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.7.1) (3.0.0)
-Requirement already satisfied: regex!=2019.12.17 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from transformers&lt;4.22.0,&gt;=4.19.2-&gt;medcat==1.7.1) (2022.9.13)
-Requirement already satisfied: pyyaml&gt;=5.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from transformers&lt;4.22.0,&gt;=4.19.2-&gt;medcat==1.7.1) (6.0)
-Requirement already satisfied: tokenizers!=0.11.3,&lt;0.13,&gt;=0.11.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from transformers&lt;4.22.0,&gt;=4.19.2-&gt;medcat==1.7.1) (0.12.1)
-Requirement already satisfied: filelock in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from transformers&lt;4.22.0,&gt;=4.19.2-&gt;medcat==1.7.1) (3.8.0)
-Requirement already satisfied: pyfume in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from FuzzyTM&gt;=0.4.0-&gt;gensim&gt;=4.3.0-&gt;medcat==1.7.1) (0.2.25)
-Requirement already satisfied: jupyter-client&gt;=6.1.12 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (7.3.5)
-Requirement already satisfied: nest-asyncio in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (1.5.5)
-Requirement already satisfied: debugpy&gt;=1.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (1.6.3)
-Requirement already satisfied: pyzmq&gt;=17 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (23.2.1)
-Requirement already satisfied: tornado&gt;=6.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (6.2)
-Requirement already satisfied: matplotlib-inline&gt;=0.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (0.1.6)
-Requirement already satisfied: appnope in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (0.1.3)
-Requirement already satisfied: prompt-toolkit&lt;3.1.0,&gt;3.0.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (3.0.31)
-Requirement already satisfied: pickleshare in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (0.7.5)
-Requirement already satisfied: backcall in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (0.2.0)
-Requirement already satisfied: stack-data in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (0.5.0)
-Requirement already satisfied: decorator in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (5.1.1)
-Requirement already satisfied: pexpect&gt;4.3 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (4.8.0)
-Requirement already satisfied: jedi&gt;=0.16 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (0.18.1)
-Requirement already satisfied: jupyter_core in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from nbformat&gt;=4.2.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (4.11.1)
-Requirement already satisfied: fastjsonschema in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from nbformat&gt;=4.2.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (2.16.1)
-Requirement already satisfied: jsonschema&gt;=2.6 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from nbformat&gt;=4.2.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (4.16.0)
-Requirement already satisfied: pyparsing!=3.0.5,&gt;=2.0.2 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from packaging-&gt;datasets&gt;=2.2.2-&gt;medcat==1.7.1) (3.0.9)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from requests&gt;=2.19.0-&gt;datasets&gt;=2.2.2-&gt;medcat==1.7.1) (3.4)
-Requirement already satisfied: confection&lt;1.0.0,&gt;=0.0.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from thinc&lt;8.2.0,&gt;=8.1.0-&gt;spacy&gt;=3.1.0-&gt;medcat==1.7.1) (0.0.4)
-Requirement already satisfied: notebook&gt;=4.4.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (6.4.12)
-Requirement already satisfied: MarkupSafe&gt;=2.0.0rc2 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from jinja2-&gt;spacy&gt;=3.1.0-&gt;medcat==1.7.1) (2.1.1)
-Requirement already satisfied: parso&lt;0.9.0,&gt;=0.8.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from jedi&gt;=0.16-&gt;ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (0.8.3)
-Requirement already satisfied: pyrsistent!=0.17.0,!=0.17.1,!=0.17.2,&gt;=0.14.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from jsonschema&gt;=2.6-&gt;nbformat&gt;=4.2.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (0.18.1)
-Requirement already satisfied: entrypoints in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from jupyter-client&gt;=6.1.12-&gt;ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (0.4)
-Requirement already satisfied: prometheus-client in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (0.14.1)
-Requirement already satisfied: nbconvert&gt;=5 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (5.6.1)
-Requirement already satisfied: terminado&gt;=0.8.3 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (0.15.0)
-Requirement already satisfied: Send2Trash&gt;=1.8.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (1.8.0)
-Requirement already satisfied: argon2-cffi in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (21.3.0)
-Requirement already satisfied: ptyprocess&gt;=0.5 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from pexpect&gt;4.3-&gt;ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (0.7.0)
-Requirement already satisfied: wcwidth in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from prompt-toolkit&lt;3.1.0,&gt;3.0.1-&gt;ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (0.2.5)
-Requirement already satisfied: simpful in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from pyfume-&gt;FuzzyTM&gt;=0.4.0-&gt;gensim&gt;=4.3.0-&gt;medcat==1.7.1) (2.10.0)
-Requirement already satisfied: fst-pso in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from pyfume-&gt;FuzzyTM&gt;=0.4.0-&gt;gensim&gt;=4.3.0-&gt;medcat==1.7.1) (1.8.1)
-Requirement already satisfied: executing in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (1.0.0)
-Requirement already satisfied: asttokens in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (2.0.8)
-Requirement already satisfied: pure-eval in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (0.2.2)
-Requirement already satisfied: mistune&lt;2,&gt;=0.8.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (0.8.4)
-Requirement already satisfied: testpath in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (0.6.0)
-Requirement already satisfied: bleach in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (5.0.1)
-Requirement already satisfied: defusedxml in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (0.7.1)
-Requirement already satisfied: pandocfilters&gt;=1.4.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (1.5.0)
-Requirement already satisfied: argon2-cffi-bindings in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from argon2-cffi-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (21.2.0)
-Requirement already satisfied: miniful in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from fst-pso-&gt;pyfume-&gt;FuzzyTM&gt;=0.4.0-&gt;gensim&gt;=4.3.0-&gt;medcat==1.7.1) (0.0.6)
-Requirement already satisfied: cffi&gt;=1.0.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from argon2-cffi-bindings-&gt;argon2-cffi-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (1.15.1)
-Requirement already satisfied: webencodings in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from bleach-&gt;nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (0.5.1)
-Requirement already satisfied: pycparser in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from cffi&gt;=1.0.1-&gt;argon2-cffi-bindings-&gt;argon2-cffi-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.7.1) (2.21)
+<pre>Collecting medcat==1.8.0
+  Downloading medcat-1.8.0-py3-none-any.whl (182 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">182.4/182.4 kB</span> <span class="ansi-red-fg">3.7 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>a <span class="ansi-cyan-fg">0:00:01</span>
+Requirement already satisfied: scikit-learn&gt;=1.1.3 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (1.2.1)
+Requirement already satisfied: psutil&gt;=5.8.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (5.9.2)
+Requirement already satisfied: jsonpickle&gt;=2.0.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (2.0.0)
+Requirement already satisfied: scipy~=1.9.2 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (1.9.3)
+Requirement already satisfied: blis&lt;0.8.0,&gt;=0.7.8 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (0.7.9)
+Requirement already satisfied: numpy&gt;=1.22.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (1.23.3)
+Requirement already satisfied: dill&gt;=0.3.4 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (0.3.4)
+Requirement already satisfied: aiohttp==3.8.3 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (3.8.3)
+Requirement already satisfied: pandas&gt;=1.4.2 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (1.4.2)
+Requirement already satisfied: torch&gt;=1.13.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (1.13.1)
+Requirement already satisfied: gensim&gt;=4.3.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (4.3.0)
+Requirement already satisfied: ipywidgets&gt;=7.6.5 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (7.6.6)
+Requirement already satisfied: datasets&gt;=2.2.2 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (2.2.2)
+Requirement already satisfied: multiprocess~=0.70.12 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (0.70.12)
+Requirement already satisfied: py2neo~=2021.2.3 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (2021.2.3)
+Requirement already satisfied: tqdm&gt;=4.27 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (4.64.1)
+Requirement already satisfied: pydantic&lt;2.0,&gt;=1.10.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (1.10.5)
+Requirement already satisfied: click&gt;=8.0.4 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (8.0.4)
+Requirement already satisfied: transformers&lt;4.22.0,&gt;=4.19.2 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (4.19.4)
+Requirement already satisfied: spacy&gt;=3.1.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (3.5.0)
+Requirement already satisfied: xxhash&gt;=3.0.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (3.0.0)
+Requirement already satisfied: aiofiles&gt;=0.8.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (0.8.0)
+Requirement already satisfied: frozenlist&gt;=1.1.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from aiohttp==3.8.3-&gt;medcat==1.8.0) (1.3.1)
+Requirement already satisfied: charset-normalizer&lt;3.0,&gt;=2.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from aiohttp==3.8.3-&gt;medcat==1.8.0) (2.1.1)
+Requirement already satisfied: aiosignal&gt;=1.1.2 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from aiohttp==3.8.3-&gt;medcat==1.8.0) (1.2.0)
+Requirement already satisfied: attrs&gt;=17.3.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from aiohttp==3.8.3-&gt;medcat==1.8.0) (22.1.0)
+Requirement already satisfied: multidict&lt;7.0,&gt;=4.5 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from aiohttp==3.8.3-&gt;medcat==1.8.0) (6.0.2)
+Requirement already satisfied: async-timeout&lt;5.0,&gt;=4.0.0a3 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from aiohttp==3.8.3-&gt;medcat==1.8.0) (4.0.2)
+Requirement already satisfied: yarl&lt;2.0,&gt;=1.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from aiohttp==3.8.3-&gt;medcat==1.8.0) (1.8.1)
+Requirement already satisfied: pyarrow&gt;=6.0.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from datasets&gt;=2.2.2-&gt;medcat==1.8.0) (9.0.0)
+Requirement already satisfied: packaging in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from datasets&gt;=2.2.2-&gt;medcat==1.8.0) (21.3)
+Requirement already satisfied: huggingface-hub&lt;1.0.0,&gt;=0.1.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from datasets&gt;=2.2.2-&gt;medcat==1.8.0) (0.9.1)
+Requirement already satisfied: fsspec[http]&gt;=2021.05.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from datasets&gt;=2.2.2-&gt;medcat==1.8.0) (2022.8.2)
+Requirement already satisfied: responses&lt;0.19 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from datasets&gt;=2.2.2-&gt;medcat==1.8.0) (0.18.0)
+Requirement already satisfied: requests&gt;=2.19.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from datasets&gt;=2.2.2-&gt;medcat==1.8.0) (2.28.1)
+Requirement already satisfied: smart_open&gt;=1.8.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from gensim&gt;=4.3.0-&gt;medcat==1.8.0) (5.2.1)
+Requirement already satisfied: FuzzyTM&gt;=0.4.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from gensim&gt;=4.3.0-&gt;medcat==1.8.0) (2.0.5)
+Requirement already satisfied: jupyterlab-widgets&lt;3,&gt;=1.0.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (1.1.1)
+Requirement already satisfied: traitlets&gt;=4.3.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (5.4.0)
+Requirement already satisfied: ipython-genutils~=0.2.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (0.2.0)
+Requirement already satisfied: widgetsnbextension~=3.5.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (3.5.2)
+Requirement already satisfied: ipykernel&gt;=4.5.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (6.15.3)
+Requirement already satisfied: ipython&gt;=4.0.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (8.5.0)
+Requirement already satisfied: nbformat&gt;=4.2.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (5.5.0)
+Requirement already satisfied: pytz&gt;=2020.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from pandas&gt;=1.4.2-&gt;medcat==1.8.0) (2022.2.1)
+Requirement already satisfied: python-dateutil&gt;=2.8.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from pandas&gt;=1.4.2-&gt;medcat==1.8.0) (2.8.2)
+Requirement already satisfied: interchange~=2021.0.4 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from py2neo~=2021.2.3-&gt;medcat==1.8.0) (2021.0.4)
+Requirement already satisfied: pansi&gt;=2020.7.3 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from py2neo~=2021.2.3-&gt;medcat==1.8.0) (2020.7.3)
+Requirement already satisfied: urllib3 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from py2neo~=2021.2.3-&gt;medcat==1.8.0) (1.26.12)
+Requirement already satisfied: pygments&gt;=2.0.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from py2neo~=2021.2.3-&gt;medcat==1.8.0) (2.13.0)
+Requirement already satisfied: six&gt;=1.15.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from py2neo~=2021.2.3-&gt;medcat==1.8.0) (1.16.0)
+Requirement already satisfied: certifi in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from py2neo~=2021.2.3-&gt;medcat==1.8.0) (2022.9.14)
+Requirement already satisfied: monotonic in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from py2neo~=2021.2.3-&gt;medcat==1.8.0) (1.6)
+Requirement already satisfied: typing-extensions&gt;=4.2.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from pydantic&lt;2.0,&gt;=1.10.0-&gt;medcat==1.8.0) (4.3.0)
+Requirement already satisfied: joblib&gt;=1.1.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from scikit-learn&gt;=1.1.3-&gt;medcat==1.8.0) (1.2.0)
+Requirement already satisfied: threadpoolctl&gt;=2.0.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from scikit-learn&gt;=1.1.3-&gt;medcat==1.8.0) (3.1.0)
+Requirement already satisfied: preshed&lt;3.1.0,&gt;=3.0.2 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.8.0) (3.0.7)
+Requirement already satisfied: wasabi&lt;1.2.0,&gt;=0.9.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.8.0) (0.10.1)
+Requirement already satisfied: pathy&gt;=0.10.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.8.0) (0.10.1)
+Requirement already satisfied: cymem&lt;2.1.0,&gt;=2.0.2 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.8.0) (2.0.6)
+Requirement already satisfied: thinc&lt;8.2.0,&gt;=8.1.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.8.0) (8.1.8)
+Requirement already satisfied: spacy-legacy&lt;3.1.0,&gt;=3.0.11 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.8.0) (3.0.12)
+Requirement already satisfied: srsly&lt;3.0.0,&gt;=2.4.3 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.8.0) (2.4.4)
+Requirement already satisfied: setuptools in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.8.0) (58.0.4)
+Requirement already satisfied: langcodes&lt;4.0.0,&gt;=3.2.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.8.0) (3.3.0)
+Requirement already satisfied: typer&lt;0.8.0,&gt;=0.3.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.8.0) (0.4.2)
+Requirement already satisfied: catalogue&lt;2.1.0,&gt;=2.0.6 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.8.0) (2.0.8)
+Requirement already satisfied: murmurhash&lt;1.1.0,&gt;=0.28.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.8.0) (1.0.8)
+Requirement already satisfied: jinja2 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.8.0) (3.0.0)
+Requirement already satisfied: spacy-loggers&lt;2.0.0,&gt;=1.0.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.8.0) (1.0.4)
+Requirement already satisfied: regex!=2019.12.17 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from transformers&lt;4.22.0,&gt;=4.19.2-&gt;medcat==1.8.0) (2022.9.13)
+Requirement already satisfied: tokenizers!=0.11.3,&lt;0.13,&gt;=0.11.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from transformers&lt;4.22.0,&gt;=4.19.2-&gt;medcat==1.8.0) (0.12.1)
+Requirement already satisfied: pyyaml&gt;=5.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from transformers&lt;4.22.0,&gt;=4.19.2-&gt;medcat==1.8.0) (6.0)
+Requirement already satisfied: filelock in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from transformers&lt;4.22.0,&gt;=4.19.2-&gt;medcat==1.8.0) (3.8.0)
+Requirement already satisfied: pyfume in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from FuzzyTM&gt;=0.4.0-&gt;gensim&gt;=4.3.0-&gt;medcat==1.8.0) (0.2.25)
+Requirement already satisfied: tornado&gt;=6.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (6.2)
+Requirement already satisfied: nest-asyncio in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (1.5.5)
+Requirement already satisfied: jupyter-client&gt;=6.1.12 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (7.3.5)
+Requirement already satisfied: pyzmq&gt;=17 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (23.2.1)
+Requirement already satisfied: matplotlib-inline&gt;=0.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (0.1.6)
+Requirement already satisfied: debugpy&gt;=1.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (1.6.3)
+Requirement already satisfied: appnope in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (0.1.3)
+Requirement already satisfied: decorator in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (5.1.1)
+Requirement already satisfied: prompt-toolkit&lt;3.1.0,&gt;3.0.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (3.0.31)
+Requirement already satisfied: backcall in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (0.2.0)
+Requirement already satisfied: stack-data in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (0.5.0)
+Requirement already satisfied: pickleshare in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (0.7.5)
+Requirement already satisfied: pexpect&gt;4.3 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (4.8.0)
+Requirement already satisfied: jedi&gt;=0.16 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (0.18.1)
+Requirement already satisfied: jsonschema&gt;=2.6 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from nbformat&gt;=4.2.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (4.16.0)
+Requirement already satisfied: fastjsonschema in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from nbformat&gt;=4.2.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (2.16.1)
+Requirement already satisfied: jupyter_core in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from nbformat&gt;=4.2.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (4.11.1)
+Requirement already satisfied: pyparsing!=3.0.5,&gt;=2.0.2 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from packaging-&gt;datasets&gt;=2.2.2-&gt;medcat==1.8.0) (3.0.9)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from requests&gt;=2.19.0-&gt;datasets&gt;=2.2.2-&gt;medcat==1.8.0) (3.4)
+Requirement already satisfied: confection&lt;1.0.0,&gt;=0.0.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from thinc&lt;8.2.0,&gt;=8.1.0-&gt;spacy&gt;=3.1.0-&gt;medcat==1.8.0) (0.0.4)
+Requirement already satisfied: notebook&gt;=4.4.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (6.4.12)
+Requirement already satisfied: MarkupSafe&gt;=2.0.0rc2 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from jinja2-&gt;spacy&gt;=3.1.0-&gt;medcat==1.8.0) (2.1.1)
+Requirement already satisfied: parso&lt;0.9.0,&gt;=0.8.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from jedi&gt;=0.16-&gt;ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (0.8.3)
+Requirement already satisfied: pyrsistent!=0.17.0,!=0.17.1,!=0.17.2,&gt;=0.14.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from jsonschema&gt;=2.6-&gt;nbformat&gt;=4.2.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (0.18.1)
+Requirement already satisfied: entrypoints in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from jupyter-client&gt;=6.1.12-&gt;ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (0.4)
+Requirement already satisfied: terminado&gt;=0.8.3 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (0.15.0)
+Requirement already satisfied: nbconvert&gt;=5 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (5.6.1)
+Requirement already satisfied: Send2Trash&gt;=1.8.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (1.8.0)
+Requirement already satisfied: prometheus-client in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (0.14.1)
+Requirement already satisfied: argon2-cffi in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (21.3.0)
+Requirement already satisfied: ptyprocess&gt;=0.5 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from pexpect&gt;4.3-&gt;ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (0.7.0)
+Requirement already satisfied: wcwidth in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from prompt-toolkit&lt;3.1.0,&gt;3.0.1-&gt;ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (0.2.5)
+Requirement already satisfied: fst-pso in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from pyfume-&gt;FuzzyTM&gt;=0.4.0-&gt;gensim&gt;=4.3.0-&gt;medcat==1.8.0) (1.8.1)
+Requirement already satisfied: simpful in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from pyfume-&gt;FuzzyTM&gt;=0.4.0-&gt;gensim&gt;=4.3.0-&gt;medcat==1.8.0) (2.10.0)
+Requirement already satisfied: executing in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (1.0.0)
+Requirement already satisfied: pure-eval in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (0.2.2)
+Requirement already satisfied: asttokens in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (2.0.8)
+Requirement already satisfied: bleach in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (5.0.1)
+Requirement already satisfied: mistune&lt;2,&gt;=0.8.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (0.8.4)
+Requirement already satisfied: defusedxml in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (0.7.1)
+Requirement already satisfied: testpath in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (0.6.0)
+Requirement already satisfied: pandocfilters&gt;=1.4.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (1.5.0)
+Requirement already satisfied: argon2-cffi-bindings in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from argon2-cffi-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (21.2.0)
+Requirement already satisfied: miniful in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from fst-pso-&gt;pyfume-&gt;FuzzyTM&gt;=0.4.0-&gt;gensim&gt;=4.3.0-&gt;medcat==1.8.0) (0.0.6)
+Requirement already satisfied: cffi&gt;=1.0.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from argon2-cffi-bindings-&gt;argon2-cffi-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (1.15.1)
+Requirement already satisfied: webencodings in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from bleach-&gt;nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (0.5.1)
+Requirement already satisfied: pycparser in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from cffi&gt;=1.0.1-&gt;argon2-cffi-bindings-&gt;argon2-cffi-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (2.21)
 Installing collected packages: medcat
   Attempting uninstall: medcat
-    Found existing installation: medcat 1.7.0
-    Uninstalling medcat-1.7.0:
-      Successfully uninstalled medcat-1.7.0
-Successfully installed medcat-1.7.1
+    Found existing installation: medcat 1.7.1
+    Uninstalling medcat-1.7.1:
+      Successfully uninstalled medcat-1.7.1
+Successfully installed medcat-1.8.0
 
 <span class="ansi-bold">[</span><span class="ansi-blue-fg">notice</span><span class="ansi-bold">]</span> A new release of pip available: <span class="ansi-red-fg">22.2.2</span> -&gt; <span class="ansi-green-fg">23.1.2</span>
 <span class="ansi-bold">[</span><span class="ansi-blue-fg">notice</span><span class="ansi-bold">]</span> To update, run: <span class="ansi-green-fg">pip install --upgrade pip</span>
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages/medcat/cat.py:18: TqdmExperimentalWarning: Using `tqdm.autonotebook.tqdm` in notebook mode. Use `tqdm.tqdm` instead to force console mode (e.g. in jupyter console)
-  from tqdm.autonotebook import tqdm, trange
 </pre>
 </div>
 </div>
@@ -13278,7 +13266,7 @@ Successfully installed medcat-1.7.1
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">medcat.utils</span> <span class="kn">import</span> <span class="n">memory_optimiser</span>
@@ -13291,7 +13279,7 @@ Successfully installed medcat-1.7.1
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">DATA_DIR</span> <span class="o">=</span> <span class="s2">&quot;./data_p3.3/&quot;</span>
@@ -13306,7 +13294,7 @@ Successfully installed medcat-1.7.1
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Download the models and required data</span>
@@ -13327,16 +13315,11 @@ Successfully installed medcat-1.7.1
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>--2023-07-06 13:36:02--  https://medcat.rosalind.kcl.ac.uk/media/medmen_wstatus_2021_oct.zip
+<pre>--2023-07-07 10:39:55--  https://medcat.rosalind.kcl.ac.uk/media/medmen_wstatus_2021_oct.zip
 Resolving medcat.rosalind.kcl.ac.uk (medcat.rosalind.kcl.ac.uk)... 193.61.202.225
 Connecting to medcat.rosalind.kcl.ac.uk (medcat.rosalind.kcl.ac.uk)|193.61.202.225|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 561947681 (536M) [application/zip]
-Saving to: ‘./data_p3.3/medmen_wstatus_2021_oct.zip’
-
-medmen_wstatus_2021 100%[===================&gt;] 535.92M  26.5MB/s    in 21s     
-
-2023-07-06 13:36:24 (25.2 MB/s) - ‘./data_p3.3/medmen_wstatus_2021_oct.zip’ saved [561947681/561947681]
+HTTP request sent, awaiting response... 304 Not Modified
+File ‘./data_p3.3/medmen_wstatus_2021_oct.zip’ not modified on server. Omitting download.
 
 </pre>
 </div>
@@ -13355,7 +13338,7 @@ medmen_wstatus_2021 100%[===================&gt;] 535.92M  26.5MB/s    in 21s
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Load model pack and Create CAT - the main class from medcat used for concept annotation</span>
@@ -13397,13 +13380,14 @@ in terms of file size on disk. In the limited testing, a model would become
 around 35% faster to load off disk while gaining size of around 35% on disk.
 The disk size increase happens for the unzipped model pack. The compressed
 .zip files would be expected to be roughly the same size in either case.</p>
+<p>PS! Memory-optimised models cannot be meaningfully loaded using medcat versions before 1.8.0.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">save_dir</span> <span class="o">=</span> <span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="s1">&#39;cdb_json_model&#39;</span>
@@ -13421,13 +13405,13 @@ The disk size increase happens for the unzipped model pack. The compressed
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[6]:</div>
+    <div class="prompt output_prompt">Out[13]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&#39;medcat_model_pack_f06ca5def42c6ba8&#39;</pre>
+<pre>&#39;medcat_model_pack_3754129a0c28ebbf&#39;</pre>
 </div>
 
 </div>
@@ -13440,7 +13424,7 @@ The disk size increase happens for the unzipped model pack. The compressed
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Ability-to-memory-optimise-the-medcat-model">Ability to memory-optimise the medcat model<a class="anchor-link" href="#Ability-to-memory-optimise-the-medcat-model">&#182;</a></h2><p>Many MedCAT models take up a lot of memory when loaded.
-That's why there's now (since 1.7.1) a method to optimise
+That's why there's now (since 1.8.0) a method to optimise
 the model for lower memory usage. However, as expected,
 this comes at the expense of <em>some</em> performance (in terms
 of execution time, not model performance).</p>
@@ -13455,13 +13439,70 @@ effect.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># perform memory optimisation</span>
 <span class="n">memory_optimiser</span><span class="o">.</span><span class="n">perform_optimisation</span><span class="p">(</span><span class="n">cat</span><span class="o">.</span><span class="n">cdb</span><span class="p">,</span> <span class="n">optimise_cuis</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                                       <span class="n">optimise_names</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                                       <span class="n">optimise_snames</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># look at the parts that are memory-optimised</span>
+<span class="n">cat</span><span class="o">.</span><span class="n">cdb</span><span class="o">.</span><span class="n">_memory_optimised_parts</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[14]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;CUIS&#39;, &#39;snames&#39;}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The above method performs some optimisation on the model for memory usage.
+The resulting model can be saved on disk just as a regular method.
+And the memory optimisation will be remain available in the saved model as well.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Undoing-the-memory-opytimisation">Undoing the memory opytimisation<a class="anchor-link" href="#Undoing-the-memory-opytimisation">&#182;</a></h3><p>There may be reasons one may want to undo the memory optimisations above.
+One reason might be for use with an older version of medcat.
+We've provided a method to do that.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># undo memory optimisation</span>
+<span class="n">memory_optimiser</span><span class="o">.</span><span class="n">unoptimise_cdb</span><span class="p">(</span><span class="n">cat</span><span class="o">.</span><span class="n">cdb</span><span class="p">)</span>
+<span class="c1"># the method will look at the CDB and reverse the optimisation process</span>
 </pre></div>
 
     </div>
