@@ -13099,7 +13099,7 @@ div#notebook {
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Install MedCAT</span>
-<span class="o">!</span> pip install <span class="nv">medcat</span><span class="o">==</span><span class="m">1</span>.5.0
+<span class="o">!</span> pip install <span class="nv">medcat</span><span class="o">==</span><span class="m">1</span>.8.0
 <span class="c1"># Get the scispacy model</span>
 <span class="o">!</span> python -m spacy download en_core_web_md
 <span class="k">try</span><span class="p">:</span>
@@ -13445,7 +13445,8 @@ WARNING: Runtime will restart automatically and please run other cells thereafte
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">DATA_DIR</span> <span class="o">=</span> <span class="s2">&quot;./data/&quot;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">DATA_DIR</span> <span class="o">=</span> <span class="s2">&quot;./data_p3.1/&quot;</span>
+<span class="o">!</span> <span class="nv">DATA_DIR</span><span class="o">=</span><span class="s2">&quot;./data_p3.1/&quot;</span>
 </pre></div>
 
     </div>
@@ -13459,9 +13460,9 @@ WARNING: Runtime will restart automatically and please run other cells thereafte
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Load files if in google colab, otherwise skip this step</span>
-<span class="o">!</span>wget https://raw.githubusercontent.com/CogStack/MedCATtutorials/main/notebooks/introductory/data/cdb_simple.csv -P ./data/
-<span class="o">!</span>wget https://raw.githubusercontent.com/CogStack/MedCATtutorials/main/notebooks/introductory/data/cdb_advanced.csv -P ./data/
-<span class="o">!</span>wget https://raw.githubusercontent.com/CogStack/MedCATtutorials/main/notebooks/introductory/data/vocab_data.txt -P ./data/
+<span class="o">!</span>wget -N https://raw.githubusercontent.com/CogStack/MedCATtutorials/main/notebooks/introductory/data/cdb_simple.csv -P <span class="nv">$DATA_DIR</span>
+<span class="o">!</span>wget -N https://raw.githubusercontent.com/CogStack/MedCATtutorials/main/notebooks/introductory/data/cdb_advanced.csv -P <span class="nv">$DATA_DIR</span>
+<span class="o">!</span>wget -N https://raw.githubusercontent.com/CogStack/MedCATtutorials/main/notebooks/introductory/data/vocab_data.txt -P <span class="nv">$DATA_DIR</span>
 </pre></div>
 
     </div>
@@ -13660,7 +13661,7 @@ dog 14444   0.76762 0.76767 1.45454
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># If you want to add words manually (one by one) use:</span>
-<span class="n">vocab</span><span class="o">.</span><span class="n">add_word</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="n">cnt</span><span class="o">=</span><span class="mi">31</span><span class="p">,</span> <span class="n">vec</span><span class="o">=</span><span class="p">[</span><span class="mf">1.42</span><span class="p">,</span> <span class="mf">1.44</span><span class="p">,</span> <span class="mf">1.55</span><span class="p">],</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">vocab</span><span class="o">.</span><span class="n">add_word</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="n">cnt</span><span class="o">=</span><span class="mi">31</span><span class="p">,</span> <span class="n">vec</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.42</span><span class="p">,</span> <span class="mf">1.44</span><span class="p">,</span> <span class="mf">1.55</span><span class="p">]),</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">vocab</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
 </pre></div>
 
