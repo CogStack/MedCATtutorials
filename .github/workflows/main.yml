@@ -9,7 +9,7 @@ on:
 jobs:
   main:
 
-    runs-on: macos-latest
+    runs-on: macos-11
     strategy:
       matrix:
         part: [
