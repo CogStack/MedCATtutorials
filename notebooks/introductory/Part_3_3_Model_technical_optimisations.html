@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>Part_3_1_Building_a_Concept_Database_and_Vocabulary</title>
+<title>Part_3_3_Model_technical_optimisations</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13082,26 +13082,17 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Let's-build-and-initialise-a-MedCAT-model!">Let's build and initialise a MedCAT model!<a class="anchor-link" href="#Let's-build-and-initialise-a-MedCAT-model!">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="First-we-need-to-install-MedCAT">First we need to install MedCAT<a class="anchor-link" href="#First-we-need-to-install-MedCAT">&#182;</a></h3>
+<h1 id="Now-let's-look-at-ways-to-optimise-the-model-for-our-specific-use-case">Now let's look at ways to optimise the model for our specific use case<a class="anchor-link" href="#Now-let's-look-at-ways-to-optimise-the-model-for-our-specific-use-case">&#182;</a></h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Install MedCAT</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Install medcat</span>
 <span class="o">!</span> pip install <span class="nv">medcat</span><span class="o">==</span><span class="m">1</span>.8.0
-<span class="c1"># Get the scispacy model</span>
-<span class="o">!</span> python -m spacy download en_core_web_md
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">medcat.cat</span> <span class="kn">import</span> <span class="n">CAT</span>
 <span class="k">except</span><span class="p">:</span>
@@ -13123,287 +13114,140 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-Collecting medcat==1.3.0
- Downloading medcat-1.3.0-py3-none-any.whl (133 kB)
- |████████████████████████████████| 133 kB 5.2 MB/s 
-Collecting psutil&lt;6.0.0,&gt;=5.8.0
- Downloading psutil-5.9.1-cp37-cp37m-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (281 kB)
- |████████████████████████████████| 281 kB 45.3 MB/s 
-Collecting gensim~=4.1.2
- Downloading gensim-4.1.2-cp37-cp37m-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (24.1 MB)
- |████████████████████████████████| 24.1 MB 1.9 MB/s 
-Collecting xxhash==3.0.0
- Downloading xxhash-3.0.0-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (212 kB)
- |████████████████████████████████| 212 kB 44.1 MB/s 
-Collecting jsonpickle~=2.0.0
- Downloading jsonpickle-2.0.0-py2.py3-none-any.whl (37 kB)
-Collecting ipywidgets~=7.6.5
- Downloading ipywidgets-7.6.6-py2.py3-none-any.whl (121 kB)
- |████████████████████████████████| 121 kB 43.0 MB/s 
-Requirement already satisfied: dill~=0.3.4 in /usr/local/lib/python3.7/dist-packages (from medcat==1.3.0) (0.3.5.1)
-Collecting multiprocess
- Downloading multiprocess-0.70.13-py37-none-any.whl (115 kB)
- |████████████████████████████████| 115 kB 49.6 MB/s 
-Requirement already satisfied: scipy&lt;=1.8.1,&gt;=1.5.4 in /usr/local/lib/python3.7/dist-packages (from medcat==1.3.0) (1.7.3)
-Collecting elasticsearch&lt;8.0.0,&gt;=7.10
- Downloading elasticsearch-7.17.4-py2.py3-none-any.whl (385 kB)
- |████████████████████████████████| 385 kB 41.0 MB/s 
-Collecting blis&lt;=0.7.5
- Downloading blis-0.7.5-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (9.9 MB)
- |████████████████████████████████| 9.9 MB 38.7 MB/s 
-Requirement already satisfied: tqdm&gt;=4.27 in /usr/local/lib/python3.7/dist-packages (from medcat==1.3.0) (4.64.0)
-Collecting datasets~=2.2.2
- Downloading datasets-2.2.2-py3-none-any.whl (346 kB)
- |████████████████████████████████| 346 kB 43.2 MB/s 
-Collecting spacy&lt;3.1.4,&gt;=3.1.0
- Downloading spacy-3.1.3-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (5.9 MB)
- |████████████████████████████████| 5.9 MB 7.7 MB/s 
-Requirement already satisfied: pandas&lt;=1.4.2,&gt;=1.1.5 in /usr/local/lib/python3.7/dist-packages (from medcat==1.3.0) (1.3.5)
-Collecting py2neo==2021.2.3
- Downloading py2neo-2021.2.3-py2.py3-none-any.whl (177 kB)
- |████████████████████████████████| 177 kB 48.0 MB/s 
-Collecting sklearn~=0.0
- Downloading sklearn-0.0.tar.gz (1.1 kB)
-Requirement already satisfied: numpy&gt;=1.21.4 in /usr/local/lib/python3.7/dist-packages (from medcat==1.3.0) (1.21.6)
-Collecting aiofiles~=0.8.0
- Downloading aiofiles-0.8.0-py3-none-any.whl (13 kB)
-Requirement already satisfied: torch&gt;=1.0 in /usr/local/lib/python3.7/dist-packages (from medcat==1.3.0) (1.12.1+cu113)
-Requirement already satisfied: click&lt;=8.0.4 in /usr/local/lib/python3.7/dist-packages (from medcat==1.3.0) (7.1.2)
-Collecting transformers~=4.19.2
- Downloading transformers-4.19.4-py3-none-any.whl (4.2 MB)
- |████████████████████████████████| 4.2 MB 35.1 MB/s 
-Collecting monotonic
- Downloading monotonic-1.6-py2.py3-none-any.whl (8.2 kB)
-Requirement already satisfied: pygments&gt;=2.0.0 in /usr/local/lib/python3.7/dist-packages (from py2neo==2021.2.3-&gt;medcat==1.3.0) (2.6.1)
-Requirement already satisfied: packaging in /usr/local/lib/python3.7/dist-packages (from py2neo==2021.2.3-&gt;medcat==1.3.0) (21.3)
-Requirement already satisfied: urllib3 in /usr/local/lib/python3.7/dist-packages (from py2neo==2021.2.3-&gt;medcat==1.3.0) (1.24.3)
-Collecting interchange~=2021.0.4
- Downloading interchange-2021.0.4-py2.py3-none-any.whl (28 kB)
-Collecting pansi&gt;=2020.7.3
- Downloading pansi-2020.7.3-py2.py3-none-any.whl (10 kB)
-Requirement already satisfied: certifi in /usr/local/lib/python3.7/dist-packages (from py2neo==2021.2.3-&gt;medcat==1.3.0) (2022.6.15)
-Requirement already satisfied: six&gt;=1.15.0 in /usr/local/lib/python3.7/dist-packages (from py2neo==2021.2.3-&gt;medcat==1.3.0) (1.15.0)
-Requirement already satisfied: fsspec[http]&gt;=2021.05.0 in /usr/local/lib/python3.7/dist-packages (from datasets~=2.2.2-&gt;medcat==1.3.0) (2022.7.1)
-Collecting huggingface-hub&lt;1.0.0,&gt;=0.1.0
- Downloading huggingface_hub-0.9.0-py3-none-any.whl (120 kB)
- |████████████████████████████████| 120 kB 58.4 MB/s 
-Requirement already satisfied: requests&gt;=2.19.0 in /usr/local/lib/python3.7/dist-packages (from datasets~=2.2.2-&gt;medcat==1.3.0) (2.23.0)
-Requirement already satisfied: importlib-metadata in /usr/local/lib/python3.7/dist-packages (from datasets~=2.2.2-&gt;medcat==1.3.0) (4.12.0)
-Collecting responses&lt;0.19
- Downloading responses-0.18.0-py3-none-any.whl (38 kB)
-Requirement already satisfied: pyarrow&gt;=6.0.0 in /usr/local/lib/python3.7/dist-packages (from datasets~=2.2.2-&gt;medcat==1.3.0) (6.0.1)
-Requirement already satisfied: aiohttp in /usr/local/lib/python3.7/dist-packages (from datasets~=2.2.2-&gt;medcat==1.3.0) (3.8.1)
-Collecting dill~=0.3.4
- Downloading dill-0.3.4-py2.py3-none-any.whl (86 kB)
- |████████████████████████████████| 86 kB 6.2 MB/s 
-Requirement already satisfied: smart-open&gt;=1.8.1 in /usr/local/lib/python3.7/dist-packages (from gensim~=4.1.2-&gt;medcat==1.3.0) (5.2.1)
-Requirement already satisfied: pyyaml&gt;=5.1 in /usr/local/lib/python3.7/dist-packages (from huggingface-hub&lt;1.0.0,&gt;=0.1.0-&gt;datasets~=2.2.2-&gt;medcat==1.3.0) (6.0)
-Requirement already satisfied: filelock in /usr/local/lib/python3.7/dist-packages (from huggingface-hub&lt;1.0.0,&gt;=0.1.0-&gt;datasets~=2.2.2-&gt;medcat==1.3.0) (3.8.0)
-Requirement already satisfied: typing-extensions&gt;=3.7.4.3 in /usr/local/lib/python3.7/dist-packages (from huggingface-hub&lt;1.0.0,&gt;=0.1.0-&gt;datasets~=2.2.2-&gt;medcat==1.3.0) (4.1.1)
-Requirement already satisfied: pytz in /usr/local/lib/python3.7/dist-packages (from interchange~=2021.0.4-&gt;py2neo==2021.2.3-&gt;medcat==1.3.0) (2022.2.1)
-Collecting jupyterlab-widgets&lt;3,&gt;=1.0.0
- Downloading jupyterlab_widgets-1.1.1-py3-none-any.whl (245 kB)
- |████████████████████████████████| 245 kB 56.6 MB/s 
-Requirement already satisfied: nbformat&gt;=4.2.0 in /usr/local/lib/python3.7/dist-packages (from ipywidgets~=7.6.5-&gt;medcat==1.3.0) (5.4.0)
-Requirement already satisfied: ipython-genutils~=0.2.0 in /usr/local/lib/python3.7/dist-packages (from ipywidgets~=7.6.5-&gt;medcat==1.3.0) (0.2.0)
-Requirement already satisfied: ipython&gt;=4.0.0 in /usr/local/lib/python3.7/dist-packages (from ipywidgets~=7.6.5-&gt;medcat==1.3.0) (7.9.0)
-Requirement already satisfied: traitlets&gt;=4.3.1 in /usr/local/lib/python3.7/dist-packages (from ipywidgets~=7.6.5-&gt;medcat==1.3.0) (5.1.1)
-Collecting widgetsnbextension~=3.5.0
- Downloading widgetsnbextension-3.5.2-py2.py3-none-any.whl (1.6 MB)
- |████████████████████████████████| 1.6 MB 53.3 MB/s 
-Requirement already satisfied: ipykernel&gt;=4.5.1 in /usr/local/lib/python3.7/dist-packages (from ipywidgets~=7.6.5-&gt;medcat==1.3.0) (5.3.4)
-Requirement already satisfied: jupyter-client in /usr/local/lib/python3.7/dist-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (6.1.12)
-Requirement already satisfied: tornado&gt;=4.2 in /usr/local/lib/python3.7/dist-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (5.1.1)
-Requirement already satisfied: pexpect in /usr/local/lib/python3.7/dist-packages (from ipython&gt;=4.0.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (4.8.0)
-Requirement already satisfied: decorator in /usr/local/lib/python3.7/dist-packages (from ipython&gt;=4.0.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (4.4.2)
-Requirement already satisfied: backcall in /usr/local/lib/python3.7/dist-packages (from ipython&gt;=4.0.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (0.2.0)
-Requirement already satisfied: pickleshare in /usr/local/lib/python3.7/dist-packages (from ipython&gt;=4.0.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (0.7.5)
-Requirement already satisfied: setuptools&gt;=18.5 in /usr/local/lib/python3.7/dist-packages (from ipython&gt;=4.0.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (57.4.0)
-Requirement already satisfied: prompt-toolkit&lt;2.1.0,&gt;=2.0.0 in /usr/local/lib/python3.7/dist-packages (from ipython&gt;=4.0.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (2.0.10)
-Collecting jedi&gt;=0.10
- Downloading jedi-0.18.1-py2.py3-none-any.whl (1.6 MB)
- |████████████████████████████████| 1.6 MB 50.2 MB/s 
-Requirement already satisfied: parso&lt;0.9.0,&gt;=0.8.0 in /usr/local/lib/python3.7/dist-packages (from jedi&gt;=0.10-&gt;ipython&gt;=4.0.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (0.8.3)
-Requirement already satisfied: jupyter-core in /usr/local/lib/python3.7/dist-packages (from nbformat&gt;=4.2.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (4.11.1)
-Requirement already satisfied: fastjsonschema in /usr/local/lib/python3.7/dist-packages (from nbformat&gt;=4.2.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (2.16.1)
-Requirement already satisfied: jsonschema&gt;=2.6 in /usr/local/lib/python3.7/dist-packages (from nbformat&gt;=4.2.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (4.3.3)
-Requirement already satisfied: attrs&gt;=17.4.0 in /usr/local/lib/python3.7/dist-packages (from jsonschema&gt;=2.6-&gt;nbformat&gt;=4.2.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (22.1.0)
-Requirement already satisfied: pyrsistent!=0.17.0,!=0.17.1,!=0.17.2,&gt;=0.14.0 in /usr/local/lib/python3.7/dist-packages (from jsonschema&gt;=2.6-&gt;nbformat&gt;=4.2.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (0.18.1)
-Requirement already satisfied: importlib-resources&gt;=1.4.0 in /usr/local/lib/python3.7/dist-packages (from jsonschema&gt;=2.6-&gt;nbformat&gt;=4.2.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (5.9.0)
-Requirement already satisfied: zipp&gt;=3.1.0 in /usr/local/lib/python3.7/dist-packages (from importlib-resources&gt;=1.4.0-&gt;jsonschema&gt;=2.6-&gt;nbformat&gt;=4.2.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (3.8.1)
-Requirement already satisfied: pyparsing!=3.0.5,&gt;=2.0.2 in /usr/local/lib/python3.7/dist-packages (from packaging-&gt;py2neo==2021.2.3-&gt;medcat==1.3.0) (3.0.9)
-Requirement already satisfied: python-dateutil&gt;=2.7.3 in /usr/local/lib/python3.7/dist-packages (from pandas&lt;=1.4.2,&gt;=1.1.5-&gt;medcat==1.3.0) (2.8.2)
-Requirement already satisfied: wcwidth in /usr/local/lib/python3.7/dist-packages (from prompt-toolkit&lt;2.1.0,&gt;=2.0.0-&gt;ipython&gt;=4.0.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (0.2.5)
-Requirement already satisfied: chardet&lt;4,&gt;=3.0.2 in /usr/local/lib/python3.7/dist-packages (from requests&gt;=2.19.0-&gt;datasets~=2.2.2-&gt;medcat==1.3.0) (3.0.4)
-Requirement already satisfied: idna&lt;3,&gt;=2.5 in /usr/local/lib/python3.7/dist-packages (from requests&gt;=2.19.0-&gt;datasets~=2.2.2-&gt;medcat==1.3.0) (2.10)
-Collecting urllib3
- Downloading urllib3-1.25.11-py2.py3-none-any.whl (127 kB)
- |████████████████████████████████| 127 kB 65.5 MB/s 
-Requirement already satisfied: scikit-learn in /usr/local/lib/python3.7/dist-packages (from sklearn~=0.0-&gt;medcat==1.3.0) (1.0.2)
-Requirement already satisfied: pathy&gt;=0.3.5 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.4,&gt;=3.1.0-&gt;medcat==1.3.0) (0.6.2)
-Collecting typing-extensions&gt;=3.7.4.3
- Downloading typing_extensions-3.10.0.2-py3-none-any.whl (26 kB)
-Requirement already satisfied: cymem&lt;2.1.0,&gt;=2.0.2 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.4,&gt;=3.1.0-&gt;medcat==1.3.0) (2.0.6)
-Requirement already satisfied: preshed&lt;3.1.0,&gt;=3.0.2 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.4,&gt;=3.1.0-&gt;medcat==1.3.0) (3.0.7)
-Requirement already satisfied: wasabi&lt;1.1.0,&gt;=0.8.1 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.4,&gt;=3.1.0-&gt;medcat==1.3.0) (0.10.1)
-Requirement already satisfied: catalogue&lt;2.1.0,&gt;=2.0.6 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.4,&gt;=3.1.0-&gt;medcat==1.3.0) (2.0.8)
-Requirement already satisfied: jinja2 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.4,&gt;=3.1.0-&gt;medcat==1.3.0) (2.11.3)
-Requirement already satisfied: typer&lt;0.5.0,&gt;=0.3.0 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.4,&gt;=3.1.0-&gt;medcat==1.3.0) (0.4.2)
-Collecting pydantic!=1.8,!=1.8.1,&lt;1.9.0,&gt;=1.7.4
- Downloading pydantic-1.8.2-cp37-cp37m-manylinux2014_x86_64.whl (10.1 MB)
- |████████████████████████████████| 10.1 MB 47.7 MB/s 
-Requirement already satisfied: murmurhash&lt;1.1.0,&gt;=0.28.0 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.4,&gt;=3.1.0-&gt;medcat==1.3.0) (1.0.8)
-Requirement already satisfied: srsly&lt;3.0.0,&gt;=2.4.1 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.4,&gt;=3.1.0-&gt;medcat==1.3.0) (2.4.4)
-Requirement already satisfied: spacy-legacy&lt;3.1.0,&gt;=3.0.8 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.4,&gt;=3.1.0-&gt;medcat==1.3.0) (3.0.10)
-Collecting thinc&lt;8.1.0,&gt;=8.0.9
- Downloading thinc-8.0.17-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (660 kB)
- |████████████████████████████████| 660 kB 28.6 MB/s 
-Requirement already satisfied: regex!=2019.12.17 in /usr/local/lib/python3.7/dist-packages (from transformers~=4.19.2-&gt;medcat==1.3.0) (2022.6.2)
-Collecting tokenizers!=0.11.3,&lt;0.13,&gt;=0.11.1
- Downloading tokenizers-0.12.1-cp37-cp37m-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (6.6 MB)
- |████████████████████████████████| 6.6 MB 41.5 MB/s 
-Requirement already satisfied: notebook&gt;=4.4.1 in /usr/local/lib/python3.7/dist-packages (from widgetsnbextension~=3.5.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (5.3.1)
-Requirement already satisfied: Send2Trash in /usr/local/lib/python3.7/dist-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (1.8.0)
-Requirement already satisfied: nbconvert in /usr/local/lib/python3.7/dist-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (5.6.1)
-Requirement already satisfied: terminado&gt;=0.8.1 in /usr/local/lib/python3.7/dist-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (0.13.3)
-Requirement already satisfied: pyzmq&gt;=13 in /usr/local/lib/python3.7/dist-packages (from jupyter-client-&gt;ipykernel&gt;=4.5.1-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (23.2.1)
-Requirement already satisfied: ptyprocess in /usr/local/lib/python3.7/dist-packages (from terminado&gt;=0.8.1-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (0.7.0)
-Requirement already satisfied: asynctest==0.13.0 in /usr/local/lib/python3.7/dist-packages (from aiohttp-&gt;datasets~=2.2.2-&gt;medcat==1.3.0) (0.13.0)
-Requirement already satisfied: multidict&lt;7.0,&gt;=4.5 in /usr/local/lib/python3.7/dist-packages (from aiohttp-&gt;datasets~=2.2.2-&gt;medcat==1.3.0) (6.0.2)
-Requirement already satisfied: aiosignal&gt;=1.1.2 in /usr/local/lib/python3.7/dist-packages (from aiohttp-&gt;datasets~=2.2.2-&gt;medcat==1.3.0) (1.2.0)
-Requirement already satisfied: async-timeout&lt;5.0,&gt;=4.0.0a3 in /usr/local/lib/python3.7/dist-packages (from aiohttp-&gt;datasets~=2.2.2-&gt;medcat==1.3.0) (4.0.2)
-Requirement already satisfied: yarl&lt;2.0,&gt;=1.0 in /usr/local/lib/python3.7/dist-packages (from aiohttp-&gt;datasets~=2.2.2-&gt;medcat==1.3.0) (1.8.1)
-Requirement already satisfied: frozenlist&gt;=1.1.1 in /usr/local/lib/python3.7/dist-packages (from aiohttp-&gt;datasets~=2.2.2-&gt;medcat==1.3.0) (1.3.1)
-Requirement already satisfied: charset-normalizer&lt;3.0,&gt;=2.0 in /usr/local/lib/python3.7/dist-packages (from aiohttp-&gt;datasets~=2.2.2-&gt;medcat==1.3.0) (2.1.0)
-Requirement already satisfied: MarkupSafe&gt;=0.23 in /usr/local/lib/python3.7/dist-packages (from jinja2-&gt;spacy&lt;3.1.4,&gt;=3.1.0-&gt;medcat==1.3.0) (2.0.1)
-Collecting multiprocess
- Downloading multiprocess-0.70.12.2-py37-none-any.whl (112 kB)
- |████████████████████████████████| 112 kB 50.2 MB/s 
-Requirement already satisfied: entrypoints&gt;=0.2.2 in /usr/local/lib/python3.7/dist-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (0.4)
-Requirement already satisfied: pandocfilters&gt;=1.4.1 in /usr/local/lib/python3.7/dist-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (1.5.0)
-Requirement already satisfied: testpath in /usr/local/lib/python3.7/dist-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (0.6.0)
-Requirement already satisfied: defusedxml in /usr/local/lib/python3.7/dist-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (0.7.1)
-Requirement already satisfied: bleach in /usr/local/lib/python3.7/dist-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (5.0.1)
-Requirement already satisfied: mistune&lt;2,&gt;=0.8.1 in /usr/local/lib/python3.7/dist-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (0.8.4)
-Requirement already satisfied: webencodings in /usr/local/lib/python3.7/dist-packages (from bleach-&gt;nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (0.5.1)
-Requirement already satisfied: joblib&gt;=0.11 in /usr/local/lib/python3.7/dist-packages (from scikit-learn-&gt;sklearn~=0.0-&gt;medcat==1.3.0) (1.1.0)
-Requirement already satisfied: threadpoolctl&gt;=2.0.0 in /usr/local/lib/python3.7/dist-packages (from scikit-learn-&gt;sklearn~=0.0-&gt;medcat==1.3.0) (3.1.0)
-Building wheels for collected packages: sklearn
- Building wheel for sklearn (setup.py) ... done
- Created wheel for sklearn: filename=sklearn-0.0-py2.py3-none-any.whl size=1310 sha256=759dc746d88bfdc680294f1c35323a949793ea85e917f489e4cc0ca646b5bea2
- Stored in directory: /root/.cache/pip/wheels/46/ef/c3/157e41f5ee1372d1be90b09f74f82b10e391eaacca8f22d33e
-Successfully built sklearn
-Installing collected packages: typing-extensions, jedi, urllib3, pydantic, dill, blis, xxhash, widgetsnbextension, tokenizers, thinc, responses, pansi, multiprocess, monotonic, jupyterlab-widgets, interchange, huggingface-hub, transformers, spacy, sklearn, py2neo, psutil, jsonpickle, ipywidgets, gensim, elasticsearch, datasets, aiofiles, medcat
- Attempting uninstall: typing-extensions
- Found existing installation: typing-extensions 4.1.1
- Uninstalling typing-extensions-4.1.1:
- Successfully uninstalled typing-extensions-4.1.1
- Attempting uninstall: urllib3
- Found existing installation: urllib3 1.24.3
- Uninstalling urllib3-1.24.3:
- Successfully uninstalled urllib3-1.24.3
- Attempting uninstall: pydantic
- Found existing installation: pydantic 1.9.2
- Uninstalling pydantic-1.9.2:
- Successfully uninstalled pydantic-1.9.2
- Attempting uninstall: dill
- Found existing installation: dill 0.3.5.1
- Uninstalling dill-0.3.5.1:
- Successfully uninstalled dill-0.3.5.1
- Attempting uninstall: blis
- Found existing installation: blis 0.7.8
- Uninstalling blis-0.7.8:
- Successfully uninstalled blis-0.7.8
- Attempting uninstall: widgetsnbextension
- Found existing installation: widgetsnbextension 3.6.1
- Uninstalling widgetsnbextension-3.6.1:
- Successfully uninstalled widgetsnbextension-3.6.1
- Attempting uninstall: thinc
- Found existing installation: thinc 8.1.0
- Uninstalling thinc-8.1.0:
- Successfully uninstalled thinc-8.1.0
- Attempting uninstall: jupyterlab-widgets
- Found existing installation: jupyterlab-widgets 3.0.2
- Uninstalling jupyterlab-widgets-3.0.2:
- Successfully uninstalled jupyterlab-widgets-3.0.2
- Attempting uninstall: spacy
- Found existing installation: spacy 3.4.1
- Uninstalling spacy-3.4.1:
- Successfully uninstalled spacy-3.4.1
- Attempting uninstall: psutil
- Found existing installation: psutil 5.4.8
- Uninstalling psutil-5.4.8:
- Successfully uninstalled psutil-5.4.8
- Attempting uninstall: ipywidgets
- Found existing installation: ipywidgets 7.7.1
- Uninstalling ipywidgets-7.7.1:
- Successfully uninstalled ipywidgets-7.7.1
- Attempting uninstall: gensim
- Found existing installation: gensim 3.6.0
- Uninstalling gensim-3.6.0:
- Successfully uninstalled gensim-3.6.0
-<span class="ansi-red-fg">ERROR: pip&#39;s dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
-en-core-web-sm 3.4.0 requires spacy&lt;3.5.0,&gt;=3.4.0, but you have spacy 3.1.3 which is incompatible.</span>
-Successfully installed aiofiles-0.8.0 blis-0.7.5 datasets-2.2.2 dill-0.3.4 elasticsearch-7.17.4 gensim-4.1.2 huggingface-hub-0.9.0 interchange-2021.0.4 ipywidgets-7.6.6 jedi-0.18.1 jsonpickle-2.0.0 jupyterlab-widgets-1.1.1 medcat-1.3.0 monotonic-1.6 multiprocess-0.70.12.2 pansi-2020.7.3 psutil-5.9.1 py2neo-2021.2.3 pydantic-1.8.2 responses-0.18.0 sklearn-0.0 spacy-3.1.3 thinc-8.0.17 tokenizers-0.12.1 transformers-4.19.4 typing-extensions-3.10.0.2 urllib3-1.25.11 widgetsnbextension-3.5.2 xxhash-3.0.0
-</pre>
-</div>
-</div>
+<pre>Collecting medcat==1.8.0
+  Downloading medcat-1.8.0-py3-none-any.whl (182 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">182.4/182.4 kB</span> <span class="ansi-red-fg">3.7 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>a <span class="ansi-cyan-fg">0:00:01</span>
+Requirement already satisfied: scikit-learn&gt;=1.1.3 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (1.2.1)
+Requirement already satisfied: psutil&gt;=5.8.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (5.9.2)
+Requirement already satisfied: jsonpickle&gt;=2.0.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (2.0.0)
+Requirement already satisfied: scipy~=1.9.2 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (1.9.3)
+Requirement already satisfied: blis&lt;0.8.0,&gt;=0.7.8 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (0.7.9)
+Requirement already satisfied: numpy&gt;=1.22.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (1.23.3)
+Requirement already satisfied: dill&gt;=0.3.4 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (0.3.4)
+Requirement already satisfied: aiohttp==3.8.3 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (3.8.3)
+Requirement already satisfied: pandas&gt;=1.4.2 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (1.4.2)
+Requirement already satisfied: torch&gt;=1.13.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (1.13.1)
+Requirement already satisfied: gensim&gt;=4.3.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (4.3.0)
+Requirement already satisfied: ipywidgets&gt;=7.6.5 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (7.6.6)
+Requirement already satisfied: datasets&gt;=2.2.2 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (2.2.2)
+Requirement already satisfied: multiprocess~=0.70.12 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (0.70.12)
+Requirement already satisfied: py2neo~=2021.2.3 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (2021.2.3)
+Requirement already satisfied: tqdm&gt;=4.27 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (4.64.1)
+Requirement already satisfied: pydantic&lt;2.0,&gt;=1.10.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (1.10.5)
+Requirement already satisfied: click&gt;=8.0.4 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (8.0.4)
+Requirement already satisfied: transformers&lt;4.22.0,&gt;=4.19.2 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (4.19.4)
+Requirement already satisfied: spacy&gt;=3.1.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (3.5.0)
+Requirement already satisfied: xxhash&gt;=3.0.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (3.0.0)
+Requirement already satisfied: aiofiles&gt;=0.8.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from medcat==1.8.0) (0.8.0)
+Requirement already satisfied: frozenlist&gt;=1.1.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from aiohttp==3.8.3-&gt;medcat==1.8.0) (1.3.1)
+Requirement already satisfied: charset-normalizer&lt;3.0,&gt;=2.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from aiohttp==3.8.3-&gt;medcat==1.8.0) (2.1.1)
+Requirement already satisfied: aiosignal&gt;=1.1.2 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from aiohttp==3.8.3-&gt;medcat==1.8.0) (1.2.0)
+Requirement already satisfied: attrs&gt;=17.3.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from aiohttp==3.8.3-&gt;medcat==1.8.0) (22.1.0)
+Requirement already satisfied: multidict&lt;7.0,&gt;=4.5 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from aiohttp==3.8.3-&gt;medcat==1.8.0) (6.0.2)
+Requirement already satisfied: async-timeout&lt;5.0,&gt;=4.0.0a3 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from aiohttp==3.8.3-&gt;medcat==1.8.0) (4.0.2)
+Requirement already satisfied: yarl&lt;2.0,&gt;=1.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from aiohttp==3.8.3-&gt;medcat==1.8.0) (1.8.1)
+Requirement already satisfied: pyarrow&gt;=6.0.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from datasets&gt;=2.2.2-&gt;medcat==1.8.0) (9.0.0)
+Requirement already satisfied: packaging in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from datasets&gt;=2.2.2-&gt;medcat==1.8.0) (21.3)
+Requirement already satisfied: huggingface-hub&lt;1.0.0,&gt;=0.1.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from datasets&gt;=2.2.2-&gt;medcat==1.8.0) (0.9.1)
+Requirement already satisfied: fsspec[http]&gt;=2021.05.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from datasets&gt;=2.2.2-&gt;medcat==1.8.0) (2022.8.2)
+Requirement already satisfied: responses&lt;0.19 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from datasets&gt;=2.2.2-&gt;medcat==1.8.0) (0.18.0)
+Requirement already satisfied: requests&gt;=2.19.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from datasets&gt;=2.2.2-&gt;medcat==1.8.0) (2.28.1)
+Requirement already satisfied: smart_open&gt;=1.8.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from gensim&gt;=4.3.0-&gt;medcat==1.8.0) (5.2.1)
+Requirement already satisfied: FuzzyTM&gt;=0.4.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from gensim&gt;=4.3.0-&gt;medcat==1.8.0) (2.0.5)
+Requirement already satisfied: jupyterlab-widgets&lt;3,&gt;=1.0.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (1.1.1)
+Requirement already satisfied: traitlets&gt;=4.3.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (5.4.0)
+Requirement already satisfied: ipython-genutils~=0.2.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (0.2.0)
+Requirement already satisfied: widgetsnbextension~=3.5.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (3.5.2)
+Requirement already satisfied: ipykernel&gt;=4.5.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (6.15.3)
+Requirement already satisfied: ipython&gt;=4.0.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (8.5.0)
+Requirement already satisfied: nbformat&gt;=4.2.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (5.5.0)
+Requirement already satisfied: pytz&gt;=2020.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from pandas&gt;=1.4.2-&gt;medcat==1.8.0) (2022.2.1)
+Requirement already satisfied: python-dateutil&gt;=2.8.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from pandas&gt;=1.4.2-&gt;medcat==1.8.0) (2.8.2)
+Requirement already satisfied: interchange~=2021.0.4 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from py2neo~=2021.2.3-&gt;medcat==1.8.0) (2021.0.4)
+Requirement already satisfied: pansi&gt;=2020.7.3 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from py2neo~=2021.2.3-&gt;medcat==1.8.0) (2020.7.3)
+Requirement already satisfied: urllib3 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from py2neo~=2021.2.3-&gt;medcat==1.8.0) (1.26.12)
+Requirement already satisfied: pygments&gt;=2.0.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from py2neo~=2021.2.3-&gt;medcat==1.8.0) (2.13.0)
+Requirement already satisfied: six&gt;=1.15.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from py2neo~=2021.2.3-&gt;medcat==1.8.0) (1.16.0)
+Requirement already satisfied: certifi in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from py2neo~=2021.2.3-&gt;medcat==1.8.0) (2022.9.14)
+Requirement already satisfied: monotonic in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from py2neo~=2021.2.3-&gt;medcat==1.8.0) (1.6)
+Requirement already satisfied: typing-extensions&gt;=4.2.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from pydantic&lt;2.0,&gt;=1.10.0-&gt;medcat==1.8.0) (4.3.0)
+Requirement already satisfied: joblib&gt;=1.1.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from scikit-learn&gt;=1.1.3-&gt;medcat==1.8.0) (1.2.0)
+Requirement already satisfied: threadpoolctl&gt;=2.0.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from scikit-learn&gt;=1.1.3-&gt;medcat==1.8.0) (3.1.0)
+Requirement already satisfied: preshed&lt;3.1.0,&gt;=3.0.2 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.8.0) (3.0.7)
+Requirement already satisfied: wasabi&lt;1.2.0,&gt;=0.9.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.8.0) (0.10.1)
+Requirement already satisfied: pathy&gt;=0.10.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.8.0) (0.10.1)
+Requirement already satisfied: cymem&lt;2.1.0,&gt;=2.0.2 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.8.0) (2.0.6)
+Requirement already satisfied: thinc&lt;8.2.0,&gt;=8.1.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.8.0) (8.1.8)
+Requirement already satisfied: spacy-legacy&lt;3.1.0,&gt;=3.0.11 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.8.0) (3.0.12)
+Requirement already satisfied: srsly&lt;3.0.0,&gt;=2.4.3 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.8.0) (2.4.4)
+Requirement already satisfied: setuptools in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.8.0) (58.0.4)
+Requirement already satisfied: langcodes&lt;4.0.0,&gt;=3.2.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.8.0) (3.3.0)
+Requirement already satisfied: typer&lt;0.8.0,&gt;=0.3.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.8.0) (0.4.2)
+Requirement already satisfied: catalogue&lt;2.1.0,&gt;=2.0.6 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.8.0) (2.0.8)
+Requirement already satisfied: murmurhash&lt;1.1.0,&gt;=0.28.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.8.0) (1.0.8)
+Requirement already satisfied: jinja2 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.8.0) (3.0.0)
+Requirement already satisfied: spacy-loggers&lt;2.0.0,&gt;=1.0.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from spacy&gt;=3.1.0-&gt;medcat==1.8.0) (1.0.4)
+Requirement already satisfied: regex!=2019.12.17 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from transformers&lt;4.22.0,&gt;=4.19.2-&gt;medcat==1.8.0) (2022.9.13)
+Requirement already satisfied: tokenizers!=0.11.3,&lt;0.13,&gt;=0.11.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from transformers&lt;4.22.0,&gt;=4.19.2-&gt;medcat==1.8.0) (0.12.1)
+Requirement already satisfied: pyyaml&gt;=5.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from transformers&lt;4.22.0,&gt;=4.19.2-&gt;medcat==1.8.0) (6.0)
+Requirement already satisfied: filelock in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from transformers&lt;4.22.0,&gt;=4.19.2-&gt;medcat==1.8.0) (3.8.0)
+Requirement already satisfied: pyfume in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from FuzzyTM&gt;=0.4.0-&gt;gensim&gt;=4.3.0-&gt;medcat==1.8.0) (0.2.25)
+Requirement already satisfied: tornado&gt;=6.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (6.2)
+Requirement already satisfied: nest-asyncio in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (1.5.5)
+Requirement already satisfied: jupyter-client&gt;=6.1.12 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (7.3.5)
+Requirement already satisfied: pyzmq&gt;=17 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (23.2.1)
+Requirement already satisfied: matplotlib-inline&gt;=0.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (0.1.6)
+Requirement already satisfied: debugpy&gt;=1.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (1.6.3)
+Requirement already satisfied: appnope in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (0.1.3)
+Requirement already satisfied: decorator in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (5.1.1)
+Requirement already satisfied: prompt-toolkit&lt;3.1.0,&gt;3.0.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (3.0.31)
+Requirement already satisfied: backcall in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (0.2.0)
+Requirement already satisfied: stack-data in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (0.5.0)
+Requirement already satisfied: pickleshare in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (0.7.5)
+Requirement already satisfied: pexpect&gt;4.3 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (4.8.0)
+Requirement already satisfied: jedi&gt;=0.16 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (0.18.1)
+Requirement already satisfied: jsonschema&gt;=2.6 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from nbformat&gt;=4.2.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (4.16.0)
+Requirement already satisfied: fastjsonschema in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from nbformat&gt;=4.2.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (2.16.1)
+Requirement already satisfied: jupyter_core in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from nbformat&gt;=4.2.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (4.11.1)
+Requirement already satisfied: pyparsing!=3.0.5,&gt;=2.0.2 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from packaging-&gt;datasets&gt;=2.2.2-&gt;medcat==1.8.0) (3.0.9)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from requests&gt;=2.19.0-&gt;datasets&gt;=2.2.2-&gt;medcat==1.8.0) (3.4)
+Requirement already satisfied: confection&lt;1.0.0,&gt;=0.0.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from thinc&lt;8.2.0,&gt;=8.1.0-&gt;spacy&gt;=3.1.0-&gt;medcat==1.8.0) (0.0.4)
+Requirement already satisfied: notebook&gt;=4.4.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (6.4.12)
+Requirement already satisfied: MarkupSafe&gt;=2.0.0rc2 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from jinja2-&gt;spacy&gt;=3.1.0-&gt;medcat==1.8.0) (2.1.1)
+Requirement already satisfied: parso&lt;0.9.0,&gt;=0.8.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from jedi&gt;=0.16-&gt;ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (0.8.3)
+Requirement already satisfied: pyrsistent!=0.17.0,!=0.17.1,!=0.17.2,&gt;=0.14.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from jsonschema&gt;=2.6-&gt;nbformat&gt;=4.2.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (0.18.1)
+Requirement already satisfied: entrypoints in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from jupyter-client&gt;=6.1.12-&gt;ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (0.4)
+Requirement already satisfied: terminado&gt;=0.8.3 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (0.15.0)
+Requirement already satisfied: nbconvert&gt;=5 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (5.6.1)
+Requirement already satisfied: Send2Trash&gt;=1.8.0 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (1.8.0)
+Requirement already satisfied: prometheus-client in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (0.14.1)
+Requirement already satisfied: argon2-cffi in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (21.3.0)
+Requirement already satisfied: ptyprocess&gt;=0.5 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from pexpect&gt;4.3-&gt;ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (0.7.0)
+Requirement already satisfied: wcwidth in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from prompt-toolkit&lt;3.1.0,&gt;3.0.1-&gt;ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (0.2.5)
+Requirement already satisfied: fst-pso in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from pyfume-&gt;FuzzyTM&gt;=0.4.0-&gt;gensim&gt;=4.3.0-&gt;medcat==1.8.0) (1.8.1)
+Requirement already satisfied: simpful in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from pyfume-&gt;FuzzyTM&gt;=0.4.0-&gt;gensim&gt;=4.3.0-&gt;medcat==1.8.0) (2.10.0)
+Requirement already satisfied: executing in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (1.0.0)
+Requirement already satisfied: pure-eval in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (0.2.2)
+Requirement already satisfied: asttokens in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (2.0.8)
+Requirement already satisfied: bleach in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (5.0.1)
+Requirement already satisfied: mistune&lt;2,&gt;=0.8.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (0.8.4)
+Requirement already satisfied: defusedxml in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (0.7.1)
+Requirement already satisfied: testpath in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (0.6.0)
+Requirement already satisfied: pandocfilters&gt;=1.4.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (1.5.0)
+Requirement already satisfied: argon2-cffi-bindings in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from argon2-cffi-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (21.2.0)
+Requirement already satisfied: miniful in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from fst-pso-&gt;pyfume-&gt;FuzzyTM&gt;=0.4.0-&gt;gensim&gt;=4.3.0-&gt;medcat==1.8.0) (0.0.6)
+Requirement already satisfied: cffi&gt;=1.0.1 in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from argon2-cffi-bindings-&gt;argon2-cffi-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (1.15.1)
+Requirement already satisfied: webencodings in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from bleach-&gt;nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (0.5.1)
+Requirement already satisfied: pycparser in /Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages (from cffi&gt;=1.0.1-&gt;argon2-cffi-bindings-&gt;argon2-cffi-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat==1.8.0) (2.21)
+Installing collected packages: medcat
+  Attempting uninstall: medcat
+    Found existing installation: medcat 1.7.1
+    Uninstalling medcat-1.7.1:
+      Successfully uninstalled medcat-1.7.1
+Successfully installed medcat-1.8.0
 
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-
-
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-Collecting en-core-web-md==3.1.0
- Downloading https://github.com/explosion/spacy-models/releases/download/en_core_web_md-3.1.0/en_core_web_md-3.1.0-py3-none-any.whl (45.4 MB)
- |████████████████████████████████| 45.4 MB 1.4 MB/s 
-Requirement already satisfied: spacy&lt;3.2.0,&gt;=3.1.0 in /usr/local/lib/python3.7/dist-packages (from en-core-web-md==3.1.0) (3.1.3)
-Requirement already satisfied: blis&lt;0.8.0,&gt;=0.4.0 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (0.7.5)
-Requirement already satisfied: pydantic!=1.8,!=1.8.1,&lt;1.9.0,&gt;=1.7.4 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (1.8.2)
-Requirement already satisfied: jinja2 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (2.11.3)
-Requirement already satisfied: wasabi&lt;1.1.0,&gt;=0.8.1 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (0.10.1)
-Requirement already satisfied: pathy&gt;=0.3.5 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (0.6.2)
-Requirement already satisfied: thinc&lt;8.1.0,&gt;=8.0.9 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (8.0.17)
-Requirement already satisfied: typing-extensions&lt;4.0.0.0,&gt;=3.7.4 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (3.10.0.2)
-Requirement already satisfied: setuptools in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (57.4.0)
-Requirement already satisfied: preshed&lt;3.1.0,&gt;=3.0.2 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (3.0.7)
-Requirement already satisfied: numpy&gt;=1.15.0 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (1.21.6)
-Requirement already satisfied: typer&lt;0.5.0,&gt;=0.3.0 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (0.4.2)
-Requirement already satisfied: murmurhash&lt;1.1.0,&gt;=0.28.0 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (1.0.8)
-Requirement already satisfied: requests&lt;3.0.0,&gt;=2.13.0 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (2.23.0)
-Requirement already satisfied: cymem&lt;2.1.0,&gt;=2.0.2 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (2.0.6)
-Requirement already satisfied: packaging&gt;=20.0 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (21.3)
-Requirement already satisfied: tqdm&lt;5.0.0,&gt;=4.38.0 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (4.64.0)
-Requirement already satisfied: spacy-legacy&lt;3.1.0,&gt;=3.0.8 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (3.0.10)
-Requirement already satisfied: catalogue&lt;2.1.0,&gt;=2.0.6 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (2.0.8)
-Requirement already satisfied: srsly&lt;3.0.0,&gt;=2.4.1 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (2.4.4)
-Requirement already satisfied: zipp&gt;=0.5 in /usr/local/lib/python3.7/dist-packages (from catalogue&lt;2.1.0,&gt;=2.0.6-&gt;spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (3.8.1)
-Requirement already satisfied: pyparsing!=3.0.5,&gt;=2.0.2 in /usr/local/lib/python3.7/dist-packages (from packaging&gt;=20.0-&gt;spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (3.0.9)
-Requirement already satisfied: smart-open&lt;6.0.0,&gt;=5.2.1 in /usr/local/lib/python3.7/dist-packages (from pathy&gt;=0.3.5-&gt;spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (5.2.1)
-Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in /usr/local/lib/python3.7/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (1.25.11)
-Requirement already satisfied: idna&lt;3,&gt;=2.5 in /usr/local/lib/python3.7/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (2.10)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.7/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (2022.6.15)
-Requirement already satisfied: chardet&lt;4,&gt;=3.0.2 in /usr/local/lib/python3.7/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (3.0.4)
-Requirement already satisfied: click&lt;9.0.0,&gt;=7.1.1 in /usr/local/lib/python3.7/dist-packages (from typer&lt;0.5.0,&gt;=0.3.0-&gt;spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (7.1.2)
-Requirement already satisfied: MarkupSafe&gt;=0.23 in /usr/local/lib/python3.7/dist-packages (from jinja2-&gt;spacy&lt;3.2.0,&gt;=3.1.0-&gt;en-core-web-md==3.1.0) (2.0.1)
-Installing collected packages: en-core-web-md
-Successfully installed en-core-web-md-3.1.0
-<span class="ansi-green-fg">✔ Download and installation successful</span>
-You can now load the package via spacy.load(&#39;en_core_web_md&#39;)
-WARNING: Runtime will restart automatically and please run other cells thereafter.
+<span class="ansi-bold">[</span><span class="ansi-blue-fg">notice</span><span class="ansi-bold">]</span> A new release of pip available: <span class="ansi-red-fg">22.2.2</span> -&gt; <span class="ansi-green-fg">23.1.2</span>
+<span class="ansi-bold">[</span><span class="ansi-blue-fg">notice</span><span class="ansi-bold">]</span> To update, run: <span class="ansi-green-fg">pip install --upgrade pip</span>
 </pre>
 </div>
 </div>
@@ -13422,338 +13266,13 @@ WARNING: Runtime will restart automatically and please run other cells thereafte
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="kn">from</span> <span class="nn">medcat.vocab</span> <span class="kn">import</span> <span class="n">Vocab</span>
-<span class="kn">from</span> <span class="nn">medcat.cdb</span> <span class="kn">import</span> <span class="n">CDB</span>
-<span class="kn">from</span> <span class="nn">medcat.config</span> <span class="kn">import</span> <span class="n">Config</span>
-<span class="kn">from</span> <span class="nn">medcat.cdb_maker</span> <span class="kn">import</span> <span class="n">CDBMaker</span>
-<span class="kn">from</span> <span class="nn">medcat.cat</span> <span class="kn">import</span> <span class="n">CAT</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">DATA_DIR</span> <span class="o">=</span> <span class="s2">&quot;./data_p3.1/&quot;</span>
-<span class="o">!</span> <span class="nv">DATA_DIR</span><span class="o">=</span><span class="s2">&quot;./data_p3.1/&quot;</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Load files if in google colab, otherwise skip this step</span>
-<span class="o">!</span>wget -N https://raw.githubusercontent.com/CogStack/MedCATtutorials/main/notebooks/introductory/data/cdb_simple.csv -P <span class="nv">$DATA_DIR</span>
-<span class="o">!</span>wget -N https://raw.githubusercontent.com/CogStack/MedCATtutorials/main/notebooks/introductory/data/cdb_advanced.csv -P <span class="nv">$DATA_DIR</span>
-<span class="o">!</span>wget -N https://raw.githubusercontent.com/CogStack/MedCATtutorials/main/notebooks/introductory/data/vocab_data.txt -P <span class="nv">$DATA_DIR</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>--2022-08-25 12:49:33-- https://raw.githubusercontent.com/CogStack/MedCATtutorials/main/notebooks/introductory/data/cdb_simple.csv
-Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.109.133, 185.199.111.133, 185.199.110.133, ...
-Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.109.133|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 50 [text/plain]
-Saving to: ‘./data/cdb_simple.csv’
-
-cdb_simple.csv 100%[===================&gt;] 50 --.-KB/s in 0s 
-
-2022-08-25 12:49:33 (2.71 MB/s) - ‘./data/cdb_simple.csv’ saved [50/50]
-
---2022-08-25 12:49:33-- https://raw.githubusercontent.com/CogStack/MedCATtutorials/main/notebooks/introductory/data/cdb_advanced.csv
-Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.108.133, 185.199.109.133, 185.199.110.133, ...
-Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 150 [text/plain]
-Saving to: ‘./data/cdb_advanced.csv’
-
-cdb_advanced.csv 100%[===================&gt;] 150 --.-KB/s in 0s 
-
-2022-08-25 12:49:33 (9.67 MB/s) - ‘./data/cdb_advanced.csv’ saved [150/150]
-
---2022-08-25 12:49:34-- https://raw.githubusercontent.com/CogStack/MedCATtutorials/main/notebooks/introductory/data/vocab_data.txt
-Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.108.133, 185.199.109.133, 185.199.110.133, ...
-Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 72 [text/plain]
-Saving to: ‘./data/vocab_data.txt’
-
-vocab_data.txt 100%[===================&gt;] 72 --.-KB/s in 0s 
-
-2022-08-25 12:49:34 (4.19 MB/s) - ‘./data/vocab_data.txt’ saved [72/72]
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="MedCAT-Components">MedCAT Components<a class="anchor-link" href="#MedCAT-Components">&#182;</a></h1><p>The medcat model requires 3 model components to run.</p>
-<ol>
-<li>Vocab</li>
-<li>CDB</li>
-<li>Config (cdb configuration)</li>
-</ol>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Building-a-Vocabulary">Building a Vocabulary<a class="anchor-link" href="#Building-a-Vocabulary">&#182;</a></h2><p>The first of the two required models when running MedCAT is a Vocabulary model (Vocab). The model is used for two things: (1) Spell checking; and (2) Word Embedding.</p>
-<p>The Vocab is very simple and you can easily build it from a file that is structured as below:</p>
-
-<pre><code>&lt;token&gt;\t&lt;word_count&gt;\t&lt;vector_embedding_separated_by_spaces&gt;</code></pre>
-<p><code>token</code> - Usually a word or subword if you are using Byte Pair Encoding or something similar.</p>
-<p><code>word_count</code> - The count for this word in your dataset or in any large dataset (wikipedia also works nicely).</p>
-<p><code>vector_embedding_separated_by_spaces</code> - precalculated vector embedding, can be from Word2Vec or BERT.</p>
-<hr>
-<p>An example with 3-dimension embedding would be:</p>
-
-<pre><code>house   34444    0.3232 0.123213 1.231231
-dog 14444   0.76762 0.76767 1.45454
-.
-.
-.</code></pre>
-<p>The file is basically a TSV, but should not have any heading.</p>
-<hr>
-<p><strong>NOTE</strong>: If spelling is important for your use-case, take care that there are no misspelt words in the Vocab.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Let&#39;s have a look at an example, I&#39;ve created a small vocabulary with only 2 words (the ones from above)</span>
-<span class="c1"># Let&#39;s try to create a vocabulary from this two words.</span>
-
-<span class="n">vocab</span> <span class="o">=</span> <span class="n">Vocab</span><span class="p">()</span>
-<span class="n">vocab</span><span class="o">.</span><span class="n">add_words</span><span class="p">(</span><span class="n">DATA_DIR</span> <span class="o">+</span><span class="s1">&#39;vocab_data.txt&#39;</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>And that is everything, with this we have built our vocab and no futher training is necessary.</strong></p>
-<hr>
-<p>A couple of useful functions of the vocab are presented below</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># To see the words in the vocab</span>
-<span class="n">vocab</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[5]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>dict_keys([&#39;house&#39;, &#39;dog&#39;])</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">vocab</span><span class="o">.</span><span class="n">vocab</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[6]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{&#39;house&#39;: {&#39;vec&#39;: array([0.3232 , 0.123213, 1.231231]),
- &#39;cnt&#39;: 34444,
- &#39;ind&#39;: 0},
- &#39;dog&#39;: {&#39;vec&#39;: array([0.76762, 0.76767, 1.45454]), &#39;cnt&#39;: 14444, &#39;ind&#39;: 1}}</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># If you want to add words manually (one by one) use:</span>
-<span class="n">vocab</span><span class="o">.</span><span class="n">add_word</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="n">cnt</span><span class="o">=</span><span class="mi">31</span><span class="p">,</span> <span class="n">vec</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.42</span><span class="p">,</span> <span class="mf">1.44</span><span class="p">,</span> <span class="mf">1.55</span><span class="p">]),</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">vocab</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[7]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>dict_keys([&#39;house&#39;, &#39;dog&#39;, &#39;test&#39;])</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># To get a vector of word use:</span>
-<span class="n">vocab</span><span class="o">.</span><span class="n">vec</span><span class="p">(</span><span class="s2">&quot;house&quot;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[8]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([0.3232 , 0.123213, 1.231231])</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 <div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Or to get the count</span>
-<span class="n">vocab</span><span class="p">[</span><span class="s1">&#39;house&#39;</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">medcat.utils</span> <span class="kn">import</span> <span class="n">memory_optimiser</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[9]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>34444</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -13763,8 +13282,23 @@ dog 14444   0.76762 0.76767 1.45454
 <div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># To check if a word is in the vocab:</span>
-<span class="s2">&quot;house&quot;</span> <span class="ow">in</span> <span class="n">vocab</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">DATA_DIR</span> <span class="o">=</span> <span class="s2">&quot;./data_p3.3/&quot;</span>
+<span class="o">!</span> <span class="nv">DATA_DIR</span><span class="o">=</span><span class="s2">&quot;./data_p3.3/&quot;</span>
+<span class="n">model_pack_path</span> <span class="o">=</span> <span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s2">&quot;medmen_wstatus_2021_oct.zip&quot;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Download the models and required data</span>
+<span class="o">!</span>wget -N https://medcat.rosalind.kcl.ac.uk/media/medmen_wstatus_2021_oct.zip -P <span class="nv">$DATA_DIR</span>
 </pre></div>
 
     </div>
@@ -13777,38 +13311,20 @@ dog 14444   0.76762 0.76767 1.45454
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[10]:</div>
+    <div class="prompt"></div>
 
 
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>--2023-07-07 10:39:55--  https://medcat.rosalind.kcl.ac.uk/media/medmen_wstatus_2021_oct.zip
+Resolving medcat.rosalind.kcl.ac.uk (medcat.rosalind.kcl.ac.uk)... 193.61.202.225
+Connecting to medcat.rosalind.kcl.ac.uk (medcat.rosalind.kcl.ac.uk)|193.61.202.225|:443... connected.
+HTTP request sent, awaiting response... 304 Not Modified
+File ‘./data_p3.3/medmen_wstatus_2021_oct.zip’ not modified on server. Omitting download.
 
-
-<div class="output_text output_subarea output_execute_result">
-<pre>True</pre>
-</div>
-
-</div>
-
+</pre>
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Before-we-save-the-vocab-model,-we-need-to-create-the-unigram-table-for-negative-sampling">Before we save the vocab model, we need to create the unigram table for negative sampling<a class="anchor-link" href="#Before-we-save-the-vocab-model,-we-need-to-create-the-unigram-table-for-negative-sampling">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># This is necessary after each change of the vocabulary (when we add new words)</span>
-<span class="n">vocab</span><span class="o">.</span><span class="n">make_unigram_table</span><span class="p">()</span>
-</pre></div>
-
-    </div>
 </div>
 </div>
 
@@ -13816,7 +13332,7 @@ dog 14444   0.76762 0.76767 1.45454
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Save-the-Vocab-model">Save the Vocab model<a class="anchor-link" href="#Save-the-Vocab-model">&#182;</a></h3>
+<h2 id="Loading-the-MedCAT-modelpack">Loading the MedCAT modelpack<a class="anchor-link" href="#Loading-the-MedCAT-modelpack">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -13825,10 +13341,30 @@ dog 14444   0.76762 0.76767 1.45454
 <div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">vocab</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s2">&quot;vocab.dat&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Load model pack and Create CAT - the main class from medcat used for concept annotation</span>
+<span class="n">cat</span> <span class="o">=</span> <span class="n">CAT</span><span class="o">.</span><span class="n">load_model_pack</span><span class="p">(</span><span class="n">model_pack_path</span><span class="p">)</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/Users/martratas/Documents/CogStack/.MedCAT.nosync/MedCATtutorials/tvenv/lib/python3.9/site-packages/spacy/util.py:877: UserWarning: [W095] Model &#39;en_core_web_md&#39; (3.1.0) was trained with spaCy v3.1 and may not be 100% compatible with the current version (3.5.0). If you see errors or degraded performance, download a newer compatible model or retrain your custom model with the current spaCy version. For more details and available updates, run: python -m spacy validate
+  warnings.warn(warn_msg)
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -13836,7 +13372,16 @@ dog 14444   0.76762 0.76767 1.45454
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Load-the-Vocab-model">Load the Vocab model<a class="anchor-link" href="#Load-the-Vocab-model">&#182;</a></h3>
+<h2 id="Ability-to-save-the-CDB-in-JSON-format-to-save-on-load-times">Ability to save the CDB in JSON format to save on load times<a class="anchor-link" href="#Ability-to-save-the-CDB-in-JSON-format-to-save-on-load-times">&#182;</a></h2><p>MedCAT model save files can take a long time to load off disk.
+Because of this, we've added a method that allows part of the model's CDB
+to be saved in JSON format to allow for faster reading off disk.</p>
+<p>However, it must be noted, that this load time improvement will come at a cost
+in terms of file size on disk. In the limited testing, a model would become
+around 35% faster to load off disk while gaining size of around 35% on disk.
+The disk size increase happens for the unzipped model pack. The compressed
+.zip files would be expected to be roughly the same size in either case.</p>
+<p>PS! Memory-optimised models cannot be meaningfully loaded using medcat versions before 1.8.0.</p>
+
 </div>
 </div>
 </div>
@@ -13845,10 +13390,32 @@ dog 14444   0.76762 0.76767 1.45454
 <div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">vocab</span> <span class="o">=</span> <span class="n">Vocab</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s2">&quot;vocab.dat&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">save_dir</span> <span class="o">=</span> <span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="s1">&#39;cdb_json_model&#39;</span>
+<span class="c1"># to save CDB as json</span>
+<span class="n">cat</span><span class="o">.</span><span class="n">create_model_pack</span><span class="p">(</span><span class="n">save_dir</span><span class="p">,</span> <span class="n">cdb_format</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>  <span class="c1"># the default format is dill</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[13]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;medcat_model_pack_3754129a0c28ebbf&#39;</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -13856,30 +13423,16 @@ dog 14444   0.76762 0.76767 1.45454
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Building-the-Concept-Database-(CDB)">Building the Concept Database (CDB)<a class="anchor-link" href="#Building-the-Concept-Database-(CDB)">&#182;</a></h2><p>The second model we are going to need when using MedCAT is the Concept Database (CDB). This database holds a list of all concepts that we would like to detect and link to. For a lot of medical use-cases we would use giant databases like the UMLS or SNOMED CT. However, MedCAT can be used with any database no matter how big/small it is.</p>
-<p>To prepare the CDB we start off with a CSV with the following structure:</p>
-
-<pre><code>cui,name
-1,kidney failure
-7,CoVid 2
-7,coronavirus</code></pre>
-<p>This is the most basic version of the CSV file, it has only:</p>
-<p><code>cui</code> - The concept unique identifier, this is simply an <code>ID</code> in your database.</p>
-<p><code>name</code> - String/Name of that concept. It is important to write all possible names and abbreviations for a concept of interest.</p>
-<p>If you have a concept that can be recognised through multiple different names (like the one above with cui=7), you can simply add multiple rows with the same concept ID and MedCAT will merge that during the build phase.</p>
-<h2 id="The-Full-CSV-Specification">The Full CSV Specification<a class="anchor-link" href="#The-Full-CSV-Specification">&#182;</a></h2>
-<pre><code>cui,name,ontologies,name_status,type_ids,description
-1,Kidney Failure,SNOMED,P,T047,kidneys stop working
-.
-.
-.</code></pre>
-<p>The rest of the fields are optional, each can be included or left out in your CSV:</p>
-<p><code>ontologies</code> - Source ontology, e.g. HPO, SNOMED, HPC,...</p>
-<p><code>name_status</code> - Term type e.g. P - Primary Name. Primary names are important and I would always recommend to add this fields when creating your CDB. This will help distinguish between synonyms.</p>
-<p><code>type_ids</code> - Type Ids are the broad category in which a concept may fall under. This is used to rapidly filter for concepts which fall under a specific category. In UMLS this could be the Semantic type identifier - e.g. T047 (taken from UMLS). A list of all semantic types can be found <a href="https://metamap.nlm.nih.gov/Docs/SemanticTypes_2018AB.txt">here</a>.
-In SNOMED one could use the Semantic tags. E.g (Disease). A list of all Snomed semantic tags can be found <a href="https://confluence.ihtsdotools.org/display/DOCGLOSS/semantic+tag">here</a>.</p>
-<p><code>description</code> - Description of this concept</p>
-<p><strong><em>Note</em></strong>: If one concept has multiple names, you can also separate the different names by a "|" - pipe - symbol</p>
+<h2 id="Ability-to-memory-optimise-the-medcat-model">Ability to memory-optimise the medcat model<a class="anchor-link" href="#Ability-to-memory-optimise-the-medcat-model">&#182;</a></h2><p>Many MedCAT models take up a lot of memory when loaded.
+That's why there's now (since 1.8.0) a method to optimise
+the model for lower memory usage. However, as expected,
+this comes at the expense of <em>some</em> performance (in terms
+of execution time, not model performance).</p>
+<p>The user can specify which parts of the memroy optimisation
+they wish to use. However, the limited testing suggests
+that the default (optimising on CUIs and snames) works best
+and doing so on names as well will actually have the opposite
+effect.</p>
 
 </div>
 </div>
@@ -13889,605 +13442,73 @@ In SNOMED one could use the Semantic tags. E.g (Disease). A list of all Snomed s
 <div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cdb_simple</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s1">&#39;cdb_simple.csv&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># perform memory optimisation</span>
+<span class="n">memory_optimiser</span><span class="o">.</span><span class="n">perform_optimisation</span><span class="p">(</span><span class="n">cat</span><span class="o">.</span><span class="n">cdb</span><span class="p">,</span> <span class="n">optimise_cuis</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                      <span class="n">optimise_names</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                      <span class="n">optimise_snames</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># look at the parts that are memory-optimised</span>
+<span class="n">cat</span><span class="o">.</span><span class="n">cdb</span><span class="o">.</span><span class="n">_memory_optimised_parts</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[14]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;CUIS&#39;, &#39;snames&#39;}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The above method performs some optimisation on the model for memory usage.
+The resulting model can be saved on disk just as a regular method.
+And the memory optimisation will be remain available in the saved model as well.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Undoing-the-memory-opytimisation">Undoing the memory opytimisation<a class="anchor-link" href="#Undoing-the-memory-opytimisation">&#182;</a></h3><p>There may be reasons one may want to undo the memory optimisations above.
+One reason might be for use with an older version of medcat.
+We've provided a method to do that.</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cdb_simple</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># undo memory optimisation</span>
+<span class="n">memory_optimiser</span><span class="o">.</span><span class="n">unoptimise_cdb</span><span class="p">(</span><span class="n">cat</span><span class="o">.</span><span class="n">cdb</span><span class="p">)</span>
+<span class="c1"># the method will look at the CDB and reverse the optimisation process</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[15]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-
- <div id="df-ae93431c-02e2-4ae1-b07d-6d519a94cb10">
- <div class="colab-df-container">
- <div>
-<style scoped>
- .dataframe tbody tr th:only-of-type {
- vertical-align: middle;
- }
-
- .dataframe tbody tr th {
- vertical-align: top;
- }
-
- .dataframe thead th {
- text-align: right;
- }
-</style>
-<table border="1" class="dataframe">
- <thead>
- <tr style="text-align: right;">
- <th></th>
- <th>cui</th>
- <th>name</th>
- </tr>
- </thead>
- <tbody>
- <tr>
- <th>0</th>
- <td>1</td>
- <td>kidney failure</td>
- </tr>
- <tr>
- <th>1</th>
- <td>7</td>
- <td>CoVid 2</td>
- </tr>
- <tr>
- <th>2</th>
- <td>7</td>
- <td>coronavirus</td>
- </tr>
- </tbody>
-</table>
-</div>
- <button class="colab-df-convert" onclick="convertToInteractive('df-ae93431c-02e2-4ae1-b07d-6d519a94cb10')"
- title="Convert this dataframe to an interactive table."
- style="display:none;">
- 
- <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
- width="24px">
- <path d="M0 0h24v24H0V0z" fill="none"/>
- <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
- </svg>
- </button>
- 
- <style>
- .colab-df-container {
- display:flex;
- flex-wrap:wrap;
- gap: 12px;
- }
-
- .colab-df-convert {
- background-color: #E8F0FE;
- border: none;
- border-radius: 50%;
- cursor: pointer;
- display: none;
- fill: #1967D2;
- height: 32px;
- padding: 0 0 0 0;
- width: 32px;
- }
-
- .colab-df-convert:hover {
- background-color: #E2EBFA;
- box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
- fill: #174EA6;
- }
-
- [theme=dark] .colab-df-convert {
- background-color: #3B4455;
- fill: #D2E3FC;
- }
-
- [theme=dark] .colab-df-convert:hover {
- background-color: #434B5C;
- box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
- filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
- fill: #FFFFFF;
- }
- </style>
-
- <script>
- const buttonEl =
- document.querySelector('#df-ae93431c-02e2-4ae1-b07d-6d519a94cb10 button.colab-df-convert');
- buttonEl.style.display =
- google.colab.kernel.accessAllowed ? 'block' : 'none';
-
- async function convertToInteractive(key) {
- const element = document.querySelector('#df-ae93431c-02e2-4ae1-b07d-6d519a94cb10');
- const dataTable =
- await google.colab.kernel.invokeFunction('convertToInteractive',
- [key], {});
- if (!dataTable) return;
-
- const docLinkHtml = 'Like what you see? Visit the ' +
- '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
- + ' to learn more about interactive tables.';
- element.innerHTML = '';
- dataTable['output_type'] = 'display_data';
- await google.colab.output.renderOutput(dataTable, element);
- const docLink = document.createElement('div');
- docLink.innerHTML = docLinkHtml;
- element.appendChild(docLink);
- }
- </script>
- </div>
- </div>
- 
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Let's try building our own concept databse from a simple CSV</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># First initialise the default configuration</span>
-<span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">()</span>
-<span class="n">config</span><span class="o">.</span><span class="n">general</span><span class="p">[</span><span class="s1">&#39;spacy_model&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;en_core_web_md&#39;</span>
-<span class="n">maker</span> <span class="o">=</span> <span class="n">CDBMaker</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create an array containing CSV files that will be used to build our CDB</span>
-<span class="n">csv_path</span> <span class="o">=</span> <span class="p">[</span> <span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s1">&#39;cdb_advanced.csv&#39;</span><span class="p">,</span> <span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s1">&#39;cdb_simple.csv&#39;</span><span class="p">,]</span>
-
-<span class="c1"># Create your CDB</span>
-<span class="n">cdb</span> <span class="o">=</span> <span class="n">maker</span><span class="o">.</span><span class="n">prepare_csvs</span><span class="p">(</span><span class="n">csv_path</span><span class="p">,</span> <span class="n">full_build</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>INFO:medcat:Started importing concepts from: ./data/cdb_advanced.csv
-INFO:medcat:Current progress: 0% at 0.000s per 0 rows
-INFO:medcat:Current progress: 50% at 0.012s per 0 rows
-INFO:medcat:Started importing concepts from: ./data/cdb_simple.csv
-INFO:medcat:Current progress: 0% at 0.000s per 0 rows
-INFO:medcat:Current progress: 33% at 0.007s per 0 rows
-INFO:medcat:Current progress: 67% at 0.008s per 0 rows
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>That is all, nothing else is necessary to build the CDB</strong></p>
-<hr>
-<p>Some useful functions of the cdb are below</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># To display all names and cui in the db</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">cdb</span><span class="o">.</span><span class="n">name2cuis</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>{&#39;kidney~failure&#39;: [&#39;1&#39;], &#39;failure~of~kidneys&#39;: [&#39;1&#39;], &#39;failure~of~kidney&#39;: [&#39;1&#39;], &#39;kf&#39;: [&#39;1&#39;], &#39;k~.~failure&#39;: [&#39;1&#39;], &#39;covid~2&#39;: [&#39;7&#39;], &#39;coronavirus&#39;: [&#39;7&#39;]}
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># To display all unique cuis and corresponding names in the db </span>
-<span class="nb">print</span><span class="p">(</span><span class="n">cdb</span><span class="o">.</span><span class="n">cui2names</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>{&#39;1&#39;: {&#39;failure~of~kidneys&#39;, &#39;kf&#39;, &#39;kidney~failure&#39;, &#39;k~.~failure&#39;, &#39;failure~of~kidney&#39;}, &#39;7&#39;: {&#39;covid~2&#39;, &#39;coronavirus&#39;}}
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># To display cui to preferred name</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">cdb</span><span class="o">.</span><span class="n">cui2preferred_name</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>{&#39;1&#39;: &#39;Kidney Failure&#39;}
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># We have a link from cui to type ids</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">cdb</span><span class="o">.</span><span class="n">cui2type_ids</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>{&#39;1&#39;: {&#39;T047&#39;}, &#39;7&#39;: set()}
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Save-the-Concept-Database-model">Save the Concept Database model<a class="anchor-link" href="#Save-the-Concept-Database-model">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cdb</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s2">&quot;cdb.dat&quot;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Load-the-Concept-Database-model">Load the Concept Database model<a class="anchor-link" href="#Load-the-Concept-Database-model">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cdb</span> <span class="o">=</span> <span class="n">CDB</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s2">&quot;cdb.dat&quot;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>WARNING:medcat.cdb:The CDB was exported by an unknown version of MedCAT.
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Setting-the-CDB-configuration">Setting the CDB configuration<a class="anchor-link" href="#Setting-the-CDB-configuration">&#182;</a></h2><p>The CDB config sets the model parameters.
-This allows you to tailor the model to your own specific use case. Although the default configuration will suit the majority of use cases.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># For further information on the cdb configuration options and explore what the default options are.</span>
-<span class="o">??</span>cdb.config
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set a couple of parameters, they are usually set via environments, but</span>
-<span class="c1">#here we will do it explicitly. You can read more about each option in the </span>
-<span class="c1">#medcat repository: https://github.com/CogStack/MedCAT</span>
-
-<span class="n">cdb</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">ner</span><span class="p">[</span><span class="s1">&#39;min_name_len&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">cdb</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">ner</span><span class="p">[</span><span class="s1">&#39;upper_case_limit_len&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">cdb</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">general</span><span class="p">[</span><span class="s1">&#39;spell_check&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">cdb</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">linking</span><span class="p">[</span><span class="s1">&#39;train_count_threshold&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">cdb</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">linking</span><span class="p">[</span><span class="s1">&#39;similarity_threshold&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.3</span>
-<span class="n">cdb</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">linking</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">cdb</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">linking</span><span class="p">[</span><span class="s1">&#39;disamb_length_limit&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">cdb</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">general</span><span class="p">[</span><span class="s1">&#39;full_unlink&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Note: Don't forget to save the cdb with the new configurations if you want to reuse them!</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Create-a-MedCAT-model-pack">Create a MedCAT model pack<a class="anchor-link" href="#Create-a-MedCAT-model-pack">&#182;</a></h1><p>A MedCAT model pack is an easy way to store all the various components of a MedCAT model in one place.</p>
-<p>This includes the CDB, CDB configurations, Vocab, and even various MetaCAT models! We will learn more about the latter in the following tutorials.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Initialise the model</span>
-<span class="n">cat</span> <span class="o">=</span> <span class="n">CAT</span><span class="p">(</span><span class="n">cdb</span><span class="o">=</span><span class="n">cdb</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">cdb</span><span class="o">.</span><span class="n">config</span><span class="p">,</span> <span class="n">vocab</span><span class="o">=</span><span class="n">vocab</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create and save a model pack</span>
-<span class="n">cat</span><span class="o">.</span><span class="n">create_model_pack</span><span class="p">(</span><span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s2">&quot;my_first_medcat_modelpack&quot;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>WARNING:medcat:Please consider populating the version information [description, performance, location, ontology] in cat.config.version
-/usr/local/lib/python3.7/dist-packages/numpy/lib/function_base.py:380: RuntimeWarning: Mean of empty slice.
- avg = a.mean(axis)
-/usr/local/lib/python3.7/dist-packages/numpy/core/_methods.py:189: RuntimeWarning: invalid value encountered in double_scalars
- ret = ret.dtype.type(ret / rcount)
-WARNING:medcat:Please consider updating [description, performance, location, ontology] in cat.config.version
-WARNING:medcat:This will save all models into a zip file, can take some time and require quite a bit of disk space.
-INFO:medcat:{
- &#34;Model ID&#34;: &#34;a84c91ebfeb4f727&#34;,
- &#34;Last Modified On&#34;: &#34;25 August 2022&#34;,
- &#34;History (from least to most recent)&#34;: [],
- &#34;Description&#34;: &#34;No description&#34;,
- &#34;Source Ontology&#34;: null,
- &#34;Location&#34;: null,
- &#34;MetaCAT models&#34;: [],
- &#34;Basic CDB Stats&#34;: {
- &#34;Number of concepts&#34;: 2,
- &#34;Number of names&#34;: 7,
- &#34;Number of concepts that received training&#34;: 0,
- &#34;Number of seen training examples in total&#34;: 0,
- &#34;Average training examples per concept&#34;: NaN
- },
- &#34;Performance&#34;: {
- &#34;ner&#34;: {},
- &#34;meta&#34;: {}
- },
- &#34;Important Parameters (Partial view, all available in cat.config)&#34;: {
- &#34;config.ner[&#39;min_name_len&#39;]&#34;: {
- &#34;value&#34;: 2,
- &#34;description&#34;: &#34;Minimum detection length (found terms/mentions shorter than this will not be detected).&#34;
- },
- &#34;config.ner[&#39;upper_case_limit_len&#39;]&#34;: {
- &#34;value&#34;: 3,
- &#34;description&#34;: &#34;All detected terms shorter than this value have to be uppercase, otherwise they will be ignored.&#34;
- },
- &#34;config.linking[&#39;similarity_threshold&#39;]&#34;: {
- &#34;value&#34;: 0.3,
- &#34;description&#34;: &#34;If the confidence of the model is lower than this a detection will be ignore.&#34;
- },
- &#34;config.general[&#39;spell_check&#39;]&#34;: {
- &#34;value&#34;: true,
- &#34;description&#34;: &#34;Is spell checking enabled.&#34;
- },
- &#34;config.general[&#39;spell_check_len_limit&#39;]&#34;: {
- &#34;value&#34;: 7,
- &#34;description&#34;: &#34;Words shorter than this will not be spell checked.&#34;
- }
- },
- &#34;MedCAT Version&#34;: &#34;1.3.0&#34;
-}
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[27]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&#39;medcat_model_pack_a84c91ebfeb4f727&#39;</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="End">End<a class="anchor-link" href="#End">&#182;</a></h1><p>This is everything you need to create your own MedCAT models. In the following tutorials you will learn how to uses modelpacks to train models and use them to annotate documents.</p>
-
-</div>
-</div>
 </div>
     </div>
   </div>
