@@ -13383,6 +13383,7 @@ Successfully installed aiofiles-0.8.0 blis-0.7.5 datasets-2.2.2 dill-0.3.4 elast
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pickle</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">json</span>
 
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="kn">from</span> <span class="nn">medcat.cat</span> <span class="kn">import</span> <span class="n">CAT</span>
@@ -14034,7 +14035,7 @@ kidney failure - {&#39;T047&#39;}
 <span class="c1"># Print statistics on the CDB before training (note that if you are using the </span>
 <span class="c1">#medmen cdb it will already have some training)</span>
 
-<span class="n">cat</span><span class="o">.</span><span class="n">cdb</span><span class="o">.</span><span class="n">print_stats</span><span class="p">()</span>
+<span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">cat</span><span class="o">.</span><span class="n">cdb</span><span class="o">.</span><span class="n">make_stats</span><span class="p">(),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="c1"># Run the annotation procedure over all the documents we have,</span>
 <span class="c1">#given that we have a large number of documents this can take quite some time.</span>
@@ -14044,7 +14045,7 @@ kidney failure - {&#39;T047&#39;}
 <span class="n">cat</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">progress_print</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 
 <span class="c1"># Now print statistics on the CDB after training</span>
-<span class="n">cat</span><span class="o">.</span><span class="n">cdb</span><span class="o">.</span><span class="n">print_stats</span><span class="p">()</span>
+<span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">cat</span><span class="o">.</span><span class="n">cdb</span><span class="o">.</span><span class="n">make_stats</span><span class="p">(),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14696,10 +14697,10 @@ INFO:medcat:Annotated until now: 1072 docs; Current BS: 16 docs; Elapsed time: 9
 
  
  
-<div id="0094648e-a82e-4595-9eed-f4245837575a"></div>
+<div id="1bde74a1-7070-4dd0-944e-51c675fa76b6"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#0094648e-a82e-4595-9eed-f4245837575a');
+var element = $('#1bde74a1-7070-4dd0-944e-51c675fa76b6');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "05b18c97da9d4d05b9280df006a5fb82", "version_major": 2, "version_minor": 0}
