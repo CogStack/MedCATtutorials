@@ -14264,6 +14264,9 @@ INFO:medcat:Current progress: 67% at 0.008s per 0 rows
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">cdb</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s2">&quot;cdb.dat&quot;</span><span class="p">)</span>
+<span class="c1"># NOTE: Starting from medcat 1.10 we&#39;re no longer saving the config</span>
+<span class="c1">#       along with the CDB. It&#39;ll need to be saved separately.</span>
+<span class="n">cdb</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s2">&quot;config.json&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14285,8 +14288,10 @@ INFO:medcat:Current progress: 67% at 0.008s per 0 rows
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">cdb</span> <span class="o">=</span> <span class="n">CDB</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s2">&quot;cdb.dat&quot;</span><span class="p">)</span>
-<span class="c1"># PS: If you&#39;ve saved the CDB in medcat 1.10+ you&#39;ll need to load the config separately:</span>
-<span class="c1"># cdb.load_config(DATA_DIR + &quot;config.json&quot;)</span>
+<span class="c1"># PS: If you&#39;ve saved the CDB in medcat 1.10+ you&#39;ll need to load the config separately</span>
+<span class="c1">#     If you&#39;re using an older CDB, it should load with the config and you can omit the</span>
+<span class="c1">#     next line</span>
+<span class="n">cdb</span><span class="o">.</span><span class="n">load_config</span><span class="p">(</span><span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s2">&quot;config.json&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
