@@ -13907,9 +13907,13 @@ HTTP request sent, awaiting response... 404 Not Found
 <span class="n">batch_size_chars</span> <span class="o">=</span> <span class="mi">500000</span> <span class="c1"># Batch size (BS) in number of characters</span>
 
 <span class="c1"># Run model</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">multiprocessing</span><span class="p">(</span><span class="n">data_iterator</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>  <span class="c1"># Formatted data</span>
-                              <span class="n">batch_size_chars</span> <span class="o">=</span> <span class="n">batch_size_chars</span><span class="p">,</span>
-                              <span class="n">nproc</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span> <span class="c1"># Number of processors</span>
+<span class="c1"># NOTE: The method below has changed. The `multiprocessing` method has been</span>
+<span class="c1">#       deprecated and the following should be used instead. This is because</span>
+<span class="c1">#       there were multiple multiprocessing methods and there was no clear</span>
+<span class="c1">#       distinction between them.</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">multiprocessing_batch_char_size</span><span class="p">(</span><span class="n">data_iterator</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>  <span class="c1"># Formatted data</span>
+                                              <span class="n">batch_size_chars</span> <span class="o">=</span> <span class="n">batch_size_chars</span><span class="p">,</span>
+                                              <span class="n">nproc</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span> <span class="c1"># Number of processors</span>
 </pre></div>
 
     </div>
