@@ -13085,7 +13085,7 @@ div#notebook {
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Install medcat</span>
-<span class="o">!</span> pip install <span class="nv">medcat</span><span class="o">==</span><span class="m">1</span>.9.3
+<span class="o">!</span> pip install medcat~<span class="o">=</span><span class="m">1</span>.10.0
 <span class="c1"># install seaborn</span>
 <span class="o">!</span> pip install seaborn
 <span class="k">try</span><span class="p">:</span>
@@ -13907,9 +13907,13 @@ HTTP request sent, awaiting response... 404 Not Found
 <span class="n">batch_size_chars</span> <span class="o">=</span> <span class="mi">500000</span> <span class="c1"># Batch size (BS) in number of characters</span>
 
 <span class="c1"># Run model</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">multiprocessing</span><span class="p">(</span><span class="n">data_iterator</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>  <span class="c1"># Formatted data</span>
-                              <span class="n">batch_size_chars</span> <span class="o">=</span> <span class="n">batch_size_chars</span><span class="p">,</span>
-                              <span class="n">nproc</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span> <span class="c1"># Number of processors</span>
+<span class="c1"># NOTE: The method below has changed. The `multiprocessing` method has been</span>
+<span class="c1">#       deprecated and the following should be used instead. This is because</span>
+<span class="c1">#       there were multiple multiprocessing methods and there was no clear</span>
+<span class="c1">#       distinction between them.</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">multiprocessing_batch_char_size</span><span class="p">(</span><span class="n">data_iterator</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>  <span class="c1"># Formatted data</span>
+                                              <span class="n">batch_size_chars</span> <span class="o">=</span> <span class="n">batch_size_chars</span><span class="p">,</span>
+                                              <span class="n">nproc</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span> <span class="c1"># Number of processors</span>
 </pre></div>
 
     </div>

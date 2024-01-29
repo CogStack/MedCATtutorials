@@ -13092,7 +13092,7 @@ div#notebook {
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Install medcat</span>
-<span class="o">!</span> pip install <span class="nv">medcat</span><span class="o">==</span><span class="m">1</span>.9.3
+<span class="o">!</span> pip install medcat~<span class="o">=</span><span class="m">1</span>.10.0
 <span class="c1"># install seaborn</span>
 <span class="o">!</span> pip install seaborn
 <span class="k">try</span><span class="p">:</span>
@@ -14471,7 +14471,11 @@ INFO:medcat:{
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Let&#39;s test the multi processing function first</span>
 <span class="n">in_data</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;He was a diabetic patient&quot;</span><span class="p">)]</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">multiprocessing</span><span class="p">(</span><span class="n">in_data</span><span class="p">,</span> <span class="n">nproc</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># NOTE: The method below has changed. The `multiprocessing` method has been</span>
+<span class="c1">#       deprecated and the following should be used instead. This is because</span>
+<span class="c1">#       there were multiple multiprocessing methods and there was no clear</span>
+<span class="c1">#       distinction between them.</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">multiprocessing_batch_char_size</span><span class="p">(</span><span class="n">in_data</span><span class="p">,</span> <span class="n">nproc</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">results</span>
 </pre></div>
 
@@ -14620,9 +14624,9 @@ INFO:medcat:{
 <span class="n">batch_size_chars</span> <span class="o">=</span> <span class="mi">500000</span> <span class="c1"># Batch size (BS) in number of characters</span>
 
 <span class="c1"># Run model</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">multiprocessing</span><span class="p">(</span><span class="n">in_data</span><span class="p">,</span> <span class="c1"># Formatted data</span>
-                              <span class="n">batch_size_chars</span> <span class="o">=</span> <span class="n">batch_size_chars</span><span class="p">,</span>
-                              <span class="n">nproc</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span> <span class="c1"># Number of processors</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">multiprocessing_batch_char_size</span><span class="p">(</span><span class="n">in_data</span><span class="p">,</span> <span class="c1"># Formatted data</span>
+                                              <span class="n">batch_size_chars</span> <span class="o">=</span> <span class="n">batch_size_chars</span><span class="p">,</span>
+                                              <span class="n">nproc</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span> <span class="c1"># Number of processors</span>
 </pre></div>
 
     </div>
@@ -14658,7 +14662,7 @@ INFO:medcat:Annotated until now: 1072 docs; Current BS: 16 docs; Elapsed time: 9
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>To batch on the number of documents, you can use <code>multiprocessing_pipe</code> alternatively, which also supports Windows platforms:</p>
+<p>To batch on the number of documents, you can use <code>multiprocessing_batch_docs_size</code> alternatively, which also supports Windows platforms:</p>
 
 </div>
 </div>
@@ -14675,9 +14679,13 @@ INFO:medcat:Annotated until now: 1072 docs; Current BS: 16 docs; Elapsed time: 9
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">torch</span>
     <span class="n">torch</span><span class="o">.</span><span class="n">multiprocessing</span><span class="o">.</span><span class="n">set_start_method</span><span class="p">(</span><span class="s1">&#39;spawn&#39;</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">results</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">multiprocessing_pipe</span><span class="p">(</span><span class="n">in_data</span><span class="p">,</span> <span class="c1"># Formatted data</span>
-                                       <span class="n">batch_size</span> <span class="o">=</span> <span class="n">batch_size</span><span class="p">,</span>
-                                       <span class="n">nproc</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># Increase it when having more cores available</span>
+    <span class="c1"># NOTE: The below method has changed. The `multiprocessing_pipe` methods</span>
+    <span class="c1">#       was deprecated due to being somewhat ambiguous as to when one</span>
+    <span class="c1">#       should use it instead of the `multiprocessing` method. As such,</span>
+    <span class="c1">#       the method defined below should be used</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">multiprocessing_batch_docs_size</span><span class="p">(</span><span class="n">in_data</span><span class="p">,</span> <span class="c1"># Formatted data</span>
+                                                  <span class="n">batch_size</span> <span class="o">=</span> <span class="n">batch_size</span><span class="p">,</span>
+                                                  <span class="n">nproc</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># Increase it when having more cores available</span>
 </pre></div>
 
     </div>
@@ -14698,10 +14706,10 @@ INFO:medcat:Annotated until now: 1072 docs; Current BS: 16 docs; Elapsed time: 9
 
  
  
-<div id="8e896d85-31c1-4e32-bf26-3406878361c7"></div>
+<div id="32d831b3-f19d-4057-9c5b-ec8b82685814"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#8e896d85-31c1-4e32-bf26-3406878361c7');
+var element = $('#32d831b3-f19d-4057-9c5b-ec8b82685814');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "05b18c97da9d4d05b9280df006a5fb82", "version_major": 2, "version_minor": 0}
