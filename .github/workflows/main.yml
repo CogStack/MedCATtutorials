@@ -9,7 +9,7 @@ on:
 jobs:
   main:
 
-    runs-on: macos-11
+    runs-on: ubuntu-22.04
     strategy:
       matrix:
         part: [
@@ -34,7 +34,7 @@ jobs:
           pip install -r requirements-dev.txt
       - name: Install IPython kernel
         run: |
-          python -m ipykernel install --name smoketests
+          sudo python -m ipykernel install --name smoketests
       - name: Smoke test tutorial
         run: |
           pytest --collect-only --nbmake ./notebooks/${{ matrix.part }}
