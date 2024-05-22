@@ -9,7 +9,7 @@ on:
 jobs:
   main:
 
-    runs-on: ubuntu-22.04
+    runs-on: macos-12
     strategy:
       matrix:
         part: [
@@ -23,9 +23,9 @@ jobs:
         ]
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Setup Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
           python-version: "3.8"
       - name: Install dependencies
@@ -34,7 +34,7 @@ jobs:
           pip install -r requirements-dev.txt
       - name: Install IPython kernel
         run: |
-          sudo python -m ipykernel install --name smoketests
+          python -m ipykernel install --name smoketests
       - name: Smoke test tutorial
         run: |
           pytest --collect-only --nbmake ./notebooks/${{ matrix.part }}
