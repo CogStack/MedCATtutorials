@@ -13799,7 +13799,7 @@ cdb-medmen-v1_2.dat 100%[===================&gt;] 339.99M 67.2MB/s in 6.4s
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>To fine-tune the existing models we use the <code>train_supervised()</code> method from MedCAT. The method has the following options:</p>
+<p>To fine-tune the existing models we use the <code>train_supervised_from_json()</code> method from MedCAT. The method has the following options:</p>
 <hr>
 <p><code>data_path</code> - Path to the JSON file exported from MedCATtrainer</p>
 <p><code>reset_cui_count</code> - Each cui has an internal counter that is used for weight decay, this will reset it.</p>
@@ -13823,11 +13823,11 @@ cdb-medmen-v1_2.dat 100%[===================&gt;] 339.99M 67.2MB/s in 6.4s
 <div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cat</span><span class="o">.</span><span class="n">train_supervised</span><span class="p">(</span><span class="n">data_path</span><span class="o">=</span><span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s2">&quot;MedCAT_Export.json&quot;</span><span class="p">,</span> 
-                     <span class="n">nepochs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                     <span class="n">reset_cui_count</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                     <span class="n">print_stats</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
-                     <span class="n">use_filters</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cat</span><span class="o">.</span><span class="n">train_supervised_from_json</span><span class="p">(</span><span class="n">data_path</span><span class="o">=</span><span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s2">&quot;MedCAT_Export.json&quot;</span><span class="p">,</span> 
+                               <span class="n">nepochs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                               <span class="n">reset_cui_count</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                               <span class="n">print_stats</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+                               <span class="n">use_filters</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
 </pre></div>
 
     </div>
@@ -13859,10 +13859,10 @@ cdb-medmen-v1_2.dat 100%[===================&gt;] 339.99M 67.2MB/s in 6.4s
 
  
  
-<div id="6ae0b7ea-bdeb-4d3f-b83c-3342c9b13cd3"></div>
+<div id="97a59b96-c389-409a-8457-732acfff3f84"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#6ae0b7ea-bdeb-4d3f-b83c-3342c9b13cd3');
+var element = $('#97a59b96-c389-409a-8457-732acfff3f84');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "6fd10f1692234019836a7b40e83b56dd", "version_major": 2, "version_minor": 0}
@@ -13881,10 +13881,10 @@ var element = $('#6ae0b7ea-bdeb-4d3f-b83c-3342c9b13cd3');
 
  
  
-<div id="226f4eb5-22f1-43d4-83ae-4f42f75a13ba"></div>
+<div id="949bb97a-d72f-4166-b47d-d4ffe721894c"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#226f4eb5-22f1-43d4-83ae-4f42f75a13ba');
+var element = $('#949bb97a-d72f-4166-b47d-d4ffe721894c');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "9a5ab9cfecc242b7aaf0f140e87bdde6", "version_major": 2, "version_minor": 0}
@@ -13963,10 +13963,10 @@ Myocardial Infarction - C0027051 - 6
 
  
  
-<div id="04326482-ffec-4b5c-8633-f5562a193720"></div>
+<div id="39e15e56-fb47-4b4b-bc54-840980738477"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#04326482-ffec-4b5c-8633-f5562a193720');
+var element = $('#39e15e56-fb47-4b4b-bc54-840980738477');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "434496e448984f55925d22fad0349ada", "version_major": 2, "version_minor": 0}
@@ -13985,10 +13985,10 @@ var element = $('#04326482-ffec-4b5c-8633-f5562a193720');
 
  
  
-<div id="f6af9754-3d34-43f0-931c-ae2d0882d7b7"></div>
+<div id="05772180-dbe8-451b-a09a-c4435304092d"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#f6af9754-3d34-43f0-931c-ae2d0882d7b7');
+var element = $('#05772180-dbe8-451b-a09a-c4435304092d');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "f7d1803b3c6c4197b6612c5fdf189746", "version_major": 2, "version_minor": 0}
@@ -14007,10 +14007,10 @@ var element = $('#f6af9754-3d34-43f0-931c-ae2d0882d7b7');
 
  
  
-<div id="fdc1a5ce-011a-4f3f-a5e2-ac061f13c471"></div>
+<div id="4a031d0b-0138-4bde-ab47-a769a96bec8d"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#fdc1a5ce-011a-4f3f-a5e2-ac061f13c471');
+var element = $('#4a031d0b-0138-4bde-ab47-a769a96bec8d');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "c8d633f579de438a916d9ef3de9d8fe0", "version_major": 2, "version_minor": 0}
@@ -14029,10 +14029,10 @@ var element = $('#fdc1a5ce-011a-4f3f-a5e2-ac061f13c471');
 
  
  
-<div id="c247a603-12d5-4cff-b8df-58babf41c20c"></div>
+<div id="9b3536c0-957e-4873-97cf-0e5b64fd2cb4"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#c247a603-12d5-4cff-b8df-58babf41c20c');
+var element = $('#9b3536c0-957e-4873-97cf-0e5b64fd2cb4');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "de6c01c6983041e2b972f6008caefaea", "version_major": 2, "version_minor": 0}
@@ -14051,10 +14051,10 @@ var element = $('#c247a603-12d5-4cff-b8df-58babf41c20c');
 
  
  
-<div id="fe3fd5be-68e4-440a-9093-c4a51d88b939"></div>
+<div id="0c50692e-679a-4580-a98c-d9b7c5a7b647"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#fe3fd5be-68e4-440a-9093-c4a51d88b939');
+var element = $('#0c50692e-679a-4580-a98c-d9b7c5a7b647');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "05132c907a874fe2a2eb9cb6c81da3b3", "version_major": 2, "version_minor": 0}
@@ -17502,10 +17502,10 @@ Renal Insufficiency - C1565489 - 7
 
  
  
-<div id="993b7d0d-31c6-4cb9-8a67-229e48373814"></div>
+<div id="0831575f-3f80-433f-8e19-3ac896196ba2"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#993b7d0d-31c6-4cb9-8a67-229e48373814');
+var element = $('#0831575f-3f80-433f-8e19-3ac896196ba2');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "00325922360c45009329d82ed6420f16", "version_major": 2, "version_minor": 0}
@@ -17524,10 +17524,10 @@ var element = $('#993b7d0d-31c6-4cb9-8a67-229e48373814');
 
  
  
-<div id="cba1d441-64a6-4dcc-ab5a-5ae744aaff24"></div>
+<div id="09e4a13d-2327-4e85-87d4-3d2777ffc588"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#cba1d441-64a6-4dcc-ab5a-5ae744aaff24');
+var element = $('#09e4a13d-2327-4e85-87d4-3d2777ffc588');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "d48e2f4d6dd3467fb3f17e0244b0e361", "version_major": 2, "version_minor": 0}
@@ -17926,7 +17926,7 @@ Renal Insufficiency - C1565489 - 7
 <div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mc</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">json_path</span><span class="o">=</span> <span class="n">DATA_DIR</span><span class="o">+</span><span class="s2">&quot;MedCAT_Export.json&quot;</span><span class="p">,</span> <span class="n">save_dir_path</span><span class="o">=</span><span class="s1">&#39;status&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mc</span><span class="o">.</span><span class="n">train_from_json</span><span class="p">(</span><span class="n">json_path</span><span class="o">=</span> <span class="n">DATA_DIR</span><span class="o">+</span><span class="s2">&quot;MedCAT_Export.json&quot;</span><span class="p">,</span> <span class="n">save_dir_path</span><span class="o">=</span><span class="s1">&#39;status&#39;</span><span class="p">)</span>
 <span class="c1"># Saving the model this way will only save the model epoch with the best performance</span>
 </pre></div>
 
