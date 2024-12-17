@@ -34,7 +34,7 @@ jobs:
           pip install -r requirements-dev.txt
       - name: Install IPython kernel
         run: |
-          python -m ipykernel install --name smoketests
+          python -m ipykernel install --name smoketests --user
       - name: Smoke test tutorial
         run: |
           pytest --collect-only --nbmake ./notebooks/${{ matrix.part }}
