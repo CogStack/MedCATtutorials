@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>Part_4_3_Annotating_documents_with_the_full_MedCAT_pipeline_with_MetaAnnotations</title>
+<title>Part_6_2_Infering_relations_from_annotations_with_Relation_toolkit</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -12955,9 +12955,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 .highlight .hll { background-color: #ffffcc }
 .highlight { background: #f8f8f8; }
 .highlight .c { color: #3D7B7B; font-style: italic } /* Comment */
-.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .err { border: 1px solid #F00 } /* Error */
 .highlight .k { color: #008000; font-weight: bold } /* Keyword */
-.highlight .o { color: #666666 } /* Operator */
+.highlight .o { color: #666 } /* Operator */
 .highlight .ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
 .highlight .cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
 .highlight .cp { color: #9C6500 } /* Comment.Preproc */
@@ -12966,6 +12966,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 .highlight .cs { color: #3D7B7B; font-style: italic } /* Comment.Special */
 .highlight .gd { color: #A00000 } /* Generic.Deleted */
 .highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .ges { font-weight: bold; font-style: italic } /* Generic.EmphStrong */
 .highlight .gr { color: #E40000 } /* Generic.Error */
 .highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
 .highlight .gi { color: #008400 } /* Generic.Inserted */
@@ -12973,34 +12974,34 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 .highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
 .highlight .gs { font-weight: bold } /* Generic.Strong */
 .highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
-.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .gt { color: #04D } /* Generic.Traceback */
 .highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
 .highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
 .highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
 .highlight .kp { color: #008000 } /* Keyword.Pseudo */
 .highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
 .highlight .kt { color: #B00040 } /* Keyword.Type */
-.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .m { color: #666 } /* Literal.Number */
 .highlight .s { color: #BA2121 } /* Literal.String */
 .highlight .na { color: #687822 } /* Name.Attribute */
 .highlight .nb { color: #008000 } /* Name.Builtin */
-.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
-.highlight .no { color: #880000 } /* Name.Constant */
-.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .nc { color: #00F; font-weight: bold } /* Name.Class */
+.highlight .no { color: #800 } /* Name.Constant */
+.highlight .nd { color: #A2F } /* Name.Decorator */
 .highlight .ni { color: #717171; font-weight: bold } /* Name.Entity */
 .highlight .ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
-.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nf { color: #00F } /* Name.Function */
 .highlight .nl { color: #767600 } /* Name.Label */
-.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nn { color: #00F; font-weight: bold } /* Name.Namespace */
 .highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
 .highlight .nv { color: #19177C } /* Name.Variable */
-.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
-.highlight .w { color: #bbbbbb } /* Text.Whitespace */
-.highlight .mb { color: #666666 } /* Literal.Number.Bin */
-.highlight .mf { color: #666666 } /* Literal.Number.Float */
-.highlight .mh { color: #666666 } /* Literal.Number.Hex */
-.highlight .mi { color: #666666 } /* Literal.Number.Integer */
-.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .ow { color: #A2F; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #BBB } /* Text.Whitespace */
+.highlight .mb { color: #666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666 } /* Literal.Number.Float */
+.highlight .mh { color: #666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666 } /* Literal.Number.Oct */
 .highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
@@ -13015,12 +13016,12 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
-.highlight .fm { color: #0000FF } /* Name.Function.Magic */
+.highlight .fm { color: #00F } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
 .highlight .vm { color: #19177C } /* Name.Variable.Magic */
-.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
+.highlight .il { color: #666 } /* Literal.Number.Integer.Long */
     </style>
 
 
@@ -13081,366 +13082,11 @@ div#notebook {
 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Install medcat</span>
-<span class="o">!</span> pip install medcat~<span class="o">=</span><span class="m">1</span>.16.0
-<span class="c1"># install seaborn</span>
-<span class="o">!</span> pip install seaborn
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">medcat.cat</span> <span class="kn">import</span> <span class="n">CAT</span>
-<span class="k">except</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;WARNING: Runtime will restart automatically and please run other cells thereafter.&quot;</span><span class="p">)</span>
-    <span class="n">exit</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-Collecting medcat==1.3.0
- Downloading medcat-1.3.0-py3-none-any.whl (133 kB)
- |████████████████████████████████| 133 kB 5.2 MB/s 
-Requirement already satisfied: numpy&gt;=1.21.4 in /usr/local/lib/python3.7/dist-packages (from medcat==1.3.0) (1.21.6)
-Collecting xxhash==3.0.0
- Downloading xxhash-3.0.0-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (212 kB)
- |████████████████████████████████| 212 kB 44.2 MB/s 
-Collecting sklearn~=0.0
- Downloading sklearn-0.0.tar.gz (1.1 kB)
-Collecting elasticsearch&lt;8.0.0,&gt;=7.10
- Downloading elasticsearch-7.17.4-py2.py3-none-any.whl (385 kB)
- |████████████████████████████████| 385 kB 5.9 MB/s 
-Requirement already satisfied: scipy&lt;=1.8.1,&gt;=1.5.4 in /usr/local/lib/python3.7/dist-packages (from medcat==1.3.0) (1.7.3)
-Requirement already satisfied: torch&gt;=1.0 in /usr/local/lib/python3.7/dist-packages (from medcat==1.3.0) (1.12.1+cu113)
-Collecting aiofiles~=0.8.0
- Downloading aiofiles-0.8.0-py3-none-any.whl (13 kB)
-Collecting blis&lt;=0.7.5
- Downloading blis-0.7.5-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (9.9 MB)
- |████████████████████████████████| 9.9 MB 40.9 MB/s 
-Collecting transformers~=4.19.2
- Downloading transformers-4.19.4-py3-none-any.whl (4.2 MB)
- |████████████████████████████████| 4.2 MB 34.7 MB/s 
-Requirement already satisfied: pandas&lt;=1.4.2,&gt;=1.1.5 in /usr/local/lib/python3.7/dist-packages (from medcat==1.3.0) (1.3.5)
-Collecting datasets~=2.2.2
- Downloading datasets-2.2.2-py3-none-any.whl (346 kB)
- |████████████████████████████████| 346 kB 51.4 MB/s 
-Requirement already satisfied: tqdm&gt;=4.27 in /usr/local/lib/python3.7/dist-packages (from medcat==1.3.0) (4.64.0)
-Collecting py2neo==2021.2.3
- Downloading py2neo-2021.2.3-py2.py3-none-any.whl (177 kB)
- |████████████████████████████████| 177 kB 47.9 MB/s 
-Collecting multiprocess
- Downloading multiprocess-0.70.13-py37-none-any.whl (115 kB)
- |████████████████████████████████| 115 kB 51.8 MB/s 
-Requirement already satisfied: dill~=0.3.4 in /usr/local/lib/python3.7/dist-packages (from medcat==1.3.0) (0.3.5.1)
-Collecting ipywidgets~=7.6.5
- Downloading ipywidgets-7.6.6-py2.py3-none-any.whl (121 kB)
- |████████████████████████████████| 121 kB 51.8 MB/s 
-Collecting gensim~=4.1.2
- Downloading gensim-4.1.2-cp37-cp37m-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (24.1 MB)
- |████████████████████████████████| 24.1 MB 1.7 MB/s 
-Collecting spacy&lt;3.1.4,&gt;=3.1.0
- Downloading spacy-3.1.3-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (5.9 MB)
- |████████████████████████████████| 5.9 MB 41.5 MB/s 
-Collecting jsonpickle~=2.0.0
- Downloading jsonpickle-2.0.0-py2.py3-none-any.whl (37 kB)
-Collecting psutil&lt;6.0.0,&gt;=5.8.0
- Downloading psutil-5.9.1-cp37-cp37m-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (281 kB)
- |████████████████████████████████| 281 kB 27.3 MB/s 
-Requirement already satisfied: click&lt;=8.0.4 in /usr/local/lib/python3.7/dist-packages (from medcat==1.3.0) (7.1.2)
-Requirement already satisfied: pygments&gt;=2.0.0 in /usr/local/lib/python3.7/dist-packages (from py2neo==2021.2.3-&gt;medcat==1.3.0) (2.6.1)
-Requirement already satisfied: urllib3 in /usr/local/lib/python3.7/dist-packages (from py2neo==2021.2.3-&gt;medcat==1.3.0) (1.24.3)
-Collecting interchange~=2021.0.4
- Downloading interchange-2021.0.4-py2.py3-none-any.whl (28 kB)
-Requirement already satisfied: six&gt;=1.15.0 in /usr/local/lib/python3.7/dist-packages (from py2neo==2021.2.3-&gt;medcat==1.3.0) (1.15.0)
-Collecting monotonic
- Downloading monotonic-1.6-py2.py3-none-any.whl (8.2 kB)
-Requirement already satisfied: certifi in /usr/local/lib/python3.7/dist-packages (from py2neo==2021.2.3-&gt;medcat==1.3.0) (2022.6.15)
-Requirement already satisfied: packaging in /usr/local/lib/python3.7/dist-packages (from py2neo==2021.2.3-&gt;medcat==1.3.0) (21.3)
-Collecting pansi&gt;=2020.7.3
- Downloading pansi-2020.7.3-py2.py3-none-any.whl (10 kB)
-Requirement already satisfied: aiohttp in /usr/local/lib/python3.7/dist-packages (from datasets~=2.2.2-&gt;medcat==1.3.0) (3.8.1)
-Requirement already satisfied: fsspec[http]&gt;=2021.05.0 in /usr/local/lib/python3.7/dist-packages (from datasets~=2.2.2-&gt;medcat==1.3.0) (2022.7.1)
-Requirement already satisfied: requests&gt;=2.19.0 in /usr/local/lib/python3.7/dist-packages (from datasets~=2.2.2-&gt;medcat==1.3.0) (2.23.0)
-Collecting dill~=0.3.4
- Downloading dill-0.3.4-py2.py3-none-any.whl (86 kB)
- |████████████████████████████████| 86 kB 7.0 MB/s 
-Requirement already satisfied: pyarrow&gt;=6.0.0 in /usr/local/lib/python3.7/dist-packages (from datasets~=2.2.2-&gt;medcat==1.3.0) (6.0.1)
-Collecting responses&lt;0.19
- Downloading responses-0.18.0-py3-none-any.whl (38 kB)
-Requirement already satisfied: importlib-metadata in /usr/local/lib/python3.7/dist-packages (from datasets~=2.2.2-&gt;medcat==1.3.0) (4.12.0)
-Collecting huggingface-hub&lt;1.0.0,&gt;=0.1.0
- Downloading huggingface_hub-0.9.0-py3-none-any.whl (120 kB)
- |████████████████████████████████| 120 kB 77.3 MB/s 
-Requirement already satisfied: smart-open&gt;=1.8.1 in /usr/local/lib/python3.7/dist-packages (from gensim~=4.1.2-&gt;medcat==1.3.0) (5.2.1)
-Requirement already satisfied: typing-extensions&gt;=3.7.4.3 in /usr/local/lib/python3.7/dist-packages (from huggingface-hub&lt;1.0.0,&gt;=0.1.0-&gt;datasets~=2.2.2-&gt;medcat==1.3.0) (4.1.1)
-Requirement already satisfied: pyyaml&gt;=5.1 in /usr/local/lib/python3.7/dist-packages (from huggingface-hub&lt;1.0.0,&gt;=0.1.0-&gt;datasets~=2.2.2-&gt;medcat==1.3.0) (6.0)
-Requirement already satisfied: filelock in /usr/local/lib/python3.7/dist-packages (from huggingface-hub&lt;1.0.0,&gt;=0.1.0-&gt;datasets~=2.2.2-&gt;medcat==1.3.0) (3.8.0)
-Requirement already satisfied: pytz in /usr/local/lib/python3.7/dist-packages (from interchange~=2021.0.4-&gt;py2neo==2021.2.3-&gt;medcat==1.3.0) (2022.2.1)
-Requirement already satisfied: ipython&gt;=4.0.0 in /usr/local/lib/python3.7/dist-packages (from ipywidgets~=7.6.5-&gt;medcat==1.3.0) (7.9.0)
-Requirement already satisfied: ipython-genutils~=0.2.0 in /usr/local/lib/python3.7/dist-packages (from ipywidgets~=7.6.5-&gt;medcat==1.3.0) (0.2.0)
-Collecting widgetsnbextension~=3.5.0
- Downloading widgetsnbextension-3.5.2-py2.py3-none-any.whl (1.6 MB)
- |████████████████████████████████| 1.6 MB 57.7 MB/s 
-Requirement already satisfied: nbformat&gt;=4.2.0 in /usr/local/lib/python3.7/dist-packages (from ipywidgets~=7.6.5-&gt;medcat==1.3.0) (5.4.0)
-Requirement already satisfied: ipykernel&gt;=4.5.1 in /usr/local/lib/python3.7/dist-packages (from ipywidgets~=7.6.5-&gt;medcat==1.3.0) (5.3.4)
-Collecting jupyterlab-widgets&lt;3,&gt;=1.0.0
- Downloading jupyterlab_widgets-1.1.1-py3-none-any.whl (245 kB)
- |████████████████████████████████| 245 kB 54.0 MB/s 
-Requirement already satisfied: traitlets&gt;=4.3.1 in /usr/local/lib/python3.7/dist-packages (from ipywidgets~=7.6.5-&gt;medcat==1.3.0) (5.1.1)
-Requirement already satisfied: jupyter-client in /usr/local/lib/python3.7/dist-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (6.1.12)
-Requirement already satisfied: tornado&gt;=4.2 in /usr/local/lib/python3.7/dist-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (5.1.1)
-Requirement already satisfied: prompt-toolkit&lt;2.1.0,&gt;=2.0.0 in /usr/local/lib/python3.7/dist-packages (from ipython&gt;=4.0.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (2.0.10)
-Requirement already satisfied: backcall in /usr/local/lib/python3.7/dist-packages (from ipython&gt;=4.0.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (0.2.0)
-Requirement already satisfied: pickleshare in /usr/local/lib/python3.7/dist-packages (from ipython&gt;=4.0.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (0.7.5)
-Requirement already satisfied: decorator in /usr/local/lib/python3.7/dist-packages (from ipython&gt;=4.0.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (4.4.2)
-Requirement already satisfied: pexpect in /usr/local/lib/python3.7/dist-packages (from ipython&gt;=4.0.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (4.8.0)
-Requirement already satisfied: setuptools&gt;=18.5 in /usr/local/lib/python3.7/dist-packages (from ipython&gt;=4.0.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (57.4.0)
-Collecting jedi&gt;=0.10
- Downloading jedi-0.18.1-py2.py3-none-any.whl (1.6 MB)
- |████████████████████████████████| 1.6 MB 61.1 MB/s 
-Requirement already satisfied: parso&lt;0.9.0,&gt;=0.8.0 in /usr/local/lib/python3.7/dist-packages (from jedi&gt;=0.10-&gt;ipython&gt;=4.0.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (0.8.3)
-Requirement already satisfied: jsonschema&gt;=2.6 in /usr/local/lib/python3.7/dist-packages (from nbformat&gt;=4.2.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (4.3.3)
-Requirement already satisfied: jupyter-core in /usr/local/lib/python3.7/dist-packages (from nbformat&gt;=4.2.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (4.11.1)
-Requirement already satisfied: fastjsonschema in /usr/local/lib/python3.7/dist-packages (from nbformat&gt;=4.2.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (2.16.1)
-Requirement already satisfied: pyrsistent!=0.17.0,!=0.17.1,!=0.17.2,&gt;=0.14.0 in /usr/local/lib/python3.7/dist-packages (from jsonschema&gt;=2.6-&gt;nbformat&gt;=4.2.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (0.18.1)
-Requirement already satisfied: attrs&gt;=17.4.0 in /usr/local/lib/python3.7/dist-packages (from jsonschema&gt;=2.6-&gt;nbformat&gt;=4.2.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (22.1.0)
-Requirement already satisfied: importlib-resources&gt;=1.4.0 in /usr/local/lib/python3.7/dist-packages (from jsonschema&gt;=2.6-&gt;nbformat&gt;=4.2.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (5.9.0)
-Requirement already satisfied: zipp&gt;=3.1.0 in /usr/local/lib/python3.7/dist-packages (from importlib-resources&gt;=1.4.0-&gt;jsonschema&gt;=2.6-&gt;nbformat&gt;=4.2.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (3.8.1)
-Requirement already satisfied: pyparsing!=3.0.5,&gt;=2.0.2 in /usr/local/lib/python3.7/dist-packages (from packaging-&gt;py2neo==2021.2.3-&gt;medcat==1.3.0) (3.0.9)
-Requirement already satisfied: python-dateutil&gt;=2.7.3 in /usr/local/lib/python3.7/dist-packages (from pandas&lt;=1.4.2,&gt;=1.1.5-&gt;medcat==1.3.0) (2.8.2)
-Requirement already satisfied: wcwidth in /usr/local/lib/python3.7/dist-packages (from prompt-toolkit&lt;2.1.0,&gt;=2.0.0-&gt;ipython&gt;=4.0.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (0.2.5)
-Requirement already satisfied: idna&lt;3,&gt;=2.5 in /usr/local/lib/python3.7/dist-packages (from requests&gt;=2.19.0-&gt;datasets~=2.2.2-&gt;medcat==1.3.0) (2.10)
-Requirement already satisfied: chardet&lt;4,&gt;=3.0.2 in /usr/local/lib/python3.7/dist-packages (from requests&gt;=2.19.0-&gt;datasets~=2.2.2-&gt;medcat==1.3.0) (3.0.4)
-Collecting urllib3
- Downloading urllib3-1.25.11-py2.py3-none-any.whl (127 kB)
- |████████████████████████████████| 127 kB 55.8 MB/s 
-Requirement already satisfied: scikit-learn in /usr/local/lib/python3.7/dist-packages (from sklearn~=0.0-&gt;medcat==1.3.0) (1.0.2)
-Requirement already satisfied: cymem&lt;2.1.0,&gt;=2.0.2 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.4,&gt;=3.1.0-&gt;medcat==1.3.0) (2.0.6)
-Requirement already satisfied: wasabi&lt;1.1.0,&gt;=0.8.1 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.4,&gt;=3.1.0-&gt;medcat==1.3.0) (0.10.1)
-Requirement already satisfied: typer&lt;0.5.0,&gt;=0.3.0 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.4,&gt;=3.1.0-&gt;medcat==1.3.0) (0.4.2)
-Requirement already satisfied: catalogue&lt;2.1.0,&gt;=2.0.6 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.4,&gt;=3.1.0-&gt;medcat==1.3.0) (2.0.8)
-Collecting typing-extensions&gt;=3.7.4.3
- Downloading typing_extensions-3.10.0.2-py3-none-any.whl (26 kB)
-Collecting thinc&lt;8.1.0,&gt;=8.0.9
- Downloading thinc-8.0.17-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (660 kB)
- |████████████████████████████████| 660 kB 46.1 MB/s 
-Requirement already satisfied: jinja2 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.4,&gt;=3.1.0-&gt;medcat==1.3.0) (2.11.3)
-Requirement already satisfied: preshed&lt;3.1.0,&gt;=3.0.2 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.4,&gt;=3.1.0-&gt;medcat==1.3.0) (3.0.7)
-Requirement already satisfied: srsly&lt;3.0.0,&gt;=2.4.1 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.4,&gt;=3.1.0-&gt;medcat==1.3.0) (2.4.4)
-Requirement already satisfied: spacy-legacy&lt;3.1.0,&gt;=3.0.8 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.4,&gt;=3.1.0-&gt;medcat==1.3.0) (3.0.10)
-Requirement already satisfied: pathy&gt;=0.3.5 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.4,&gt;=3.1.0-&gt;medcat==1.3.0) (0.6.2)
-Collecting pydantic!=1.8,!=1.8.1,&lt;1.9.0,&gt;=1.7.4
- Downloading pydantic-1.8.2-cp37-cp37m-manylinux2014_x86_64.whl (10.1 MB)
- |████████████████████████████████| 10.1 MB 40.3 MB/s 
-Requirement already satisfied: murmurhash&lt;1.1.0,&gt;=0.28.0 in /usr/local/lib/python3.7/dist-packages (from spacy&lt;3.1.4,&gt;=3.1.0-&gt;medcat==1.3.0) (1.0.8)
-Requirement already satisfied: regex!=2019.12.17 in /usr/local/lib/python3.7/dist-packages (from transformers~=4.19.2-&gt;medcat==1.3.0) (2022.6.2)
-Collecting tokenizers!=0.11.3,&lt;0.13,&gt;=0.11.1
- Downloading tokenizers-0.12.1-cp37-cp37m-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (6.6 MB)
- |████████████████████████████████| 6.6 MB 42.7 MB/s 
-Requirement already satisfied: notebook&gt;=4.4.1 in /usr/local/lib/python3.7/dist-packages (from widgetsnbextension~=3.5.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (5.3.1)
-Requirement already satisfied: terminado&gt;=0.8.1 in /usr/local/lib/python3.7/dist-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (0.13.3)
-Requirement already satisfied: nbconvert in /usr/local/lib/python3.7/dist-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (5.6.1)
-Requirement already satisfied: Send2Trash in /usr/local/lib/python3.7/dist-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (1.8.0)
-Requirement already satisfied: pyzmq&gt;=13 in /usr/local/lib/python3.7/dist-packages (from jupyter-client-&gt;ipykernel&gt;=4.5.1-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (23.2.1)
-Requirement already satisfied: ptyprocess in /usr/local/lib/python3.7/dist-packages (from terminado&gt;=0.8.1-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (0.7.0)
-Requirement already satisfied: frozenlist&gt;=1.1.1 in /usr/local/lib/python3.7/dist-packages (from aiohttp-&gt;datasets~=2.2.2-&gt;medcat==1.3.0) (1.3.1)
-Requirement already satisfied: charset-normalizer&lt;3.0,&gt;=2.0 in /usr/local/lib/python3.7/dist-packages (from aiohttp-&gt;datasets~=2.2.2-&gt;medcat==1.3.0) (2.1.0)
-Requirement already satisfied: asynctest==0.13.0 in /usr/local/lib/python3.7/dist-packages (from aiohttp-&gt;datasets~=2.2.2-&gt;medcat==1.3.0) (0.13.0)
-Requirement already satisfied: multidict&lt;7.0,&gt;=4.5 in /usr/local/lib/python3.7/dist-packages (from aiohttp-&gt;datasets~=2.2.2-&gt;medcat==1.3.0) (6.0.2)
-Requirement already satisfied: async-timeout&lt;5.0,&gt;=4.0.0a3 in /usr/local/lib/python3.7/dist-packages (from aiohttp-&gt;datasets~=2.2.2-&gt;medcat==1.3.0) (4.0.2)
-Requirement already satisfied: aiosignal&gt;=1.1.2 in /usr/local/lib/python3.7/dist-packages (from aiohttp-&gt;datasets~=2.2.2-&gt;medcat==1.3.0) (1.2.0)
-Requirement already satisfied: yarl&lt;2.0,&gt;=1.0 in /usr/local/lib/python3.7/dist-packages (from aiohttp-&gt;datasets~=2.2.2-&gt;medcat==1.3.0) (1.8.1)
-Requirement already satisfied: MarkupSafe&gt;=0.23 in /usr/local/lib/python3.7/dist-packages (from jinja2-&gt;spacy&lt;3.1.4,&gt;=3.1.0-&gt;medcat==1.3.0) (2.0.1)
-Collecting multiprocess
- Downloading multiprocess-0.70.12.2-py37-none-any.whl (112 kB)
- |████████████████████████████████| 112 kB 48.1 MB/s 
-Requirement already satisfied: testpath in /usr/local/lib/python3.7/dist-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (0.6.0)
-Requirement already satisfied: pandocfilters&gt;=1.4.1 in /usr/local/lib/python3.7/dist-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (1.5.0)
-Requirement already satisfied: mistune&lt;2,&gt;=0.8.1 in /usr/local/lib/python3.7/dist-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (0.8.4)
-Requirement already satisfied: entrypoints&gt;=0.2.2 in /usr/local/lib/python3.7/dist-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (0.4)
-Requirement already satisfied: defusedxml in /usr/local/lib/python3.7/dist-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (0.7.1)
-Requirement already satisfied: bleach in /usr/local/lib/python3.7/dist-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (5.0.1)
-Requirement already satisfied: webencodings in /usr/local/lib/python3.7/dist-packages (from bleach-&gt;nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets~=7.6.5-&gt;medcat==1.3.0) (0.5.1)
-Requirement already satisfied: threadpoolctl&gt;=2.0.0 in /usr/local/lib/python3.7/dist-packages (from scikit-learn-&gt;sklearn~=0.0-&gt;medcat==1.3.0) (3.1.0)
-Requirement already satisfied: joblib&gt;=0.11 in /usr/local/lib/python3.7/dist-packages (from scikit-learn-&gt;sklearn~=0.0-&gt;medcat==1.3.0) (1.1.0)
-Building wheels for collected packages: sklearn
- Building wheel for sklearn (setup.py) ... done
- Created wheel for sklearn: filename=sklearn-0.0-py2.py3-none-any.whl size=1310 sha256=6b41add52341adec7385a3690385c4ffba462deb5fa7617aa6144411f262329a
- Stored in directory: /root/.cache/pip/wheels/46/ef/c3/157e41f5ee1372d1be90b09f74f82b10e391eaacca8f22d33e
-Successfully built sklearn
-Installing collected packages: typing-extensions, jedi, urllib3, pydantic, dill, blis, xxhash, widgetsnbextension, tokenizers, thinc, responses, pansi, multiprocess, monotonic, jupyterlab-widgets, interchange, huggingface-hub, transformers, spacy, sklearn, py2neo, psutil, jsonpickle, ipywidgets, gensim, elasticsearch, datasets, aiofiles, medcat
- Attempting uninstall: typing-extensions
- Found existing installation: typing-extensions 4.1.1
- Uninstalling typing-extensions-4.1.1:
- Successfully uninstalled typing-extensions-4.1.1
- Attempting uninstall: urllib3
- Found existing installation: urllib3 1.24.3
- Uninstalling urllib3-1.24.3:
- Successfully uninstalled urllib3-1.24.3
- Attempting uninstall: pydantic
- Found existing installation: pydantic 1.9.2
- Uninstalling pydantic-1.9.2:
- Successfully uninstalled pydantic-1.9.2
- Attempting uninstall: dill
- Found existing installation: dill 0.3.5.1
- Uninstalling dill-0.3.5.1:
- Successfully uninstalled dill-0.3.5.1
- Attempting uninstall: blis
- Found existing installation: blis 0.7.8
- Uninstalling blis-0.7.8:
- Successfully uninstalled blis-0.7.8
- Attempting uninstall: widgetsnbextension
- Found existing installation: widgetsnbextension 3.6.1
- Uninstalling widgetsnbextension-3.6.1:
- Successfully uninstalled widgetsnbextension-3.6.1
- Attempting uninstall: thinc
- Found existing installation: thinc 8.1.0
- Uninstalling thinc-8.1.0:
- Successfully uninstalled thinc-8.1.0
- Attempting uninstall: jupyterlab-widgets
- Found existing installation: jupyterlab-widgets 3.0.2
- Uninstalling jupyterlab-widgets-3.0.2:
- Successfully uninstalled jupyterlab-widgets-3.0.2
- Attempting uninstall: spacy
- Found existing installation: spacy 3.4.1
- Uninstalling spacy-3.4.1:
- Successfully uninstalled spacy-3.4.1
- Attempting uninstall: psutil
- Found existing installation: psutil 5.4.8
- Uninstalling psutil-5.4.8:
- Successfully uninstalled psutil-5.4.8
- Attempting uninstall: ipywidgets
- Found existing installation: ipywidgets 7.7.1
- Uninstalling ipywidgets-7.7.1:
- Successfully uninstalled ipywidgets-7.7.1
- Attempting uninstall: gensim
- Found existing installation: gensim 3.6.0
- Uninstalling gensim-3.6.0:
- Successfully uninstalled gensim-3.6.0
-<span class="ansi-red-fg">ERROR: pip&#39;s dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
-en-core-web-sm 3.4.0 requires spacy&lt;3.5.0,&gt;=3.4.0, but you have spacy 3.1.3 which is incompatible.</span>
-Successfully installed aiofiles-0.8.0 blis-0.7.5 datasets-2.2.2 dill-0.3.4 elasticsearch-7.17.4 gensim-4.1.2 huggingface-hub-0.9.0 interchange-2021.0.4 ipywidgets-7.6.6 jedi-0.18.1 jsonpickle-2.0.0 jupyterlab-widgets-1.1.1 medcat-1.3.0 monotonic-1.6 multiprocess-0.70.12.2 pansi-2020.7.3 psutil-5.9.1 py2neo-2021.2.3 pydantic-1.8.2 responses-0.18.0 sklearn-0.0 spacy-3.1.3 thinc-8.0.17 tokenizers-0.12.1 transformers-4.19.4 typing-extensions-3.10.0.2 urllib3-1.25.11 widgetsnbextension-3.5.2 xxhash-3.0.0
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-
-
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>WARNING: Runtime will restart automatically and please run other cells thereafter.
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Restart the runtime if on colab, sometimes necessary after installing models</strong></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 <div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">json</span> 
-
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="kn">from</span> <span class="nn">medcat.cat</span> <span class="kn">import</span> <span class="n">CAT</span>
-<span class="kn">from</span> <span class="nn">medcat.cdb</span> <span class="kn">import</span> <span class="n">CDB</span>
-<span class="kn">from</span> <span class="nn">medcat.config</span> <span class="kn">import</span> <span class="n">Config</span>
-<span class="kn">from</span> <span class="nn">medcat.vocab</span> <span class="kn">import</span> <span class="n">Vocab</span>
-<span class="kn">from</span> <span class="nn">medcat.meta_cat</span> <span class="kn">import</span> <span class="n">MetaCAT</span>
-<span class="kn">from</span> <span class="nn">medcat.preprocessing.tokenizers</span> <span class="kn">import</span> <span class="n">TokenizerWrapperBPE</span>
-<span class="kn">from</span> <span class="nn">tokenizers</span> <span class="kn">import</span> <span class="n">ByteLevelBPETokenizer</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/usr/local/lib/python3.7/dist-packages/medcat/cat.py:18: TqdmExperimentalWarning: Using `tqdm.autonotebook.tqdm` in notebook mode. Use `tqdm.tqdm` instead to force console mode (e.g. in jupyter console)
- from tqdm.autonotebook import tqdm, trange
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">DATA_DIR</span> <span class="o">=</span> <span class="s2">&quot;./data_p4.3/&quot;</span>
-<span class="o">!</span> <span class="nv">DATA_DIR</span><span class="o">=</span><span class="s2">&quot;./data_p4.3/&quot;</span>
-<span class="n">MODEL_DIR</span> <span class="o">=</span> <span class="s2">&quot;./models/&quot;</span>
-<span class="o">!</span> <span class="nv">MODEL_DIR</span><span class="o">=</span><span class="s2">&quot;./models/&quot;</span>
-<span class="n">model_pack_path</span> <span class="o">=</span> <span class="n">MODEL_DIR</span> <span class="o">+</span> <span class="s2">&quot;medmen_wstatus_2021_oct.zip&quot;</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Download the models and required data</span>
-<span class="o">!</span>wget -N https://raw.githubusercontent.com/CogStack/MedCATtutorials/main/notebooks/introductory/data/pt_notes.csv -P <span class="nv">$DATA_DIR</span>
-<span class="o">!</span>wget -N https://raw.githubusercontent.com/CogStack/MedCATtutorials/main/notebooks/introductory/data/MedCAT_Export.json -P <span class="nv">$DATA_DIR</span>
-
-<span class="c1"># Download the medcat modelpack</span>
-<span class="o">!</span>wget -N https://cogstack-medcat-example-models.s3.eu-west-2.amazonaws.com/medcat-example-models/medmen_wstatus_2021_oct.zip -P <span class="nv">$MODEL_DIR</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Install medcat</span>
+<span class="o">!</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>medcat~<span class="o">=</span><span class="m">1</span>.16.0
 </pre></div>
 
     </div>
@@ -13457,40 +13103,114 @@ Successfully installed aiofiles-0.8.0 blis-0.7.5 datasets-2.2.2 dill-0.3.4 elast
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>--2022-08-25 12:16:42-- https://raw.githubusercontent.com/CogStack/MedCATtutorials/main/notebooks/introductory/data/pt_notes.csv
-Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.108.133, 185.199.109.133, 185.199.110.133, ...
-Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 3644222 (3.5M) [text/plain]
-Saving to: ‘./data/pt_notes.csv’
-
-pt_notes.csv 100%[===================&gt;] 3.47M --.-KB/s in 0.07s 
-
-2022-08-25 12:16:42 (52.1 MB/s) - ‘./data/pt_notes.csv’ saved [3644222/3644222]
-
---2022-08-25 12:16:42-- https://raw.githubusercontent.com/CogStack/MedCATtutorials/main/notebooks/introductory/data/MedCAT_Export.json
-Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.109.133, 185.199.110.133, 185.199.108.133, ...
-Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.109.133|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 272538 (266K) [text/plain]
-Saving to: ‘./data/MedCAT_Export.json’
-
-MedCAT_Export.json 100%[===================&gt;] 266.15K --.-KB/s in 0.03s 
-
-2022-08-25 12:16:42 (8.31 MB/s) - ‘./data/MedCAT_Export.json’ saved [272538/272538]
-
---2022-08-25 12:16:42-- https://medcat.rosalind.kcl.ac.uk/media/medmen_wstatus_2021_oct.zip
-Resolving medcat.rosalind.kcl.ac.uk (medcat.rosalind.kcl.ac.uk)... 193.61.202.225
-Connecting to medcat.rosalind.kcl.ac.uk (medcat.rosalind.kcl.ac.uk)|193.61.202.225|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 561947681 (536M) [application/zip]
-Saving to: ‘./models/medmen_wstatus_2021_oct.zip’
-
-medmen_wstatus_2021 100%[===================&gt;] 535.92M 29.3MB/s in 19s 
-
-2022-08-25 12:17:02 (28.1 MB/s) - ‘./models/medmen_wstatus_2021_oct.zip’ saved [561947681/561947681]
-
-</pre>
+<pre><span class="ansi-yellow-fg">WARNING: Ignoring invalid distribution ~umpy (/opt/homebrew/lib/python3.11/site-packages)</span><span class="ansi-yellow-fg">
+</span><span class="ansi-yellow-fg">WARNING: Ignoring invalid distribution ~umpy (/opt/homebrew/lib/python3.11/site-packages)</span><span class="ansi-yellow-fg">
+</span>Requirement already satisfied: medcat~=1.16.0 in /opt/homebrew/lib/python3.11/site-packages (1.16.0)
+Requirement already satisfied: numpy&lt;2.0.0,&gt;=1.26.0 in /opt/homebrew/lib/python3.11/site-packages (from medcat~=1.16.0) (1.26.4)
+Requirement already satisfied: pandas&gt;=1.4.2 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from medcat~=1.16.0) (2.2.3)
+Requirement already satisfied: gensim&lt;5.0.0,&gt;=4.3.0 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from medcat~=1.16.0) (4.3.3)
+Requirement already satisfied: spacy&lt;4.0.0,&gt;=3.6.0 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from medcat~=1.16.0) (3.7.5)
+Requirement already satisfied: scipy&lt;1.14.0,&gt;=1.9.2 in /opt/homebrew/lib/python3.11/site-packages (from medcat~=1.16.0) (1.13.1)
+Requirement already satisfied: transformers&lt;5.0.0,&gt;=4.48.1 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from medcat~=1.16.0) (4.51.3)
+Requirement already satisfied: accelerate&gt;=0.23.0 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from medcat~=1.16.0) (1.6.0)
+Requirement already satisfied: torch&lt;3.0.0,&gt;=2.4.0 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from medcat~=1.16.0) (2.7.0)
+Requirement already satisfied: tqdm&gt;=4.27 in /opt/homebrew/lib/python3.11/site-packages (from medcat~=1.16.0) (4.67.1)
+Requirement already satisfied: scikit-learn&lt;2.0.0,&gt;=1.1.3 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from medcat~=1.16.0) (1.6.1)
+Requirement already satisfied: dill&lt;1.0.0,&gt;=0.3.6 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from medcat~=1.16.0) (0.3.8)
+Requirement already satisfied: datasets&lt;3.0.0,&gt;=2.2.2 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from medcat~=1.16.0) (2.21.0)
+Requirement already satisfied: jsonpickle&gt;=2.0.0 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from medcat~=1.16.0) (4.0.5)
+Requirement already satisfied: psutil&gt;=5.8.0 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from medcat~=1.16.0) (7.0.0)
+Requirement already satisfied: multiprocess~=0.70.12 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from medcat~=1.16.0) (0.70.16)
+Requirement already satisfied: aiofiles&gt;=0.8.0 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from medcat~=1.16.0) (24.1.0)
+Requirement already satisfied: ipywidgets&gt;=7.6.5 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from medcat~=1.16.0) (8.1.7)
+Requirement already satisfied: xxhash&gt;=3.0.0 in /opt/homebrew/lib/python3.11/site-packages (from medcat~=1.16.0) (3.5.0)
+Requirement already satisfied: blis&lt;1.0.0,&gt;=0.7.5 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from medcat~=1.16.0) (0.7.11)
+Requirement already satisfied: click&gt;=8.0.4 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from medcat~=1.16.0) (8.1.8)
+Requirement already satisfied: pydantic&lt;3.0,&gt;=2.0.0 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from medcat~=1.16.0) (2.11.4)
+Requirement already satisfied: humanfriendly~=10.0 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from medcat~=1.16.0) (10.0)
+Requirement already satisfied: peft&gt;=0.8.2 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from medcat~=1.16.0) (0.15.2)
+Requirement already satisfied: filelock in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from datasets&lt;3.0.0,&gt;=2.2.2-&gt;medcat~=1.16.0) (3.18.0)
+Requirement already satisfied: pyarrow&gt;=15.0.0 in /opt/homebrew/lib/python3.11/site-packages (from datasets&lt;3.0.0,&gt;=2.2.2-&gt;medcat~=1.16.0) (20.0.0)
+Requirement already satisfied: requests&gt;=2.32.2 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from datasets&lt;3.0.0,&gt;=2.2.2-&gt;medcat~=1.16.0) (2.32.3)
+Requirement already satisfied: fsspec&lt;=2024.6.1,&gt;=2023.1.0 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from fsspec[http]&lt;=2024.6.1,&gt;=2023.1.0-&gt;datasets&lt;3.0.0,&gt;=2.2.2-&gt;medcat~=1.16.0) (2024.6.1)
+Requirement already satisfied: aiohttp in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from datasets&lt;3.0.0,&gt;=2.2.2-&gt;medcat~=1.16.0) (3.11.18)
+Requirement already satisfied: huggingface-hub&gt;=0.21.2 in /opt/homebrew/lib/python3.11/site-packages (from datasets&lt;3.0.0,&gt;=2.2.2-&gt;medcat~=1.16.0) (0.31.2)
+Requirement already satisfied: packaging in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from datasets&lt;3.0.0,&gt;=2.2.2-&gt;medcat~=1.16.0) (25.0)
+Requirement already satisfied: pyyaml&gt;=5.1 in /opt/homebrew/lib/python3.11/site-packages (from datasets&lt;3.0.0,&gt;=2.2.2-&gt;medcat~=1.16.0) (6.0.2)
+Requirement already satisfied: smart-open&gt;=1.8.1 in /opt/homebrew/lib/python3.11/site-packages (from gensim&lt;5.0.0,&gt;=4.3.0-&gt;medcat~=1.16.0) (7.1.0)
+Requirement already satisfied: annotated-types&gt;=0.6.0 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from pydantic&lt;3.0,&gt;=2.0.0-&gt;medcat~=1.16.0) (0.7.0)
+Requirement already satisfied: pydantic-core==2.33.2 in /opt/homebrew/lib/python3.11/site-packages (from pydantic&lt;3.0,&gt;=2.0.0-&gt;medcat~=1.16.0) (2.33.2)
+Requirement already satisfied: typing-extensions&gt;=4.12.2 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from pydantic&lt;3.0,&gt;=2.0.0-&gt;medcat~=1.16.0) (4.13.2)
+Requirement already satisfied: typing-inspection&gt;=0.4.0 in /opt/homebrew/lib/python3.11/site-packages (from pydantic&lt;3.0,&gt;=2.0.0-&gt;medcat~=1.16.0) (0.4.0)
+Requirement already satisfied: joblib&gt;=1.2.0 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from scikit-learn&lt;2.0.0,&gt;=1.1.3-&gt;medcat~=1.16.0) (1.5.0)
+Requirement already satisfied: threadpoolctl&gt;=3.1.0 in /opt/homebrew/lib/python3.11/site-packages (from scikit-learn&lt;2.0.0,&gt;=1.1.3-&gt;medcat~=1.16.0) (3.6.0)
+Requirement already satisfied: spacy-legacy&lt;3.1.0,&gt;=3.0.11 in /opt/homebrew/lib/python3.11/site-packages (from spacy&lt;4.0.0,&gt;=3.6.0-&gt;medcat~=1.16.0) (3.0.12)
+Requirement already satisfied: spacy-loggers&lt;2.0.0,&gt;=1.0.0 in /opt/homebrew/lib/python3.11/site-packages (from spacy&lt;4.0.0,&gt;=3.6.0-&gt;medcat~=1.16.0) (1.0.5)
+Requirement already satisfied: murmurhash&lt;1.1.0,&gt;=0.28.0 in /opt/homebrew/lib/python3.11/site-packages (from spacy&lt;4.0.0,&gt;=3.6.0-&gt;medcat~=1.16.0) (1.0.12)
+Requirement already satisfied: cymem&lt;2.1.0,&gt;=2.0.2 in /opt/homebrew/lib/python3.11/site-packages (from spacy&lt;4.0.0,&gt;=3.6.0-&gt;medcat~=1.16.0) (2.0.11)
+Requirement already satisfied: preshed&lt;3.1.0,&gt;=3.0.2 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from spacy&lt;4.0.0,&gt;=3.6.0-&gt;medcat~=1.16.0) (3.0.9)
+Requirement already satisfied: thinc&lt;8.3.0,&gt;=8.2.2 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from spacy&lt;4.0.0,&gt;=3.6.0-&gt;medcat~=1.16.0) (8.2.5)
+Requirement already satisfied: wasabi&lt;1.2.0,&gt;=0.9.1 in /opt/homebrew/lib/python3.11/site-packages (from spacy&lt;4.0.0,&gt;=3.6.0-&gt;medcat~=1.16.0) (1.1.3)
+Requirement already satisfied: srsly&lt;3.0.0,&gt;=2.4.3 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from spacy&lt;4.0.0,&gt;=3.6.0-&gt;medcat~=1.16.0) (2.5.1)
+Requirement already satisfied: catalogue&lt;2.1.0,&gt;=2.0.6 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from spacy&lt;4.0.0,&gt;=3.6.0-&gt;medcat~=1.16.0) (2.0.10)
+Requirement already satisfied: weasel&lt;0.5.0,&gt;=0.1.0 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from spacy&lt;4.0.0,&gt;=3.6.0-&gt;medcat~=1.16.0) (0.4.1)
+Requirement already satisfied: typer&lt;1.0.0,&gt;=0.3.0 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from spacy&lt;4.0.0,&gt;=3.6.0-&gt;medcat~=1.16.0) (0.15.3)
+Requirement already satisfied: jinja2 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from spacy&lt;4.0.0,&gt;=3.6.0-&gt;medcat~=1.16.0) (3.1.6)
+Requirement already satisfied: setuptools in /opt/homebrew/lib/python3.11/site-packages (from spacy&lt;4.0.0,&gt;=3.6.0-&gt;medcat~=1.16.0) (75.8.0)
+Requirement already satisfied: langcodes&lt;4.0.0,&gt;=3.2.0 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from spacy&lt;4.0.0,&gt;=3.6.0-&gt;medcat~=1.16.0) (3.5.0)
+Requirement already satisfied: language-data&gt;=1.2 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from langcodes&lt;4.0.0,&gt;=3.2.0-&gt;spacy&lt;4.0.0,&gt;=3.6.0-&gt;medcat~=1.16.0) (1.3.0)
+Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from requests&gt;=2.32.2-&gt;datasets&lt;3.0.0,&gt;=2.2.2-&gt;medcat~=1.16.0) (3.4.2)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from requests&gt;=2.32.2-&gt;datasets&lt;3.0.0,&gt;=2.2.2-&gt;medcat~=1.16.0) (3.10)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /opt/homebrew/lib/python3.11/site-packages (from requests&gt;=2.32.2-&gt;datasets&lt;3.0.0,&gt;=2.2.2-&gt;medcat~=1.16.0) (2.4.0)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from requests&gt;=2.32.2-&gt;datasets&lt;3.0.0,&gt;=2.2.2-&gt;medcat~=1.16.0) (2025.4.26)
+Requirement already satisfied: confection&lt;1.0.0,&gt;=0.0.1 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from thinc&lt;8.3.0,&gt;=8.2.2-&gt;spacy&lt;4.0.0,&gt;=3.6.0-&gt;medcat~=1.16.0) (0.1.5)
+Requirement already satisfied: sympy&gt;=1.13.3 in /opt/homebrew/lib/python3.11/site-packages (from torch&lt;3.0.0,&gt;=2.4.0-&gt;medcat~=1.16.0) (1.14.0)
+Requirement already satisfied: networkx in /opt/homebrew/lib/python3.11/site-packages (from torch&lt;3.0.0,&gt;=2.4.0-&gt;medcat~=1.16.0) (3.4.2)
+Requirement already satisfied: regex!=2019.12.17 in /opt/homebrew/lib/python3.11/site-packages (from transformers&lt;5.0.0,&gt;=4.48.1-&gt;medcat~=1.16.0) (2024.11.6)
+Requirement already satisfied: tokenizers&lt;0.22,&gt;=0.21 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from transformers&lt;5.0.0,&gt;=4.48.1-&gt;medcat~=1.16.0) (0.21.1)
+Requirement already satisfied: safetensors&gt;=0.4.3 in /opt/homebrew/lib/python3.11/site-packages (from transformers&lt;5.0.0,&gt;=4.48.1-&gt;medcat~=1.16.0) (0.5.3)
+Requirement already satisfied: shellingham&gt;=1.3.0 in /opt/homebrew/lib/python3.11/site-packages (from typer&lt;1.0.0,&gt;=0.3.0-&gt;spacy&lt;4.0.0,&gt;=3.6.0-&gt;medcat~=1.16.0) (1.5.4)
+Requirement already satisfied: rich&gt;=10.11.0 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from typer&lt;1.0.0,&gt;=0.3.0-&gt;spacy&lt;4.0.0,&gt;=3.6.0-&gt;medcat~=1.16.0) (14.0.0)
+Requirement already satisfied: cloudpathlib&lt;1.0.0,&gt;=0.7.0 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from weasel&lt;0.5.0,&gt;=0.1.0-&gt;spacy&lt;4.0.0,&gt;=3.6.0-&gt;medcat~=1.16.0) (0.21.0)
+Requirement already satisfied: wrapt in /opt/homebrew/lib/python3.11/site-packages (from smart-open&gt;=1.8.1-&gt;gensim&lt;5.0.0,&gt;=4.3.0-&gt;medcat~=1.16.0) (1.17.2)
+Requirement already satisfied: aiohappyeyeballs&gt;=2.3.0 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from aiohttp-&gt;datasets&lt;3.0.0,&gt;=2.2.2-&gt;medcat~=1.16.0) (2.6.1)
+Requirement already satisfied: aiosignal&gt;=1.1.2 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from aiohttp-&gt;datasets&lt;3.0.0,&gt;=2.2.2-&gt;medcat~=1.16.0) (1.3.2)
+Requirement already satisfied: attrs&gt;=17.3.0 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from aiohttp-&gt;datasets&lt;3.0.0,&gt;=2.2.2-&gt;medcat~=1.16.0) (25.3.0)
+Requirement already satisfied: frozenlist&gt;=1.1.1 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from aiohttp-&gt;datasets&lt;3.0.0,&gt;=2.2.2-&gt;medcat~=1.16.0) (1.6.0)
+Requirement already satisfied: multidict&lt;7.0,&gt;=4.5 in /opt/homebrew/lib/python3.11/site-packages (from aiohttp-&gt;datasets&lt;3.0.0,&gt;=2.2.2-&gt;medcat~=1.16.0) (6.4.3)
+Requirement already satisfied: propcache&gt;=0.2.0 in /opt/homebrew/lib/python3.11/site-packages (from aiohttp-&gt;datasets&lt;3.0.0,&gt;=2.2.2-&gt;medcat~=1.16.0) (0.3.1)
+Requirement already satisfied: yarl&lt;2.0,&gt;=1.17.0 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from aiohttp-&gt;datasets&lt;3.0.0,&gt;=2.2.2-&gt;medcat~=1.16.0) (1.20.0)
+Requirement already satisfied: comm&gt;=0.1.3 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from ipywidgets&gt;=7.6.5-&gt;medcat~=1.16.0) (0.2.2)
+Requirement already satisfied: ipython&gt;=6.1.0 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from ipywidgets&gt;=7.6.5-&gt;medcat~=1.16.0) (9.2.0)
+Requirement already satisfied: traitlets&gt;=4.3.1 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from ipywidgets&gt;=7.6.5-&gt;medcat~=1.16.0) (5.14.3)
+Requirement already satisfied: widgetsnbextension~=4.0.14 in /opt/homebrew/lib/python3.11/site-packages (from ipywidgets&gt;=7.6.5-&gt;medcat~=1.16.0) (4.0.14)
+Requirement already satisfied: jupyterlab_widgets~=3.0.15 in /opt/homebrew/lib/python3.11/site-packages (from ipywidgets&gt;=7.6.5-&gt;medcat~=1.16.0) (3.0.15)
+Requirement already satisfied: decorator in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from ipython&gt;=6.1.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat~=1.16.0) (5.2.1)
+Requirement already satisfied: ipython-pygments-lexers in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from ipython&gt;=6.1.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat~=1.16.0) (1.1.1)
+Requirement already satisfied: jedi&gt;=0.16 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from ipython&gt;=6.1.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat~=1.16.0) (0.19.2)
+Requirement already satisfied: matplotlib-inline in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from ipython&gt;=6.1.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat~=1.16.0) (0.1.7)
+Requirement already satisfied: pexpect&gt;4.3 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from ipython&gt;=6.1.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat~=1.16.0) (4.9.0)
+Requirement already satisfied: prompt_toolkit&lt;3.1.0,&gt;=3.0.41 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from ipython&gt;=6.1.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat~=1.16.0) (3.0.51)
+Requirement already satisfied: pygments&gt;=2.4.0 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from ipython&gt;=6.1.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat~=1.16.0) (2.19.1)
+Requirement already satisfied: stack_data in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from ipython&gt;=6.1.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat~=1.16.0) (0.6.3)
+Requirement already satisfied: wcwidth in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from prompt_toolkit&lt;3.1.0,&gt;=3.0.41-&gt;ipython&gt;=6.1.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat~=1.16.0) (0.2.13)
+Requirement already satisfied: parso&lt;0.9.0,&gt;=0.8.4 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from jedi&gt;=0.16-&gt;ipython&gt;=6.1.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat~=1.16.0) (0.8.4)
+Requirement already satisfied: marisa-trie&gt;=1.1.0 in /opt/homebrew/lib/python3.11/site-packages (from language-data&gt;=1.2-&gt;langcodes&lt;4.0.0,&gt;=3.2.0-&gt;spacy&lt;4.0.0,&gt;=3.6.0-&gt;medcat~=1.16.0) (1.2.1)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from pandas&gt;=1.4.2-&gt;medcat~=1.16.0) (2.9.0.post0)
+Requirement already satisfied: pytz&gt;=2020.1 in /opt/homebrew/lib/python3.11/site-packages (from pandas&gt;=1.4.2-&gt;medcat~=1.16.0) (2025.2)
+Requirement already satisfied: tzdata&gt;=2022.7 in /opt/homebrew/lib/python3.11/site-packages (from pandas&gt;=1.4.2-&gt;medcat~=1.16.0) (2025.2)
+Requirement already satisfied: ptyprocess&gt;=0.5 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from pexpect&gt;4.3-&gt;ipython&gt;=6.1.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat~=1.16.0) (0.7.0)
+Requirement already satisfied: six&gt;=1.5 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas&gt;=1.4.2-&gt;medcat~=1.16.0) (1.17.0)
+Requirement already satisfied: markdown-it-py&gt;=2.2.0 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from rich&gt;=10.11.0-&gt;typer&lt;1.0.0,&gt;=0.3.0-&gt;spacy&lt;4.0.0,&gt;=3.6.0-&gt;medcat~=1.16.0) (3.0.0)
+Requirement already satisfied: mdurl~=0.1 in /opt/homebrew/lib/python3.11/site-packages (from markdown-it-py&gt;=2.2.0-&gt;rich&gt;=10.11.0-&gt;typer&lt;1.0.0,&gt;=0.3.0-&gt;spacy&lt;4.0.0,&gt;=3.6.0-&gt;medcat~=1.16.0) (0.1.2)
+Requirement already satisfied: mpmath&lt;1.4,&gt;=1.1.0 in /opt/homebrew/lib/python3.11/site-packages (from sympy&gt;=1.13.3-&gt;torch&lt;3.0.0,&gt;=2.4.0-&gt;medcat~=1.16.0) (1.3.0)
+Requirement already satisfied: MarkupSafe&gt;=2.0 in /opt/homebrew/lib/python3.11/site-packages (from jinja2-&gt;spacy&lt;4.0.0,&gt;=3.6.0-&gt;medcat~=1.16.0) (3.0.2)
+Requirement already satisfied: executing&gt;=1.2.0 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from stack_data-&gt;ipython&gt;=6.1.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat~=1.16.0) (2.2.0)
+Requirement already satisfied: asttokens&gt;=2.1.0 in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from stack_data-&gt;ipython&gt;=6.1.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat~=1.16.0) (3.0.0)
+Requirement already satisfied: pure-eval in /Users/vladd/Library/Python/3.11/lib/python/site-packages (from stack_data-&gt;ipython&gt;=6.1.0-&gt;ipywidgets&gt;=7.6.5-&gt;medcat~=1.16.0) (0.2.3)
+<span class="ansi-yellow-fg">WARNING: Ignoring invalid distribution ~umpy (/opt/homebrew/lib/python3.11/site-packages)</span><span class="ansi-yellow-fg">
+</span><span class="ansi-yellow-fg">WARNING: Ignoring invalid distribution ~umpy (/opt/homebrew/lib/python3.11/site-packages)</span><span class="ansi-yellow-fg">
+</span></pre>
 </div>
 </div>
 
@@ -13500,100 +13220,11 @@ medmen_wstatus_2021 100%[===================&gt;] 535.92M 29.3MB/s in 19s
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Load model pack and Create CAT - the main class from medcat used for concept annotation</span>
-<span class="c1"># Create the full pipeline with models for meta-annotations</span>
-<span class="n">cat</span> <span class="o">=</span> <span class="n">CAT</span><span class="o">.</span><span class="n">load_model_pack</span><span class="p">(</span><span class="n">model_pack_path</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>WARNING:medcat.cdb:The CDB was exported by an unknown version of MedCAT.
-INFO:medcat:{
- &#34;Model ID&#34;: null,
- &#34;Last Modified On&#34;: null,
- &#34;History (from least to most recent)&#34;: [],
- &#34;Description&#34;: &#34;No description&#34;,
- &#34;Source Ontology&#34;: null,
- &#34;Location&#34;: null,
- &#34;MetaCAT models&#34;: {},
- &#34;Basic CDB Stats&#34;: {},
- &#34;Performance&#34;: {
- &#34;ner&#34;: {},
- &#34;meta&#34;: {}
- },
- &#34;Important Parameters (Partial view, all available in cat.config)&#34;: {
- &#34;config.ner[&#39;min_name_len&#39;]&#34;: {
- &#34;value&#34;: 3,
- &#34;description&#34;: &#34;Minimum detection length (found terms/mentions shorter than this will not be detected).&#34;
- },
- &#34;config.ner[&#39;upper_case_limit_len&#39;]&#34;: {
- &#34;value&#34;: 3,
- &#34;description&#34;: &#34;All detected terms shorter than this value have to be uppercase, otherwise they will be ignored.&#34;
- },
- &#34;config.linking[&#39;similarity_threshold&#39;]&#34;: {
- &#34;value&#34;: 0.2,
- &#34;description&#34;: &#34;If the confidence of the model is lower than this a detection will be ignore.&#34;
- },
- &#34;config.general[&#39;spell_check&#39;]&#34;: {
- &#34;value&#34;: true,
- &#34;description&#34;: &#34;Is spell checking enabled.&#34;
- },
- &#34;config.general[&#39;spell_check_len_limit&#39;]&#34;: {
- &#34;value&#34;: 7,
- &#34;description&#34;: &#34;Words shorter than this will not be spell checked.&#34;
- }
- },
- &#34;MedCAT Version&#34;: null
-}
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Detect only Disease and Mental Disorders</span>
-<span class="c1"># |T047|Disease or Syndrome</span>
-<span class="c1"># |T048|Mental or Behavioral Dysfunction</span>
-<span class="n">type_ids_filter</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;T047&#39;</span><span class="p">,</span> <span class="s1">&#39;T048&#39;</span><span class="p">]</span>
-<span class="n">cui_filters</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">type_ids</span> <span class="ow">in</span> <span class="n">type_ids_filter</span><span class="p">:</span>
-    <span class="n">cui_filters</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">cat</span><span class="o">.</span><span class="n">cdb</span><span class="o">.</span><span class="n">addl_info</span><span class="p">[</span><span class="s1">&#39;type_id2cuis&#39;</span><span class="p">][</span><span class="n">type_ids</span><span class="p">])</span>
-<span class="n">cat</span><span class="o">.</span><span class="n">cdb</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">linking</span><span class="p">[</span><span class="s1">&#39;filters&#39;</span><span class="p">][</span><span class="s1">&#39;cuis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cui_filters</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>wget -N https://raw.githubusercontent.com/CogStack/MedCAT/master/tutorial/data/pt_notes.csv -P <span class="nv">$DATA_DIR</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span><span class="w"> </span>wget<span class="w"> </span><span class="s2">&quot;https://drive.usercontent.google.com/download?id=1nGI3Igrd7V0fayUAMVafZU9C8GSgEmDS&amp;export=download&amp;confirm=t&amp;uuid=da8b7d44-401a-40f4-8e16-f1adc0ff827f&quot;</span><span class="w"> </span>-O<span class="w"> </span>part_6_2_ade_relcat_model.zip
+<span class="o">!</span><span class="w"> </span>unzip<span class="w"> </span>part_6_2_ade_relcat_model.zip<span class="w"> </span>-d<span class="w"> </span>part_6_2
 </pre></div>
 
     </div>
@@ -13610,335 +13241,10 @@ INFO:medcat:{
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>--2022-08-25 12:17:19-- https://raw.githubusercontent.com/CogStack/MedCAT/master/tutorial/data/pt_notes.csv
-Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.111.133, 185.199.110.133, 185.199.109.133, ...
-Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.111.133|:443... connected.
-HTTP request sent, awaiting response... 404 Not Found
-2022-08-25 12:17:19 ERROR 404: Not Found.
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Document-annotation">Document annotation<a class="anchor-link" href="#Document-annotation">&#182;</a></h2><p>The following is a replica of the document annotation code done in <a href="https://colab.research.google.com/drive/1q29RbHlZoFK7TcvMKITi3ABbE-E_fw30">Part 3.2.</a>, with the only change that we have meta-annotations in the pipeline now.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Load the data </span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s2">&quot;pt_notes.csv&quot;</span><span class="p">)</span>
-<span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[7]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-
- <div id="df-47b191cc-7043-4f57-b631-5ba73c539fc3">
- <div class="colab-df-container">
- <div>
-<style scoped>
- .dataframe tbody tr th:only-of-type {
- vertical-align: middle;
- }
-
- .dataframe tbody tr th {
- vertical-align: top;
- }
-
- .dataframe thead th {
- text-align: right;
- }
-</style>
-<table border="1" class="dataframe">
- <thead>
- <tr style="text-align: right;">
- <th></th>
- <th>Unnamed: 0_x</th>
- <th>subject_id</th>
- <th>chartdate</th>
- <th>category</th>
- <th>text</th>
- <th>create_year</th>
- <th>Unnamed: 0_y</th>
- <th>gender</th>
- <th>dob</th>
- <th>dob_year</th>
- <th>age_year</th>
- </tr>
- </thead>
- <tbody>
- <tr>
- <th>0</th>
- <td>6</td>
- <td>1</td>
- <td>2079-01-01</td>
- <td>General Medicine</td>
- <td>HISTORY OF PRESENT ILLNESS:, The patient is a ...</td>
- <td>2079</td>
- <td>1</td>
- <td>F</td>
- <td>2018-01-01</td>
- <td>2018</td>
- <td>61</td>
- </tr>
- <tr>
- <th>1</th>
- <td>7</td>
- <td>1</td>
- <td>2079-01-01</td>
- <td>Rheumatology</td>
- <td>HISTORY OF PRESENT ILLNESS: , A 71-year-old fe...</td>
- <td>2079</td>
- <td>1</td>
- <td>F</td>
- <td>2018-01-01</td>
- <td>2018</td>
- <td>61</td>
- </tr>
- <tr>
- <th>2</th>
- <td>8</td>
- <td>1</td>
- <td>2079-01-01</td>
- <td>Consult - History and Phy.</td>
- <td>HISTORY OF PRESENT ILLNESS:, The patient is a ...</td>
- <td>2079</td>
- <td>1</td>
- <td>F</td>
- <td>2018-01-01</td>
- <td>2018</td>
- <td>61</td>
- </tr>
- <tr>
- <th>3</th>
- <td>9</td>
- <td>2</td>
- <td>2037-01-01</td>
- <td>Consult - History and Phy.</td>
- <td>CHIEF COMPLAINT:,1. Infection.,2. Pelvic pai...</td>
- <td>2037</td>
- <td>2</td>
- <td>F</td>
- <td>2018-01-01</td>
- <td>2018</td>
- <td>19</td>
- </tr>
- <tr>
- <th>4</th>
- <td>10</td>
- <td>2</td>
- <td>2037-01-01</td>
- <td>Dermatology</td>
- <td>SUBJECTIVE:, This is a 29-year-old Vietnamese...</td>
- <td>2037</td>
- <td>2</td>
- <td>F</td>
- <td>2018-01-01</td>
- <td>2018</td>
- <td>19</td>
- </tr>
- </tbody>
-</table>
-</div>
- <button class="colab-df-convert" onclick="convertToInteractive('df-47b191cc-7043-4f57-b631-5ba73c539fc3')"
- title="Convert this dataframe to an interactive table."
- style="display:none;">
- 
- <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
- width="24px">
- <path d="M0 0h24v24H0V0z" fill="none"/>
- <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
- </svg>
- </button>
- 
- <style>
- .colab-df-container {
- display:flex;
- flex-wrap:wrap;
- gap: 12px;
- }
-
- .colab-df-convert {
- background-color: #E8F0FE;
- border: none;
- border-radius: 50%;
- cursor: pointer;
- display: none;
- fill: #1967D2;
- height: 32px;
- padding: 0 0 0 0;
- width: 32px;
- }
-
- .colab-df-convert:hover {
- background-color: #E2EBFA;
- box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
- fill: #174EA6;
- }
-
- [theme=dark] .colab-df-convert {
- background-color: #3B4455;
- fill: #D2E3FC;
- }
-
- [theme=dark] .colab-df-convert:hover {
- background-color: #434B5C;
- box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
- filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
- fill: #FFFFFF;
- }
- </style>
-
- <script>
- const buttonEl =
- document.querySelector('#df-47b191cc-7043-4f57-b631-5ba73c539fc3 button.colab-df-convert');
- buttonEl.style.display =
- google.colab.kernel.accessAllowed ? 'block' : 'none';
-
- async function convertToInteractive(key) {
- const element = document.querySelector('#df-47b191cc-7043-4f57-b631-5ba73c539fc3');
- const dataTable =
- await google.colab.kernel.invokeFunction('convertToInteractive',
- [key], {});
- if (!dataTable) return;
-
- const docLinkHtml = 'Like what you see? Visit the ' +
- '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
- + ' to learn more about interactive tables.';
- element.innerHTML = '';
- dataTable['output_type'] = 'display_data';
- await google.colab.output.renderOutput(dataTable, element);
- const docLink = document.createElement('div');
- docLink.innerHTML = docLinkHtml;
- element.appendChild(docLink);
- }
- </script>
- </div>
- </div>
- 
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[8]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(1088, 11)</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># format the df to match: required input data for multiprocessing = [(doc_id, doc_text), (doc_id, doc_text), ...]</span>
-<span class="k">def</span> <span class="nf">data_iterator</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
-    <span class="k">for</span> <span class="nb">id</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;text&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
-        <span class="k">yield</span> <span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set a batch size to control for the variablity between document sizes</span>
-<span class="n">batch_size_chars</span> <span class="o">=</span> <span class="mi">500000</span> <span class="c1"># Batch size (BS) in number of characters</span>
-
-<span class="c1"># Run model</span>
-<span class="c1"># NOTE: The method below has changed. The `multiprocessing` method has been</span>
-<span class="c1">#       deprecated and the following should be used instead. This is because</span>
-<span class="c1">#       there were multiple multiprocessing methods and there was no clear</span>
-<span class="c1">#       distinction between them.</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">multiprocessing_batch_char_size</span><span class="p">(</span><span class="n">data_iterator</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>  <span class="c1"># Formatted data</span>
-                                              <span class="n">batch_size_chars</span> <span class="o">=</span> <span class="n">batch_size_chars</span><span class="p">,</span>
-                                              <span class="n">nproc</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span> <span class="c1"># Number of processors</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>INFO:medcat:Annotated until now: 0 docs; Current BS: 157 docs; Elapsed time: 0.00 minutes
-INFO:medcat:Annotated until now: 157 docs; Current BS: 165 docs; Elapsed time: 1.27 minutes
-INFO:medcat:Annotated until now: 322 docs; Current BS: 151 docs; Elapsed time: 2.56 minutes
-INFO:medcat:Annotated until now: 473 docs; Current BS: 160 docs; Elapsed time: 3.83 minutes
-INFO:medcat:Annotated until now: 633 docs; Current BS: 152 docs; Elapsed time: 5.05 minutes
-INFO:medcat:Annotated until now: 785 docs; Current BS: 130 docs; Elapsed time: 6.31 minutes
-INFO:medcat:Annotated until now: 915 docs; Current BS: 157 docs; Elapsed time: 7.55 minutes
-INFO:medcat:Annotated until now: 1072 docs; Current BS: 16 docs; Elapsed time: 8.79 minutes
-</pre>
+<pre>--2025-05-19 12:47:32--  https://drive.usercontent.google.com/download?id=1nGI3Igrd7V0fayUAMVafZU9C8GSgEmDS&amp;export=download&amp;confirm=t&amp;uuid=da8b7d44-401a-40f4-8e16-f1adc0ff827f
+Resolving drive.usercontent.google.com (drive.usercontent.google.com)... 142.250.200.1
+Connecting to drive.usercontent.google.com (drive.usercontent.google.com)|142.250.200.1|:443... connected.
+HTTP request sent, awaiting response... </pre>
 </div>
 </div>
 
@@ -13948,50 +13254,10 @@ INFO:medcat:Annotated until now: 1072 docs; Current BS: 16 docs; Elapsed time: 8
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># This will be a map from CUI to a list of documents where it appears: {&quot;cui&quot;: [&lt;doc_id&gt;, &lt;doc_id&gt;, ...], ..}</span>
-<span class="n">cui_location</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="c1"># Let&#39;s also save the TUI location (semantic type)</span>
-<span class="n">type_ids_location</span> <span class="o">=</span> <span class="p">{}</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Select only cui&#39;s with the Status Meta-annotation &quot;Affirmed&quot; and thier corresponding documents</span>
-<span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
-    <span class="k">for</span> <span class="n">annotation</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="n">doc</span><span class="p">][</span><span class="s1">&#39;entities&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
-        <span class="k">if</span> <span class="n">annotation</span><span class="p">[</span><span class="s1">&#39;cui&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">cui_location</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">annotation</span><span class="p">[</span><span class="s1">&#39;meta_anns&#39;</span><span class="p">][</span><span class="s1">&#39;Status&#39;</span><span class="p">][</span><span class="s1">&#39;value&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Affirmed&#39;</span><span class="p">:</span>
-                <span class="n">cui_location</span><span class="p">[</span><span class="n">annotation</span><span class="p">[</span><span class="s1">&#39;cui&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">annotation</span><span class="p">[</span><span class="s1">&#39;meta_anns&#39;</span><span class="p">][</span><span class="s1">&#39;Status&#39;</span><span class="p">][</span><span class="s1">&#39;value&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Affirmed&#39;</span><span class="p">:</span>
-                <span class="n">cui_location</span><span class="p">[</span><span class="n">annotation</span><span class="p">[</span><span class="s1">&#39;cui&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="n">doc</span><span class="p">]</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># For the type_ids and their corresponding documents</span>
-<span class="c1"># Remember that a cui may map to more than one type_ids (one to many mapping)</span>
-<span class="k">for</span> <span class="n">cui</span> <span class="ow">in</span> <span class="n">cui_location</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-    <span class="n">type_ids_location</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">cat</span><span class="o">.</span><span class="n">cdb</span><span class="o">.</span><span class="n">cui2type_ids</span><span class="p">[</span><span class="n">cui</span><span class="p">])[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">cui_location</span><span class="p">[</span><span class="n">cui</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">medcat.rel_cat</span><span class="w"> </span><span class="kn">import</span> <span class="n">RelCAT</span>
 </pre></div>
 
     </div>
@@ -14002,486 +13268,31 @@ INFO:medcat:Annotated until now: 1072 docs; Current BS: 16 docs; Elapsed time: 8
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Done">Done<a class="anchor-link" href="#Done">&#182;</a></h2><p>We have now annotated all documents in our dataset and for each CUI (Concept identifier) we know in which document it appers. We also know that all the detected entities have the status "Affirmed".</p>
-<hr>
-<p>Please note that the number of examples I have provided is not enough to fully train the "Status" meta-annotation and one would need to provide more.</p>
+<h2> 1. Load the model of your choice. </h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># For example, the concept with CUI: C0020538 (hypertension) appears in</span>
-<span class="nb">set</span><span class="p">(</span><span class="n">cui_location</span><span class="p">[</span><span class="s1">&#39;C0020538&#39;</span><span class="p">])</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[14]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{0,
- 1,
- 2,
- 8,
- 9,
- 10,
- 11,
- 12,
- 13,
- 20,
- 21,
- 22,
- 23,
- 24,
- 25,
- 35,
- 36,
- 39,
- 40,
- 41,
- 43,
- 44,
- 45,
- 47,
- 51,
- 52,
- 53,
- 56,
- 57,
- 58,
- 59,
- 60,
- 61,
- 62,
- 63,
- 64,
- 65,
- 66,
- 79,
- 80,
- 81,
- 83,
- 92,
- 93,
- 94,
- 99,
- 100,
- 101,
- 102,
- 105,
- 107,
- 108,
- 110,
- 111,
- 113,
- 114,
- 115,
- 116,
- 117,
- 118,
- 119,
- 120,
- 123,
- 128,
- 129,
- 130,
- 131,
- 133,
- 135,
- 139,
- 154,
- 163,
- 166,
- 168,
- 169,
- 170,
- 172,
- 175,
- 177,
- 187,
- 188,
- 195,
- 196,
- 197,
- 198,
- 199,
- 200,
- 201,
- 202,
- 204,
- 206,
- 207,
- 208,
- 227,
- 228,
- 229,
- 230,
- 231,
- 233,
- 235,
- 239,
- 241,
- 242,
- 244,
- 248,
- 250,
- 252,
- 253,
- 269,
- 273,
- 274,
- 277,
- 282,
- 287,
- 288,
- 289,
- 290,
- 291,
- 292,
- 293,
- 294,
- 295,
- 298,
- 307,
- 308,
- 309,
- 310,
- 311,
- 312,
- 319,
- 320,
- 323,
- 324,
- 325,
- 326,
- 327,
- 328,
- 329,
- 330,
- 331,
- 332,
- 333,
- 334,
- 335,
- 336,
- 340,
- 362,
- 363,
- 364,
- 365,
- 366,
- 367,
- 368,
- 369,
- 370,
- 371,
- 372,
- 373,
- 374,
- 375,
- 377,
- 392,
- 394,
- 403,
- 405,
- 406,
- 409,
- 413,
- 414,
- 415,
- 418,
- 419,
- 420,
- 421,
- 422,
- 423,
- 424,
- 425,
- 426,
- 428,
- 429,
- 430,
- 435,
- 461,
- 462,
- 465,
- 467,
- 468,
- 472,
- 473,
- 474,
- 475,
- 476,
- 477,
- 478,
- 479,
- 480,
- 488,
- 493,
- 494,
- 495,
- 496,
- 497,
- 500,
- 503,
- 504,
- 505,
- 506,
- 508,
- 509,
- 510,
- 513,
- 516,
- 517,
- 519,
- 520,
- 544,
- 546,
- 547,
- 548,
- 550,
- 551,
- 552,
- 554,
- 555,
- 557,
- 558,
- 559,
- 560,
- 561,
- 562,
- 563,
- 575,
- 578,
- 579,
- 587,
- 589,
- 597,
- 598,
- 600,
- 601,
- 606,
- 607,
- 610,
- 611,
- 614,
- 615,
- 616,
- 620,
- 623,
- 625,
- 626,
- 628,
- 629,
- 630,
- 631,
- 633,
- 634,
- 636,
- 638,
- 639,
- 640,
- 643,
- 647,
- 649,
- 650,
- 651,
- 654,
- 656,
- 658,
- 660,
- 662,
- 664,
- 665,
- 667,
- 668,
- 669,
- 671,
- 674,
- 684,
- 691,
- 692,
- 695,
- 696,
- 700,
- 701,
- 703,
- 705,
- 706,
- 722,
- 723,
- 724,
- 727,
- 728,
- 729,
- 730,
- 731,
- 732,
- 734,
- 735,
- 736,
- 743,
- 744,
- 745,
- 746,
- 747,
- 748,
- 757,
- 758,
- 760,
- 763,
- 764,
- 765,
- 766,
- 767,
- 768,
- 769,
- 772,
- 774,
- 775,
- 777,
- 786,
- 794,
- 796,
- 797,
- 798,
- 799,
- 800,
- 801,
- 802,
- 803,
- 805,
- 806,
- 807,
- 808,
- 809,
- 816,
- 826,
- 829,
- 832,
- 833,
- 834,
- 835,
- 836,
- 837,
- 838,
- 839,
- 840,
- 841,
- 842,
- 843,
- 844,
- 845,
- 850,
- 851,
- 852,
- 853,
- 862,
- 863,
- 865,
- 866,
- 867,
- 868,
- 887,
- 888,
- 890,
- 892,
- 898,
- 900,
- 901,
- 902,
- 904,
- 905,
- 910,
- 912,
- 913,
- 915,
- 921,
- 926,
- 927,
- 930,
- 931,
- 933,
- 934,
- 946,
- 950,
- 951,
- 958,
- 959,
- 960,
- 961,
- 972,
- 973,
- 974,
- 975,
- 978,
- 979,
- 981,
- 982,
- 985,
- 986,
- 987,
- 988,
- 989,
- 990,
- 991,
- 992,
- 993,
- 1010,
- 1013,
- 1019,
- 1022,
- 1023,
- 1024,
- 1025,
- 1026,
- 1027,
- 1028,
- 1031,
- 1032,
- 1033,
- 1034,
- 1035,
- 1057,
- 1072,
- 1073,
- 1074,
- 1075,
- 1076,
- 1077,
- 1078,
- 1079}</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Save concept location in corpus</span>
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">cui_location</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;./cui_location.json&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">rc_path</span> <span class="o">=</span> <span class="s2">&quot;./part_6_2/ade_relcat_model&quot;</span>
+    <span class="n">relCAT</span> <span class="o">=</span> <span class="n">RelCAT</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">rc_path</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;Unable to load RelCAT model from &#39;</span><span class="si">{</span><span class="n">rc_path</span><span class="si">}</span><span class="s2">&#39;. &quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;Exists? </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">rc_path</span><span class="p">)</span><span class="si">}</span><span class="s2">; isdir? </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">rc_path</span><span class="p">)</span><span class="si">}</span><span class="s2"> &quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;Stuff in dir: </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">rc_path</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">rc_path</span><span class="p">)</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;NOT A DIR&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14492,10 +13303,499 @@ INFO:medcat:Annotated until now: 1072 docs; Current BS: 16 docs; Elapsed time: 8
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>End of tutorial</p>
+<h2> 2. Prepare the text for relation extraction. We assume that there are annotations already present. </h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">docs_with_anns</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;REASON FOR CONSULTATION: , Left hip fracture.,HISTORY OF PRESENT ILLNESS: , The patient is a pleasant 53-year-old female with a known history of sciatica, apparently presented to the emergency room due to severe pain in the left lower extremity and unable to bear weight.  History was obtained from the patient.  As per the history, she reported that she has been having back pain with left leg pain since past 4 weeks.  She has been using a walker for ambulation due to disabling pain in her left thigh and lower back.  She was seen by her primary care physician and was scheduled to go for MRI yesterday.  However, she was walking and her right foot got caught on some type of rug leading to place excessive weight on her left lower extremity to prevent her fall.  Since then, she was unable to ambulate.  The patient called paramedics and was brought to the emergency room.  She denied any history of fall.  She reported that she stepped the wrong way causing the pain to become worse.  She is complaining of severe pain in her lower extremity and back pain.  Denies any tingling or numbness.  Denies any neurological symptoms.  Denies any bowel or bladder incontinence.,X-rays were obtained which were remarkable for left hip fracture.  Orthopedic consultation was called for further evaluation and management.  On further interview with the patient, it is noted that she has a history of malignant melanoma, which was diagnosed approximately 4 to 5 years ago.  She underwent surgery at that time and subsequently, she was noted to have a spread to the lymphatic system and lymph nodes for which she underwent surgery in 3/2008.,PAST MEDICAL HISTORY: , Sciatica and melanoma.,PAST SURGICAL HISTORY:  ,As discussed above, surgery for melanoma and hysterectomy.,ALLERGIES: , NONE.,SOCIAL HISTORY: , Denies any tobacco or alcohol use.  She is divorced with 2 children.  She lives with her son.,PHYSICAL EXAMINATION:,GENERAL:  The patient is well developed, well nourished in mild distress secondary to left lower extremity and back pain.,MUSCULOSKELETAL:  Examination of the left lower extremity, there is presence of apparent shortening and external rotation deformity.  Tenderness to palpation is present.  Leg rolling is positive for severe pain in the left proximal hip.  Further examination of the spine is incomplete secondary to severe leg pain.  She is unable to perform a straight leg raising.  EHL/EDL 5/5.  2+ pulses are present distally.  Calf is soft and nontender.  Homans sign is negative.  Sensation to light touch is intact.,IMAGING:,  AP view of the hip is reviewed.  Only 1 limited view is obtained.  This is a poor quality x-ray with a lot of soft tissue shadow.  This x-ray is significant for basicervical-type femoral neck fracture.  Lesser trochanter is intact.  This is a high intertrochanteric fracture/basicervical.  There is presence of lytic lesion around the femoral neck, which is not well delineated on this particular x-ray.  We need to order repeat x-rays including AP pelvis, femur, and knee.,LABS:,  Have been reviewed.,ASSESSMENT: , The patient is a 53-year-old female with probable pathological fracture of the left proximal femur.,DISCUSSION AND PLAN: , Nature and course of the diagnosis has been discussed with the patient.  Based on her presentation without any history of obvious fall or trauma and past history of malignant melanoma, this appears to be a pathological fracture of the left proximal hip.  At the present time, I would recommend obtaining a bone scan and repeat x-rays, which will include AP pelvis, femur, hip including knee.  She denies any pain elsewhere.  She does have a past history of back pain and sciatica, but at the present time, this appears to be a metastatic bone lesion with pathological fracture.  I have discussed the case with Dr. X and recommended oncology consultation.,With the above fracture and presentation, she needs a left hip hemiarthroplasty versus calcar hemiarthroplasty, cemented type.  Indication, risk, and benefits of left hip hemiarthroplasty has been discussed with the patient, which includes, but not limited to bleeding, infection, nerve injury, blood vessel injury, dislocation early and late, persistent pain, leg length discrepancy, myositis ossificans, intraoperative fracture, prosthetic fracture, need for conversion to total hip replacement surgery, revision surgery, DVT, pulmonary embolism, risk of anesthesia, need for blood transfusion, and cardiac arrest.  She understands above and is willing to undergo further procedure.  The goal and the functional outcome have been explained.  Further plan will be discussed with her once we obtain the bone scan and the radiographic studies.  We will also await for the oncology feedback and clearance.,Thank you very much for allowing me to participate in the care of this patient.  I will continue to follow up.&quot;</span><span class="p">,</span>
+                   <span class="s2">&quot;annotations&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1011</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;161432005&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;history of malignant melanoma&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">1382</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">1411</span><span class="p">,</span>
+  
+                            <span class="s2">&quot;acc&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                            <span class="s2">&quot;meta_anns&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1012</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;161432005&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;history of malignant melanoma&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">3347</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">3376</span><span class="p">,</span>
+                            <span class="s2">&quot;acc&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                            <span class="s2">&quot;meta_anns&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1013</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;52734007&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;total hip replacement surgery&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">4323</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">4352</span><span class="p">,</span>
+
+                            <span class="s2">&quot;acc&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                            <span class="s2">&quot;meta_anns&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1014</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;127287001&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;intertrochanteric fracture&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">2802</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">2828</span><span class="p">,</span>
+   
+                            <span class="s2">&quot;acc&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                            <span class="s2">&quot;meta_anns&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1015</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;213270002&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;intraoperative fracture&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">4254</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">4277</span><span class="p">,</span>
+
+                            <span class="s2">&quot;acc&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                            <span class="s2">&quot;meta_anns&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1016</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;446050000&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;primary care physician&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">541</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">563</span><span class="p">,</span>
+           
+                            <span class="s2">&quot;acc&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                            <span class="s2">&quot;meta_anns&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1017</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;5913000&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;femoral neck fracture&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">2733</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">2754</span><span class="p">,</span>
+
+                            <span class="s2">&quot;acc&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                            <span class="s2">&quot;meta_anns&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1018</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;268029009&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;pathological fracture&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">3120</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">3141</span><span class="p">,</span>
+  
+                            <span class="s2">&quot;acc&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                            <span class="s2">&quot;meta_anns&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1019</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;268029009&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;pathological fracture&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">3399</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">3420</span><span class="p">,</span>
+
+                            <span class="s2">&quot;acc&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                            <span class="s2">&quot;meta_anns&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1020</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;268029009&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;pathological fracture&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">3748</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">3769</span><span class="p">,</span>
+   
+                            <span class="s2">&quot;acc&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                            <span class="s2">&quot;meta_anns&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1021</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;32153003&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;left lower extremity&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">224</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">244</span><span class="p">,</span>
+
+                            <span class="s2">&quot;acc&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                            <span class="s2">&quot;meta_anns&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1022</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;32153003&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;left lower extremity&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">724</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">744</span><span class="p">,</span>
+
+                            <span class="s2">&quot;acc&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                            <span class="s2">&quot;meta_anns&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1023</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;165232002&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;bladder incontinence&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">1152</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">1172</span><span class="p">,</span>
+
+                            <span class="s2">&quot;acc&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                            <span class="s2">&quot;meta_anns&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1024</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;5880005&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;PHYSICAL EXAMINATION&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">1895</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">1915</span><span class="p">,</span>
+
+                            <span class="s2">&quot;acc&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                            <span class="s2">&quot;meta_anns&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1025</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;32153003&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;left lower extremity&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">2003</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">2023</span><span class="p">,</span>
+
+                            <span class="s2">&quot;acc&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                            <span class="s2">&quot;meta_anns&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1026</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;32153003&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;left lower extremity&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">2076</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">2096</span><span class="p">,</span>
+
+                            <span class="s2">&quot;acc&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                            <span class="s2">&quot;meta_anns&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1027</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;57662003&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;injury, blood vessel&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">4135</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">4155</span><span class="p">,</span>
+
+                            <span class="s2">&quot;acc&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                            <span class="s2">&quot;meta_anns&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1028</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;44551007&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;myositis ossificans&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">4233</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">4252</span><span class="p">,</span>
+
+                            <span class="s2">&quot;acc&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                            <span class="s2">&quot;meta_anns&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1029</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;59282003&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;pulmonary embolism&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">4377</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">4395</span><span class="p">,</span>
+
+                            <span class="s2">&quot;acc&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                            <span class="s2">&quot;meta_anns&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1030</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;116859006&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;blood transfusion&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">4426</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">4443</span><span class="p">,</span>
+
+                            <span class="s2">&quot;acc&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                            <span class="s2">&quot;meta_anns&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1031</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;224994002&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;excessive weight&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">700</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">716</span><span class="p">,</span>
+
+                            <span class="s2">&quot;meta_anns&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1032</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;89890002&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;lymphatic system&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">1557</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">1573</span><span class="p">,</span>
+
+                            <span class="s2">&quot;acc&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                            <span class="s2">&quot;meta_anns&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1033</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;261554009&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;revision surgery&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">4354</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">4370</span><span class="p">,</span>
+
+                            <span class="s2">&quot;acc&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                            <span class="s2">&quot;meta_anns&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1034</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;428942009&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;history of fall&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">893</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">908</span><span class="p">,</span>
+
+                            <span class="s2">&quot;acc&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                            <span class="s2">&quot;meta_anns&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1035</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;61685007&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;lower extremity&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">1031</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">1046</span><span class="p">,</span>
+   
+                            <span class="s2">&quot;acc&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                            <span class="s2">&quot;meta_anns&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1036</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;392521001&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;MEDICAL HISTORY&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">1638</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">1653</span><span class="p">,</span>
+
+                            <span class="s2">&quot;acc&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                            <span class="s2">&quot;meta_anns&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1037</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;106028002&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;MUSCULOSKELETAL&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">2039</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">2054</span><span class="p">,</span>
+
+                            <span class="s2">&quot;acc&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                            <span class="s2">&quot;meta_anns&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1038</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;417662000&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;past history of&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">3634</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">3649</span><span class="p">,</span>
+
+                            <span class="s2">&quot;acc&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                            <span class="s2">&quot;meta_anns&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1039</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;225728007&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;emergency room&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">183</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">197</span><span class="p">,</span>
+                            <span class="s2">&quot;acc&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                            <span class="s2">&quot;meta_anns&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1040</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;225728007&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;emergency room&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">861</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">875</span><span class="p">,</span>
+                            <span class="s2">&quot;acc&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                            <span class="s2">&quot;meta_anns&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1041</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;160476009&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;SOCIAL HISTORY&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">1783</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">1797</span><span class="p">,</span>
+                            <span class="s2">&quot;acc&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                            <span class="s2">&quot;meta_anns&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1042</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;248324001&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;well nourished&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">1958</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">1972</span><span class="p">,</span>
+                            <span class="s2">&quot;acc&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                            <span class="s2">&quot;meta_anns&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1043</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;244696009&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;proximal femur&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">3154</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">3168</span><span class="p">,</span>
+                            <span class="s2">&quot;acc&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                            <span class="s2">&quot;meta_anns&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1044</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;410429000&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;cardiac arrest&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">4449</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">4463</span><span class="p">,</span>
+                            <span class="s2">&quot;acc&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                            <span class="s2">&quot;meta_anns&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1045</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;287047008&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;left leg pain&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">386</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">399</span><span class="p">,</span>
+                            <span class="s2">&quot;acc&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                            <span class="s2">&quot;meta_anns&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1046</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;161891005&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;and back pain&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">1047</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">1060</span><span class="p">,</span>
+                            <span class="s2">&quot;acc&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                            <span class="s2">&quot;meta_anns&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1047</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;26175008&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;approximately&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">1433</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">1446</span><span class="p">,</span>
+                            <span class="s2">&quot;acc&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                            <span class="s2">&quot;meta_anns&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1048</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;161891005&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;and back pain&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">2024</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">2037</span><span class="p">,</span>
+
+                            <span class="s2">&quot;acc&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+                            <span class="s2">&quot;meta_anns&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1049</span><span class="p">,</span>
+                            <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;cui&quot;</span><span class="p">:</span> <span class="s2">&quot;1199008&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;neurological&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">1108</span><span class="p">,</span>
+                            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="mi">1120</span>
+                        <span class="p">}</span>
+                        <span class="p">]}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>3. Predict relations </h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">output_doc_with_relations</span> <span class="o">=</span> <span class="n">relCAT</span><span class="o">.</span><span class="n">predict_text_with_anns</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">docs_with_anns</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">],</span> <span class="n">annotations</span><span class="o">=</span><span class="n">docs_with_anns</span><span class="p">[</span><span class="s2">&quot;annotations&quot;</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>4. Examine relations </h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">output_doc_with_relations</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">relations</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Most relations in our case make no sense as we only have two classes that relate to drug and adverse effects and drug-dosage. It is recommended that you apply a TUI/CUI filter to the NER config step first to only focus on relevant concepts.</p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
 </div>
     </div>
   </div>
